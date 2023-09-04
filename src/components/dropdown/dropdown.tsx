@@ -5,7 +5,7 @@ import { useSelect } from 'downshift';
 import { Scrollbars } from 'rc-scrollbars';
 import { useOnClickOutside } from '@common/hooks';
 import { KeyCodes } from '@common/constants/keyCodes';
-import { Icon } from '@components/icon';
+import { DropdownIcon } from '@components/icons';
 import { DropdownOption } from './dropdownOption';
 import { DropdownVariant, RenderDropdownOption, DropdownOptionType, DropdownValue } from './types';
 import { OPEN_DROPDOWN_KEY_CODES, CLOSE_DROPDOWN_KEY_CODES } from './constants';
@@ -225,7 +225,7 @@ export const Dropdown: FC<DropdownProps> = ({
             >
               {icon && <span className={cx('icon')}>{icon}</span>}
               <span className={cx('value', { placeholder: !value })}>{getDisplayedValue()}</span>
-              <Icon icon="dropdown" className={cx('arrow')} />
+              <DropdownIcon className={cx('arrow')} />
             </button>
           )}
         </Reference>

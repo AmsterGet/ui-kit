@@ -30,7 +30,7 @@ export default defineConfig(() => ({
         modal: resolve('src', 'components', 'modal'),
         dropdown: resolve('src', 'components', 'dropdown'),
         toggle: resolve('src', 'components', 'toggle'),
-        icon: resolve('src', 'components', 'icon'),
+        baseIcon: resolve('src', 'components', 'icons', 'baseIcon'),
         fieldNumber: resolve('src', 'components', 'fieldNumber'),
         bubblesLoader: resolve('src', 'components', 'bubblesLoader'),
       },

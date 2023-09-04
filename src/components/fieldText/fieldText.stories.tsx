@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { ReactComponent as CloseIcon } from '@assets/icons/close.svg';
+import { DeleteIcon } from '@components/icons';
 import { FieldText } from './fieldText';
 
 const meta: Meta<typeof FieldText> = {
@@ -72,6 +72,6 @@ export const FullyDescribed: Story = {
     error: 'The field should not be empty',
     touched: true,
     hasDoubleMessage: true,
-    startIcon: <CloseIcon />,
+    startIcon: <DeleteIcon />,
   },
 };

@@ -6,6 +6,6 @@ export { ThemeProvider } from './themeProvider';
 export { Modal } from './modal';
 export { Dropdown } from './dropdown';
 export { Toggle } from './toggle';
-export { Icon } from './icon';
 export { FieldNumber } from './fieldNumber';
 export { BubblesLoader } from './bubblesLoader';
+export * from './icons';
