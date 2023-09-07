@@ -23,7 +23,11 @@ export const Icons: Story = {
     return (
       <div>
         {icons.map((Icon) => {
-          return <Icon />;
+          return (
+            <BaseIcon>
+              <Icon />
+            </BaseIcon>
+          );
         })}
       </div>
     );

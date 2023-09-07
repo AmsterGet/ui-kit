@@ -8,7 +8,7 @@ import {
   ComponentPropsWithRef,
 } from 'react';
 import classNames from 'classnames/bind';
-import { ReactComponent as ClearIcon } from '@assets/icons/clear.svg';
+import { ClearIcon } from '@components/icons';
 import styles from './fieldText.module.scss';
 
 const cx = classNames.bind(styles);

@@ -1,9 +1,8 @@
-import { BaseIcon } from './baseIcon';
-import { ClearIcon } from './clearIcon';
-import { CloseIcon } from './closeIcon';
-import { PlusIcon } from './plusIcon';
-import { MinusIcon } from './minusIcon';
-import { DeleteIcon } from './deleteIcon';
-import { DropdownIcon } from './dropdownIcon';
-
-export { BaseIcon, ClearIcon, CloseIcon, PlusIcon, MinusIcon, DeleteIcon, DropdownIcon };
+export { BaseIcon } from './baseIcon';
+// TODO: ask UX team to provide path-only svg icons
+export { default as ClearIcon } from './svg/clear.svg';
+export { default as CloseIcon } from './svg/close.svg';
+export { default as PlusIcon } from './svg/plus.svg';
+export { default as MinusIcon } from './svg/minus.svg';
+export { default as DeleteIcon } from './svg/delete.svg';
+export { default as DropdownIcon } from './svg/dropdown.svg';

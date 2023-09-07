@@ -1,3 +1,11 @@
+@mixin fill-svg($color) {
+  svg {
+    path {
+      fill: $color;
+    }
+  }
+}
+
 .base-icon {
   margin: 0;
   padding: 0;
@@ -6,9 +14,7 @@
   border: none;
   cursor: pointer;
 
-  svg path {
-    fill: var(--rp-ui-kit-e-300);
-  }
+  @include fill-svg(var(--rp-ui-kit-e-300));
 
   &.disabled {
     opacity: 40%;
@@ -16,18 +22,12 @@
   }
 
   &:hover:not(.disabled) {
-    svg path {
-      fill: var(--rp-ui-kit-e-400);
-    }
+    @include fill-svg(var(--rp-ui-kit-e-400));
   }
   &:active:not(.disabled) {
-    svg path {
-      fill: var(--rp-ui-kit-topaz-pressed);
-    }
+    @include fill-svg(var(--rp-ui-kit-topaz-pressed));
   }
   &:focus:not(.disabled, :active) {
-    svg path {
-      fill: var(--rp-ui-kit-topaz-focused);
-    }
+    @include fill-svg(var(--rp-ui-kit-topaz-focused));
   }
 }
