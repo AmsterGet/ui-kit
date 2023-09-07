@@ -20,7 +20,6 @@ export interface ButtonProps extends ComponentPropsWithRef<'button'> {
   children?: ReactNode;
   icon?: ReactNode;
   iconPlace?: IconPlace;
-  dataAutomationId?: string;
   adjustWidthOn?: ButtonWidth;
   disabled?: boolean;
   type?: 'submit' | 'reset' | 'button';
@@ -44,7 +43,6 @@ export const Button: FC<ButtonProps> = forwardRef(
       onClick,
       title,
       className,
-      dataAutomationId,
       ...rest
     },
     ref: ForwardedRef<HTMLButtonElement>,
@@ -64,7 +62,6 @@ export const Button: FC<ButtonProps> = forwardRef(
         className={classes}
         onClick={onClick}
         title={title}
-        data-automation-id={dataAutomationId}
         {...rest}
       >
         {buttonIcon && (

@@ -1,7 +1,8 @@
 import { BaseIcon, BaseIconProps } from './baseIcon';
+import { declareIcon, IconProps } from './declareIcon';
 
-export { BaseIcon };
+export { BaseIcon, declareIcon };
 
-export type { BaseIconProps };
+export type { BaseIconProps, IconProps };
 
 export default BaseIcon;

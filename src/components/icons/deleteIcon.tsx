@@ -1,9 +1,5 @@
-import { FC, ReactElement } from 'react';
+import { FC } from 'react';
 import { ReactComponent as Delete } from '@assets/icons/delete.svg';
-import { BaseIcon, BaseIconProps } from './baseIcon';
+import { declareIcon, IconProps } from './baseIcon';
 
-export const DeleteIcon: FC<BaseIconProps> = (props): ReactElement => (
-  <BaseIcon {...props}>
-    <Delete />
-  </BaseIcon>
-);
+export const DeleteIcon: FC<IconProps> = declareIcon(Delete);

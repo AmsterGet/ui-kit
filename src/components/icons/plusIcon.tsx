@@ -1,9 +1,5 @@
-import { FC, ReactElement } from 'react';
+import { FC } from 'react';
 import { ReactComponent as Plus } from '@assets/icons/plus.svg';
-import { BaseIcon, BaseIconProps } from './baseIcon';
+import { declareIcon, IconProps } from './baseIcon';
 
-export const PlusIcon: FC<BaseIconProps> = (props): ReactElement => (
-  <BaseIcon {...props}>
-    <Plus />
-  </BaseIcon>
-);
+export const PlusIcon: FC<IconProps> = declareIcon(Plus);

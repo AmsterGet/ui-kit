@@ -1,9 +1,5 @@
-import { FC, ReactElement } from 'react';
+import { FC } from 'react';
 import { ReactComponent as Clear } from '@assets/icons/clear.svg';
-import { BaseIcon, BaseIconProps } from './baseIcon';
+import { declareIcon, IconProps } from './baseIcon';
 
-export const ClearIcon: FC<BaseIconProps> = (props): ReactElement => (
-  <BaseIcon {...props}>
-    <Clear />
-  </BaseIcon>
-);
+export const ClearIcon: FC<IconProps> = declareIcon(Clear);
