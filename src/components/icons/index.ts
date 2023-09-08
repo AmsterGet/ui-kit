@@ -1,4 +1,4 @@
-export { BaseIcon } from './baseIcon';
+export { BaseIconButton } from './baseIconButton';
 // TODO: ask UX team to provide path-only svg icons
 export { default as ClearIcon } from './svg/clear.svg';
 export { default as CloseIcon } from './svg/close.svg';

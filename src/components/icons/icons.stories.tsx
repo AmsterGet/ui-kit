@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { BaseIcon } from './baseIcon/baseIcon';
+import { BaseIconButton } from './baseIconButton/baseIconButton';
 import { CloseIcon, DeleteIcon, DropdownIcon, MinusIcon, PlusIcon } from './index';
 
 const icons = [CloseIcon, PlusIcon, MinusIcon, DeleteIcon, DropdownIcon];
 
-const meta: Meta<typeof BaseIcon> = {
+const meta: Meta<typeof BaseIconButton> = {
   title: 'Icons',
-  component: BaseIcon,
+  component: BaseIconButton,
   parameters: {
     layout: 'centered',
   },
@@ -16,7 +16,7 @@ const meta: Meta<typeof BaseIcon> = {
 
 export default meta;
 
-type Story = StoryObj<typeof BaseIcon>;
+type Story = StoryObj<typeof BaseIconButton>;
 
 export const Icons: Story = {
   render: () => {
@@ -24,9 +24,9 @@ export const Icons: Story = {
       <div>
         {icons.map((Icon) => {
           return (
-            <BaseIcon>
+            <BaseIconButton>
               <Icon />
-            </BaseIcon>
+            </BaseIconButton>
           );
         })}
       </div>

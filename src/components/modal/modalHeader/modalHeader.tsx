@@ -1,6 +1,6 @@
 import { ReactNode, FC } from 'react';
 import classNames from 'classnames/bind';
-import { CloseIcon, BaseIcon } from '@components/icons';
+import { CloseIcon, BaseIconButton } from '@components/icons';
 import styles from './modalHeader.module.scss';
 
 const cx = classNames.bind(styles);
@@ -17,8 +17,8 @@ export const ModalHeader: FC<ModalHeaderProps> = ({ title, onClose, headerNode }
       {title && <span className={cx('modal-title')}>{title}</span>}
       {headerNode && headerNode}
     </div>
-    <BaseIcon className={cx('close-modal-icon')} onClick={onClose}>
+    <BaseIconButton className={cx('close-modal-icon')} onClick={onClose}>
       <CloseIcon />
-    </BaseIcon>
+    </BaseIconButton>
   </div>
 );

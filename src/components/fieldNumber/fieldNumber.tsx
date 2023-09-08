@@ -11,7 +11,7 @@ import {
 } from 'react';
 import classNames from 'classnames/bind';
 import { KeyCodes } from '@common/constants/keyCodes';
-import { BaseIcon, PlusIcon, MinusIcon } from '@components/icons';
+import { BaseIconButton, PlusIcon, MinusIcon } from '@components/icons';
 import { DEFAULT_WIDTH_CH, ALLOWED_KEY_CODES, MAX_WIDTH_CH } from './constants.js';
 import styles from './fieldNumber.module.scss';
 
@@ -119,9 +119,13 @@ export const FieldNumber: FC<FieldNumberProps> = ({
         })}
         title={title}
       >
-        <BaseIcon className={cx('sign', 'minus')} disabled={disabled} onClick={handleDecrease}>
+        <BaseIconButton
+          className={cx('sign', 'minus')}
+          disabled={disabled}
+          onClick={handleDecrease}
+        >
           <MinusIcon />
-        </BaseIcon>
+        </BaseIconButton>
         <span className={cx('input-field', { disabled })} onClick={handleInputFieldClick}>
           <input
             ref={inputRef}
@@ -140,9 +144,9 @@ export const FieldNumber: FC<FieldNumberProps> = ({
           />
           {!!postfix && (value === 0 || !!value) && <span>{postfix.slice(0, 1)}</span>}
         </span>
-        <BaseIcon className={cx('sign', 'plus')} disabled={disabled} onClick={handleIncrease}>
+        <BaseIconButton className={cx('sign', 'plus')} disabled={disabled} onClick={handleIncrease}>
           <PlusIcon />
-        </BaseIcon>
+        </BaseIconButton>
       </div>
     </div>
   );
