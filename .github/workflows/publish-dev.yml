@@ -1,0 +1,49 @@
+name: Publish dev package version
+
+on:
+# TODO: enable auto-publishing once all quality gates are set
+#  push:
+#    branches:
+#      - develop
+  workflow_dispatch:
+
+jobs:
+  publish_dev:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Setup git credentials
+        run: |
+          git config --global user.email "support@reportportal.io"
+          git config --global user.name "reportportal.io"
+          git remote set-url origin https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+
+      - name: Bump version - prerelease
+        run: npm version prerelease --preid=alpha
+
+      - name: Publish to NPM
+        run: |
+          npm config set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN
+          npm config list
+          npm publish --access public --tag alpha
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
+
+      - name: Push version update back to repository
+        run: |
+          git push origin HEAD:${{ github.ref }} --tags
