@@ -51,6 +51,7 @@ export const FieldTextFlex: FC<FieldTextFlexProps> = forwardRef(
     ref: ForwardedRef<HTMLTextAreaElement>,
   ) => {
     const textAriaId = useId();
+    const hasError = error && touched;
 
     const resizeHeight = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
       event.target.style.height = `${HEIGHT}px`;
@@ -84,9 +85,9 @@ export const FieldTextFlex: FC<FieldTextFlexProps> = forwardRef(
         >
           {value}
         </textarea>
-        {((error && touched) || helpText) && (
+        {(hasError || helpText) && (
           <div className={cx('additional-content', { disabled })}>
-            {error && touched && <span className={cx('error-text')}>{error}</span>}
+            {hasError && <span className={cx('error-text')}>{error}</span>}
             {helpText && <span className={cx('help-text')}>{helpText}</span>}
           </div>
         )}

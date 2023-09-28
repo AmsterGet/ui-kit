@@ -11,7 +11,7 @@ const meta: Meta<FieldTextFlexProps> = {
   tags: ['autodocs'],
   render: (args) => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    const [value, setValue] = useState<string>('');
+    const [value, setValue] = useState('');
 
     const handleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
       setValue(event.target.value);
