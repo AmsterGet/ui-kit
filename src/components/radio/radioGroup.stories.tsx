@@ -33,7 +33,7 @@ type Story = StoryObj<typeof RadioGroup>;
 export const Default: Story = {
   render: (args) => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    const [value, setValue] = useState<string>();
+    const [value, setValue] = useState('');
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
       setValue(event.target.value);
@@ -59,7 +59,7 @@ export const Default: Story = {
 export const Disabled: Story = {
   render: (args) => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    const [value, setValue] = useState<string>();
+    const [value, setValue] = useState('');
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
       setValue(event.target.value);
