@@ -1,0 +1,65 @@
+@import 'src/assets/styles/variables/typography';
+@import 'src/assets/styles/mixins/font-scale';
+
+@mixin additional-text($color) {
+  @include font-scale('s-small');
+  display: block;
+  font-family: var(--rp-ui-kit-font-family-base);
+  font-weight: $fw-regular;
+  color: $color;
+}
+
+.text-area {
+  @include font-scale();
+  width: 100%;
+  min-height: 72px;
+  padding: 9px 12px 7px;
+  outline: none;
+  border: 1px solid var(--rp-ui-kit-e-200);
+  border-radius: 3px;
+  box-sizing: border-box;
+  font-family: var(--rp-ui-kit-font-family-base);
+  font-weight: $fw-regular;
+  color: var(--rp-ui-kit-almost-black);
+  resize: vertical;
+
+  &:hover {
+    border-color: var(--rp-ui-kit-e-300);
+  }
+
+  &:focus:not(.error.touched) {
+    border: 1px solid var(--rp-ui-kit-topaz-hover);
+    box-shadow: 0 0 0 1px var(--rp-ui-kit-topaz-hover);
+  }
+
+  &.error.touched {
+    border: 1px solid var(--rp-ui-kit-error);
+  }
+
+  &::placeholder {
+    color: var(--rp-ui-kit-e-300);
+  }
+}
+
+.label {
+  @include font-scale();
+  font-family: var(--rp-ui-kit-font-family-base);
+  font-weight: $fw-medium;
+  color: var(--rp-ui-kit-almost-black);
+  margin-bottom: 4px;
+}
+
+.additional-content {
+  .error-text {
+    @include additional-text(var(--rp-ui-kit-error));
+  }
+
+  .help-text {
+    @include additional-text(var(--rp-ui-kit-e-300));
+  }
+}
+
+.disabled {
+  opacity: 0.3;
+  pointer-events: none;
+}
