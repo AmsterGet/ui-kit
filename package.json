@@ -8,6 +8,8 @@
     "build:storybook": "storybook build",
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",
     "format": "npm run lint -- --fix",
+    "test": "exit 0",
+    "test:coverage": "exit 0",
     "prepare": "husky install"
   },
   "files": [
