@@ -24,6 +24,7 @@ interface ModalProps {
   children?: ReactNode;
   footerNode?: ReactNode;
   className?: string;
+  zIndex?: number;
   size?: ModalSize;
   overlay?: ModalOverlay;
   allowCloseOutside?: boolean;
@@ -44,6 +45,7 @@ export const Modal: FC<ModalProps> = ({
   size = 'default',
   onClose = () => {},
   overlay = 'default',
+  zIndex = 2,
   allowCloseOutside = true,
   scrollable = false,
 }) => {
@@ -93,7 +95,7 @@ export const Modal: FC<ModalProps> = ({
   return (
     <AnimatePresence onExitComplete={onClose}>
       {isShown && (
-        <div className={cx('modal', { [`overlay-${overlay}`]: overlay })}>
+        <div className={cx('modal', { [`overlay-${overlay}`]: overlay })} style={{ zIndex }}>
           <motion.div
             className={cx('modal-window', { [`size-${size}`]: size }, className)}
             key="modal-window"
