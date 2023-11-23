@@ -166,7 +166,7 @@ export const Dropdown: FC<DropdownProps> = ({
           item: option,
           index,
         })}
-        selected={option.value === selectedItem?.value}
+        selected={option.value === (selectedItem?.value ?? selectedItem)}
         option={option}
         highlightHovered={highlightedIndex === index}
         render={renderOption}
