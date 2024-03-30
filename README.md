@@ -8,7 +8,7 @@ Install the package in your project:
 
 ```console
 # using npm
-npm install --save-dev @reportportal/ui-kit
+npm install @reportportal/ui-kit
 # or using yarn
 yarn add @reportportal/ui-kit
 # or using pnpm
