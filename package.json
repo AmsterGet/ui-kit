@@ -84,5 +84,8 @@
     "ui-kit",
     "reportportal",
     "epam"
-  ]
+  ],
+  "engines": {
+    "node": ">=16.x"
+  }
 }
