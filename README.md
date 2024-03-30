@@ -9,15 +9,9 @@ Install the package in your project:
 ```console
 # using npm
 npm install --save-dev @reportportal/ui-kit
-```
-
-```console
-# using yarn
+# or using yarn
 yarn add @reportportal/ui-kit
-```
-
-```console
-# using pnpm
+# or using pnpm
 pnpm add @reportportal/ui-kit
 ```
 
