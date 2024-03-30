@@ -6,7 +6,7 @@ This library is designed to reflect [ReportPortal Design System](https://www.fig
 
 Install the package in your project:
 
-```cmd
+```console
 # using npm
 npm install --save-dev @reportportal/ui-kit
 ```
