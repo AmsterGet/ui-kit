@@ -66,5 +66,9 @@
     "vite-plugin-dts": "^3.4.0",
     "vite-plugin-svgr": "^3.2.0",
     "vite-tsconfig-paths": "^4.2.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reportportal/ui-kit.git"
+  },
 }
