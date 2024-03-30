@@ -71,4 +71,6 @@
     "type": "git",
     "url": "git+https://github.com/reportportal/ui-kit.git"
   },
+  "author": "ReportPortal.io",
+  "license": "Apache-2.0"
 }
