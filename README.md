@@ -4,7 +4,7 @@ This library is designed to reflect [ReportPortal Design System](https://www.fig
 
 ## Installation
 
-Install the package in your project:
+Install the package in your project unsing your favourite package manager:
 
 Using `npm`
 ```console
