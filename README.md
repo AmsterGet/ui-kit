@@ -11,6 +11,11 @@ Install the package in your project:
 npm install --save-dev @reportportal/ui-kit
 ```
 
+```console
+# using yarn
+yarn add @reportportal/ui-kit
+```
+
 ## Development
 
 ## Build process
