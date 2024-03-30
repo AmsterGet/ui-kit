@@ -4,7 +4,7 @@ This library is designed to reflect [ReportPortal Design System](https://www.fig
 
 ## Installation
 
-Install the package in your project using your favourite package manager:
+Install the package into your project using your favourite package manager:
 
 Using `npm`
 ```console
@@ -22,6 +22,15 @@ pnpm add @reportportal/ui-kit
 ```
 
 ## Development
+
+The [Storybook](https://storybook.js.org/) used as a main development environment and a showcase for components.
+
+To run it locally use
+```console
+npm run dev
+```
+
+To see a published showcase of the latest released components, go to [link]() (to be provided).
 
 ## Build process
 
