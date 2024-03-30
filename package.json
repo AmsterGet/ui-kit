@@ -76,5 +76,13 @@
   "bugs": {
     "url": "https://github.com/reportportal/ui-kit/issues"
   },
-  "homepage": "https://github.com/reportportal/ui-kit#readme"
+  "homepage": "https://github.com/reportportal/ui-kit#readme",
+  "keywords": [
+    "react",
+    "react-components",
+    "design-systems",
+    "ui-kit",
+    "reportportal",
+    "epam"
+  ]
 }
