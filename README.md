@@ -30,7 +30,15 @@ To run it locally use
 npm run dev
 ```
 
-To see a published showcase of the latest released components, go to [link]() (to be provided).
+To see a published showcase of the latest components released, follow the [link]() (to be provided).
+
+### Code style
+
+### CSS
+
+### External libs
+
+### Testing
 
 ## Build process
 
