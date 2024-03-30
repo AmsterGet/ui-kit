@@ -16,6 +16,11 @@ npm install --save-dev @reportportal/ui-kit
 yarn add @reportportal/ui-kit
 ```
 
+```console
+# using pnpm
+pnpm add @reportportal/ui-kit
+```
+
 ## Development
 
 ## Build process
