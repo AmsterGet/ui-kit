@@ -14,7 +14,6 @@
   align-items: center;
   padding-left: 24px;
   color: var(--rp-ui-kit-color-text-2);
-  border-color: var(--rp-ui-kit-color-text-2);
   font-family: var(--rp-ui-kit-font-family-base);
   font-weight: $fw-medium;
   @include font-scale();
@@ -35,7 +34,7 @@
   position: absolute;
   width: 16px;
   height: 16px;
-  border: 1px solid var(--rp-ui-kit-e-200);
+  border: 1px solid var(--rp-ui-kit-color-field-border-2);
   border-radius: 3px;
   margin-left: -24px;
   box-sizing: border-box;
