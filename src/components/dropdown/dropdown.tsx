@@ -7,7 +7,7 @@ import { KeyCodes } from '@common/constants/keyCodes';
 import { BaseIconButton, DropdownIcon } from '@components/icons';
 import { DropdownOption } from './dropdownOption';
 import { DropdownVariant, RenderDropdownOption, DropdownOptionType, DropdownValue } from './types';
-import { OPEN_DROPDOWN_KEY_CODES, CLOSE_DROPDOWN_KEY_CODES, EVENT_NAME } from './constants';
+import { OPEN_DROPDOWN_KEY_CODES, CLOSE_DROPDOWN_KEY_CODES, EventName } from './constants';
 import { calculateDefaultIndex, calculateNextIndex, calculatePrevIndex } from './utils';
 import styles from './dropdown.module.scss';
 
@@ -97,12 +97,12 @@ export const Dropdown: FC<DropdownProps> = ({
     onHighlightedIndexChange: (changes) => {
       switch (changes.type) {
         case useSelect.stateChangeTypes.MenuKeyDownArrowUp:
-          setEventName(EVENT_NAME.ON_KEY_DOWN);
+          setEventName(EventName.ON_KEY_DOWN);
           setHighlightedIndex(calculatePrevIndex(options, changes.highlightedIndex));
           return changes;
 
         case useSelect.stateChangeTypes.MenuKeyDownArrowDown:
-          setEventName(EVENT_NAME.ON_KEY_DOWN);
+          setEventName(EventName.ON_KEY_DOWN);
           setHighlightedIndex(calculateNextIndex(options, changes.highlightedIndex));
           return changes;
 
@@ -120,7 +120,7 @@ export const Dropdown: FC<DropdownProps> = ({
       } else {
         onFocus?.();
       }
-      setEventName(EVENT_NAME.ON_CLICK);
+      setEventName(EventName.ON_CLICK);
     }
   };
 
@@ -142,7 +142,7 @@ export const Dropdown: FC<DropdownProps> = ({
       setHighlightedIndex(defaultHighlightedIndex);
       setOpened(true);
       onFocus?.();
-      setEventName(EVENT_NAME.ON_KEY_DOWN);
+      setEventName(EventName.ON_KEY_DOWN);
     }
   };
 
@@ -173,7 +173,7 @@ export const Dropdown: FC<DropdownProps> = ({
         })}
         selected={option.value === (selectedItem?.value ?? selectedItem)}
         option={option}
-        highlightHovered={highlightedIndex === index && eventName !== EVENT_NAME.ON_CLICK}
+        highlightHovered={highlightedIndex === index && eventName !== EventName.ON_CLICK}
         render={renderOption}
         onChange={option.disabled ? null : () => handleChange(option)}
         onMouseEnter={() => setHighlightedIndex(index)}

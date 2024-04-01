@@ -8,7 +8,7 @@ export const OPEN_DROPDOWN_KEY_CODES = [
 
 export const CLOSE_DROPDOWN_KEY_CODES = [KeyCodes.ESCAPE_KEY_CODE, KeyCodes.TAB_KEY_CODE];
 
-export const EVENT_NAME = {
-  ON_KEY_DOWN: 'onKeyDown',
-  ON_CLICK: 'onClick',
-};
+export enum EventName {
+  ON_KEY_DOWN = 'onKeyDown',
+  ON_CLICK = 'onClick',
+}
