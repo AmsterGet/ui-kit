@@ -49,8 +49,12 @@ $Z-INDEX-POPUP: 10;
   }
 
   &.disabled {
-    opacity: 0.3;
     pointer-events: none;
+    background-color: var(--rp-ui-kit-color-field-bg-2);
+
+    .value {
+      color: var(--rp-ui-kit-color-disabled);
+    }
   }
 
   &.error.touched {
