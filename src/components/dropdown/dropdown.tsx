@@ -57,7 +57,7 @@ export const Dropdown: FC<DropdownProps> = ({
 }): ReactElement => {
   const [opened, setOpened] = useState(false);
   const containerRef = useRef(null);
-  const [eventName, setEventName] = useState<String|null>(null);
+  const [eventName, setEventName] = useState<string | null>(null);
 
   const handleClickOutside = () => {
     if (opened) {
