@@ -14,7 +14,11 @@ const findNearestAvailableIndex = (options: DropdownOptionType[], index = 0, ste
   }
   const itemsCount = options.length;
 
-  return findNearestAvailableIndex(options, calculateCurrentItemIndex(index + step, itemsCount));
+  return findNearestAvailableIndex(
+    options,
+    calculateCurrentItemIndex(index + step, itemsCount),
+    step,
+  );
 };
 
 export const calculateNextIndex = (options: DropdownOptionType[], index?: number) =>

@@ -59,13 +59,16 @@ export const Default: Story = {
 export const Disabled: Story = {
   render: (args) => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    const [value, setValue] = useState('');
+    const [value, setValue] = useState('2');
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
       setValue(event.target.value);
     };
 
-    const options = [{ value: '1', label: 'Option 1', disabled: true }];
+    const options = [
+      { value: '1', label: 'Option 1', disabled: true },
+      { value: '2', label: 'Option 2', disabled: true },
+    ];
 
     return (
       <>

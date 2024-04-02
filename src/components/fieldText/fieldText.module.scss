@@ -52,7 +52,8 @@
   }
 
   &.disabled {
-    opacity: 0.3;
+    pointer-events: none;
+    background-color: var(--rp-ui-kit-bg-100);
   }
 }
 
@@ -81,7 +82,12 @@
   }
 
   &.disabled {
-    opacity: 0.3;
+    pointer-events: none;
+    background-color: var(--rp-ui-kit-bg-100);
+
+    .placeholder {
+      color: var(--rp-ui-kit-e-300);
+    }
   }
 
   &.default-width {
@@ -110,13 +116,17 @@
   &:focus {
     outline: none;
   }
+
+  &:disabled {
+    color: var(--rp-ui-kit-e-300);
+  }
 }
 
 .placeholder {
   @include font-scale();
   font-family: var(--rp-ui-kit-font-family-base);
   font-weight: $fw-regular;
-  color: var(--rp-ui-kit-dark-e-200);
+  color: var(--rp-ui-kit-dark-e-300);
   position: absolute;
   top: 2px;
   left: 0;

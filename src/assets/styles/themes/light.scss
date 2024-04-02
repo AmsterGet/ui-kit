@@ -21,12 +21,16 @@
   --rp-ui-kit-color-field-bg: var(--rp-ui-kit-bg-000);
   --rp-ui-kit-color-field-bg-2: var(--rp-ui-kit-bg-100);
   --rp-ui-kit-color-field-border: var(--rp-ui-kit-e-200);
+  --rp-ui-kit-color-field-border-2: var(--rp-ui-kit-e-300);
+  --rp-ui-kit-color-field-border-2-hover: var(--rp-ui-kit-e-400);
   --rp-ui-kit-color-field-hover: var(--rp-ui-kit-e-300);
   --rp-ui-kit-color-field-hover-2: var(--rp-ui-kit-e-400);
   --rp-ui-kit-color-field-opened: var(--rp-ui-kit-topaz-pressed);
   --rp-ui-kit-color-field-placeholder: var(--rp-ui-kit-almost-black);
 
-  --rp-ui-kit-color-disabled: var(--rp-ui-kit-e-200);
+  --rp-ui-kit-color-radio-cheked: var(--rp-ui-kit-topaz-pressed);
+
+  --rp-ui-kit-color-disabled: var(--rp-ui-kit-e-300);
 
   --rp-ui-kit-opacity-default: 30%;
 }

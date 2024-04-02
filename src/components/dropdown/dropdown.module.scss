@@ -49,8 +49,18 @@ $Z-INDEX-POPUP: 10;
   }
 
   &.disabled {
-    opacity: 0.3;
     pointer-events: none;
+    background-color: var(--rp-ui-kit-color-field-bg-2);
+
+    .arrow {
+      svg path {
+        opacity: 0.4;
+      }
+    }
+
+    .value {
+      color: var(--rp-ui-kit-color-disabled);
+    }
   }
 
   &.error.touched {
@@ -60,8 +70,6 @@ $Z-INDEX-POPUP: 10;
 
   &:hover:not(:active):not(:focus-visible):not(.opened):not(.error) {
     border-color: var(--rp-ui-kit-color-field-hover);
-
-    @include arrow-color(var(--rp-ui-kit-color-field-hover-2));
   }
 
   &:active,
@@ -137,8 +145,6 @@ $Z-INDEX-POPUP: 10;
 
   &:hover:not(:active):not(:focus-visible):not(.opened):not(.error) {
     border-color: transparent;
-
-    @include arrow-color(var(--rp-ui-kit-color-field-hover-2));
   }
 
   &.opened {

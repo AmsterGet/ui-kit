@@ -38,15 +38,18 @@
 .ghost {
   border: 1px solid var(--rp-ui-kit-color-primary);
   background-color: transparent;
-  color: var(--rp-ui-kit-color-text);
+  color: var(--rp-ui-kit-color-primary-text);
   &:hover:not(.disabled) {
-    border: 1px solid var(--rp-ui-kit-color-primary-hover);
+    border: 1px solid var(--rp-ui-kit-dark-topaz-hover);
+    color: var(--rp-ui-kit-dark-topaz-hover);
   }
   &:active:not(.disabled) {
     border: 1px solid var(--rp-ui-kit-color-primary-pressed);
+    color: var(--rp-ui-kit-color-primary-pressed);
   }
   &:focus:not(.disabled, :active) {
     border: 2px solid var(--rp-ui-kit-color-primary-focused);
+    color: var(--rp-ui-kit-color-primary-focused);
   }
 }
 

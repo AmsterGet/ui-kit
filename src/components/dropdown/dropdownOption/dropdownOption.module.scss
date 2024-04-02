@@ -13,8 +13,8 @@
   color: var(--rp-ui-kit-color-text-3);
 
   &.disabled {
-    opacity: 0.3;
     pointer-events: none;
+    background-color: var(--rp-ui-kit-color-field-bg-2);
   }
 
   &.hidden {
