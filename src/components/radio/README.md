@@ -12,7 +12,3 @@
 - **onFocus**
 - **onBlur**
 - **onChange**
-
-### Variants:
-
-Radio button group can be used in two variants: **light** for light background and **dark** for dark background.

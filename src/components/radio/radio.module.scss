@@ -68,7 +68,7 @@
     border-color: var(--rp-ui-kit-color-field-border-2-hover);
 
     &::after {
-      background-color: var(--rp-ui-kit-color-radio-cheked-hover);
+      background-color: var(--rp-ui-kit-color-primary-hover);
     }
   }
 
@@ -102,19 +102,5 @@
     outline: none;
     color: var(--rp-ui-kit-topaz-focused);
     text-decoration: underline;
-  }
-}
-
-.dark {
-  &.toggler {
-    background: none;
-  }
-
-  &:focus {
-    border-color: var(--rp-ui-kit-color-primary-focused);
-  }
-
-  &:focus:after {
-    background-color: var(--rp-ui-kit-color-primary);
   }
 }

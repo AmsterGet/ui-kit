@@ -13,8 +13,6 @@ import styles from './radio.module.scss';
 
 const cx = classNames.bind(styles);
 
-export type RadioVariant = 'dark' | 'light';
-
 export type RadioValue = string | number;
 
 export type RadioOption = {
@@ -30,7 +28,6 @@ export interface RadioProps extends HTMLAttributes<HTMLInputElement> {
   className?: string;
   disabled?: boolean;
   onChange?: ChangeEventHandler<HTMLInputElement>;
-  variant?: RadioVariant;
 }
 // DS link - https://www.figma.com/file/gjYQPbeyf4YsH3wZiVKoaj/%F0%9F%9B%A0-RP-DS-6?type=design&node-id=2350-8765&mode=design&t=zqqBqKhYYsKNDax7-0
 export const Radio: FC<RadioProps> = ({
@@ -40,7 +37,6 @@ export const Radio: FC<RadioProps> = ({
   onFocus,
   onBlur,
   className,
-  variant = 'light',
   ...rest
 }): ReactElement => {
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -67,7 +63,7 @@ export const Radio: FC<RadioProps> = ({
     // eslint-disable-next-line
     <label
       id="rp-ui-kit-radio-label"
-      className={cx(variant, className, 'radio-button', {
+      className={cx(className, 'radio-button', {
         disabled: option.disabled,
       })}
       tabIndex={option.disabled ? -1 : 0}
@@ -88,12 +84,12 @@ export const Radio: FC<RadioProps> = ({
         role="radio"
         aria-labelledby="rp-ui-kit-radio-label"
         aria-checked={isChecked}
-        className={cx(variant, 'toggler', {
+        className={cx('toggler', {
           disabled: option.disabled,
           checked: isChecked,
         })}
       />
-      <span className={cx(variant, 'children-container')}>{option.label}</span>
+      <span className={cx('children-container')}>{option.label}</span>
     </label>
   );
 };
