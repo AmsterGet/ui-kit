@@ -21,13 +21,31 @@ or using `pnpm`
 pnpm add @reportportal/ui-kit
 ```
 
+## Usage
+
+## Build process
+
+We use [vite](https://vitejs.dev/) as a build tool.
+
+To build the library run
+```console
+npm run build
+```
+
 ## Development
+
+The library is developed using [React](https://reactjs.org/) and [TypeScript](https://www.typescriptlang.org/).
 
 The [Storybook](https://storybook.js.org/) used as a main development environment and a showcase for components.
 
 To run it locally use
 ```console
-npm run dev
+npm run start
+```
+
+To create a ready-to-deploy version of the Storybook run
+```console
+npm run build:storybook
 ```
 
 To see a published showcase of the latest components released, follow the [link]() (to be provided).
@@ -45,8 +63,9 @@ This approach was chosen because it is easy to implement and maintain, and CSS C
 
 ### External libs
 
+- [classnames](https://www.npmjs.com/package/classnames) - used for conditionally joining class names together.
+- [downshift](https://www.npmjs.com/package/downshift) - used to build simple, flexible, WAI-ARIA compliant React autocomplete/dropdown/select/combobox components.
+- [framer-motion](https://www.npmjs.com/package/framer-motion) - used for animations.
+- [rc-scrollbars](https://www.npmjs.com/package/rc-scrollbars) - used for custom scrollbars.
+
 ### Testing
-
-## Build process
-
-## Usage

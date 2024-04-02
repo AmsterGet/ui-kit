@@ -4,7 +4,7 @@
   "description": "The UI-kit library for ReportPortal Design System.",
   "type": "module",
   "scripts": {
-    "dev": "storybook dev -p 6006",
+    "start": "storybook dev -p 6006",
     "build": "tsc && vite build",
     "build:storybook": "storybook build",
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",
