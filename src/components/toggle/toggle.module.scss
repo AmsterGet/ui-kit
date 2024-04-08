@@ -5,10 +5,10 @@
   position: relative;
   display: inline-flex;
   align-items: center;
-  font-family: var(--rp-ui-kit-font-family-base);
+  font-family: var(--rp-ui-base-font-family);
   font-weight: $fw-regular;
   @include font-scale();
-  color: var(--rp-ui-kit-almost-black);
+  color: var(--rp-ui-base-almost-black);
   cursor: pointer;
 }
 
@@ -17,19 +17,19 @@
 
   & a {
     text-decoration: none;
-    color: var(--rp-ui-kit-topaz);
+    color: var(--rp-ui-base-topaz);
   }
 
   & a:focus,
   & a:focus-visible {
     outline: none;
-    color: var(--rp-ui-kit-topaz-focused);
+    color: var(--rp-ui-base-topaz-focused);
     text-decoration: underline;
   }
 }
 
 .slider {
-  background-color: var(--rp-ui-kit-e-300);
+  background-color: var(--rp-ui-base-e-300);
   cursor: pointer;
   position: absolute;
   transition: 0.4s;
@@ -43,7 +43,7 @@
     content: '';
     width: 16px;
     height: 16px;
-    background-color: var(--rp-ui-kit-bg-000);
+    background-color: var(--rp-ui-base-bg-000);
     transition: 0.4s;
   }
 }
@@ -59,7 +59,7 @@
   left: 0;
 
   &:disabled + .slider {
-    background-color: var(--rp-ui-kit-e-200);
+    background-color: var(--rp-ui-base-e-200);
     cursor: default;
   }
 
@@ -76,27 +76,27 @@
       position: absolute;
       width: 100%;
       height: 100%;
-      border: 2px solid var(--rp-ui-kit-topaz-focused);
+      border: 2px solid var(--rp-ui-base-topaz-focused);
       border-radius: 12px;
       transform: translate(-50%, -50%);
     }
   }
 
   &:checked + .slider {
-    background-color: var(--rp-ui-kit-topaz);
+    background-color: var(--rp-ui-base-topaz);
   }
   &:checked + .slider:before {
     transform: translateX(12px);
   }
   &:hover + .slider {
-    background-color: var(--rp-ui-kit-e-400);
+    background-color: var(--rp-ui-base-e-400);
   }
   &:checked:hover + .slider {
-    background-color: var(--rp-ui-kit-topaz-hover);
+    background-color: var(--rp-ui-base-topaz-hover);
   }
 
   &:checked:disabled + .slider {
-    background-color: var(--rp-ui-kit-topaz);
+    background-color: var(--rp-ui-base-topaz);
     cursor: default;
   }
 }

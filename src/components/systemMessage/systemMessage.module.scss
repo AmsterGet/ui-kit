@@ -27,47 +27,47 @@
   min-height: 85px;
   height: auto;
   width: 100%;
-  background: var(--rp-ui-kit-bg-000);
+  background: var(--rp-ui-base-bg-000);
   border-radius: 8px;
-  box-shadow: var(--rp-ui-kit-shadow);
+  box-shadow: var(--rp-ui-base-shadow);
   display: flex;
   flex-direction: column;
-  font-family: var(--rp-ui-kit-font-family-base);
+  font-family: var(--rp-ui-base-font-family);
 
   .stripes-info {
-    @include stripe-shape(var(--rp-ui-kit-sm-info-line-100), var(--rp-ui-kit-e-200));
+    @include stripe-shape(var(--rp-ui-base-sm-info-line-100), var(--rp-ui-base-e-200));
   }
 
   .stripes-warning {
     @include stripe-shape(
-        var(--rp-ui-kit-sm-warning-line-100),
-        var(--rp-ui-kit-sm-warning-line-200)
+        var(--rp-ui-base-sm-warning-line-100),
+        var(--rp-ui-base-sm-warning-line-200)
     );
   }
   .stripes-error {
     @include stripe-shape(
-        var(--rp-ui-kit-sm-error-line-100),
-        var(--rp-ui-kit-sm-error-line-200)
+        var(--rp-ui-base-sm-error-line-100),
+        var(--rp-ui-base-sm-error-line-200)
     );
   }
   .text-container {
     padding: 12px 16px 16px;
 
     .message-header-info {
-      @include message-headers(var(--rp-ui-kit-e-400));
+      @include message-headers(var(--rp-ui-base-e-400));
     }
 
     .message-header-warning {
-      @include message-headers(var(--rp-ui-kit-sm-warning));
+      @include message-headers(var(--rp-ui-base-sm-warning));
     }
 
     .message-header-error {
-      @include message-headers(var(--rp-ui-kit-sm-error));
+      @include message-headers(var(--rp-ui-base-sm-error));
     }
 
     .children {
       text-indent: 1px;
-      color: var(--rp-ui-kit-color-text);
+      color: var(--rp-ui-color-text);
       font-weight: $fw-bold;
       @include font-scale();
     }
@@ -75,7 +75,7 @@
     p {
       margin-top: 4px;
       max-width: 780px;
-      color: var(--rp-ui-kit-e-400);
+      color: var(--rp-ui-base-e-400);
       font-weight: $fw-regular;
       @include font-scale(x-small);
     }

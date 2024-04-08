@@ -13,12 +13,12 @@
   display: inline-flex;
   align-items: center;
   padding-left: 24px;
-  color: var(--rp-ui-kit-color-text-2);
-  font-family: var(--rp-ui-kit-font-family-base);
+  color: var(--rp-ui-color-text-2);
+  font-family: var(--rp-ui-base-font-family);
   font-weight: $fw-medium;
   @include font-scale();
   .disabled {
-    opacity: var(--rp-ui-kit-opacity-default);
+    opacity: var(--rp-ui-opacity-default);
     pointer-events: none;
   }
 }
@@ -34,7 +34,7 @@
   position: absolute;
   width: 16px;
   height: 16px;
-  border: 1px solid var(--rp-ui-kit-color-field-border-2);
+  border: 1px solid var(--rp-ui-color-field-border-2);
   border-radius: 3px;
   margin-left: -24px;
   box-sizing: border-box;
@@ -43,30 +43,30 @@
 
 .input {
   &:checked + .control {
-    @include checked-state(var(--rp-ui-kit-color-primary));
+    @include checked-state(var(--rp-ui-color-primary));
   }
   &:hover + .control {
-    border-color: var(--rp-ui-kit-color-field-hover-2);
+    border-color: var(--rp-ui-color-field-hover-2);
   }
   &:active:not(:disabled) + .control {
-    border: 2px solid var(--rp-ui-kit-color-primary-focused);
+    border: 2px solid var(--rp-ui-color-primary-focused);
   }
   &:checked:hover + .control {
-    @include checked-state(var(--rp-ui-kit-color-primary-hover));
+    @include checked-state(var(--rp-ui-color-primary-hover));
   }
   &:checked:active:not(:disabled) + .control {
-    @include checked-state(var(--rp-ui-kit-color-primary-focused));
+    @include checked-state(var(--rp-ui-color-primary-focused));
   }
   &:disabled + .control {
-    border-color: var(--rp-ui-kit-color-disabled);
+    border-color: var(--rp-ui-color-disabled);
   }
   &:checked:disabled + .control {
-    @include checked-state(var(--rp-ui-kit-color-primary));
-    opacity: var(--rp-ui-kit-opacity-default);
+    @include checked-state(var(--rp-ui-color-primary));
+    opacity: var(--rp-ui-opacity-default);
     pointer-events: none;
   }
   &:focus + .control {
-    border: 2px solid var(--rp-ui-kit-color-primary-focused);
+    border: 2px solid var(--rp-ui-color-primary-focused);
   }
 }
 
@@ -75,13 +75,13 @@
 
   & a {
     text-decoration: none;
-    color: var(--rp-ui-kit-color-primary);
+    color: var(--rp-ui-color-primary);
   }
 
   & a:focus,
   & a:focus-visible {
     outline: none;
-    color: var(--rp-ui-kit-color-primary-focused);
+    color: var(--rp-ui-color-primary-focused);
     text-decoration: underline;
   }
 }

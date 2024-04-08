@@ -9,7 +9,7 @@ const DarkWrapper = (props: { children: ReactNode }) => (
   <div
     style={{
       marginTop: '20px',
-      backgroundColor: 'var(--rp-ui-kit-dark-bg)',
+      backgroundColor: 'var(--rp-ui-base-dark-bg)',
       padding: '10px',
     }}
   >

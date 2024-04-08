@@ -16,7 +16,7 @@
 @mixin asterisk() {
   position: absolute;
   top: -3px;
-  color: var(--rp-ui-kit-e-300);
+  color: var(--rp-ui-base-e-300);
 }
 
 .icon-container {
@@ -41,10 +41,10 @@
 .label {
   display: block;
   margin-bottom: 4px;
-  font-family: var(--rp-ui-kit-font-family-base);
+  font-family: var(--rp-ui-base-font-family);
   font-weight: $fw-medium;
   @include font-scale();
-  color: var(--rp-ui-kit-color-text);
+  color: var(--rp-ui-color-text);
 
   .asterisk {
     @include asterisk();
@@ -53,7 +53,7 @@
 
   &.disabled {
     pointer-events: none;
-    background-color: var(--rp-ui-kit-bg-100);
+    background-color: var(--rp-ui-base-bg-100);
   }
 }
 
@@ -64,29 +64,29 @@
   width: 100%;
   padding: 7px 12px;
   box-sizing: border-box;
-  border: 1px solid var(--rp-ui-kit-e-200);
+  border: 1px solid var(--rp-ui-base-e-200);
   border-radius: 3px;
-  background-color: var(--rp-ui-kit-bg-000);
+  background-color: var(--rp-ui-base-bg-000);
 
   &:hover:not(.disabled) {
-    border-color: var(--rp-ui-kit-e-300);
+    border-color: var(--rp-ui-base-e-300);
   }
 
   &:focus-within:not(.error.touched) {
     padding: 6px 11px;
-    border: 2px solid var(--rp-ui-kit-color-primary-focused);
+    border: 2px solid var(--rp-ui-color-primary-focused);
   }
 
   &.error.touched {
-    border-color: var(--rp-ui-kit-error);
+    border-color: var(--rp-ui-base-error);
   }
 
   &.disabled {
     pointer-events: none;
-    background-color: var(--rp-ui-kit-bg-100);
+    background-color: var(--rp-ui-base-bg-100);
 
     .placeholder {
-      color: var(--rp-ui-kit-e-300);
+      color: var(--rp-ui-base-e-300);
     }
   }
 
@@ -102,7 +102,7 @@
 
 .input {
   @include font-scale();
-  font-family: var(--rp-ui-kit-font-family-base);
+  font-family: var(--rp-ui-base-font-family);
   font-weight: $fw-regular;
   width: 100%;
   margin: 2px 0 0 0;
@@ -111,22 +111,22 @@
   background: transparent;
   overflow: hidden;
   text-overflow: ellipsis;
-  color: var(--rp-ui-kit-color-text);
+  color: var(--rp-ui-color-text);
 
   &:focus {
     outline: none;
   }
 
   &:disabled {
-    color: var(--rp-ui-kit-e-300);
+    color: var(--rp-ui-base-e-300);
   }
 }
 
 .placeholder {
   @include font-scale();
-  font-family: var(--rp-ui-kit-font-family-base);
+  font-family: var(--rp-ui-base-font-family);
   font-weight: $fw-regular;
-  color: var(--rp-ui-kit-dark-e-300);
+  color: var(--rp-ui-base-dark-e-300);
   position: absolute;
   top: 2px;
   left: 0;
@@ -136,7 +136,7 @@
     @include asterisk();
     right: -7px;
     content: '*';
-    color: var(--rp-ui-kit-error-focused);
+    color: var(--rp-ui-base-error-focused);
   }
 }
 
@@ -161,15 +161,15 @@
   }
 
   &:hover {
-    @include fill-svg(var(--rp-ui-kit-e-400));
+    @include fill-svg(var(--rp-ui-base-e-400));
   }
 
   &:focus {
-    @include fill-svg(var(--rp-ui-kit-color-primary-focused));
+    @include fill-svg(var(--rp-ui-color-primary-focused));
   }
 
   &:active {
-    @include fill-svg(var(--rp-ui-kit-color-primary-pressed));
+    @include fill-svg(var(--rp-ui-color-primary-pressed));
   }
 }
 
@@ -183,16 +183,16 @@
 
 .text {
   @include font-scale(s-small);
-  font-family: var(--rp-ui-kit-font-family-base);
+  font-family: var(--rp-ui-base-font-family);
   font-weight: $fw-regular;
   display: block;
 }
 
 .error-text {
-  color: var(--rp-ui-kit-error);
+  color: var(--rp-ui-base-error);
 }
 
 .help-text {
-  color: var(--rp-ui-kit-dark-e-300);
+  color: var(--rp-ui-base-dark-e-300);
 }
 

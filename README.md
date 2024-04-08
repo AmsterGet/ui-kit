@@ -94,11 +94,11 @@ Then just override the ui-kit CSS custom properties in your custom theme class:
 
 ```scss
 .my-custom-theme {
-  --rp-ui-kit-font-family-base: OpenSans, Segoe UI, Tahoma, sans-serif;
-  --rp-ui-kit-color-primary: green;
-  --rp-ui-kit-color-primary-hover: #69e569;
-  --rp-ui-kit-color-primary-focused: var(--rp-ui-kit-color-primary-hover);
-  --rp-ui-kit-color-primary-pressed: var(--rp-ui-kit-color-primary-hover);
+  --rp-ui-base-font-family: OpenSans, Segoe UI, Tahoma, sans-serif;
+  --rp-ui-color-primary: green;
+  --rp-ui-color-primary-hover: #69e569;
+  --rp-ui-color-primary-focused: var(--rp-ui-color-primary-hover);
+  --rp-ui-color-primary-pressed: var(--rp-ui-color-primary-hover);
 }
 ```
 

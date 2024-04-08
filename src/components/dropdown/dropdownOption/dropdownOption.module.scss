@@ -5,16 +5,16 @@
   display: inline-block;
   width: 100%;
   padding: 9px 12px 7px;
-  font-family: var(--rp-ui-kit-font-family-base);
+  font-family: var(--rp-ui-base-font-family);
   font-weight: $fw-regular;
   @include font-scale();
   box-sizing: border-box;
   cursor: pointer;
-  color: var(--rp-ui-kit-color-text-3);
+  color: var(--rp-ui-color-text-3);
 
   &.disabled {
     pointer-events: none;
-    background-color: var(--rp-ui-kit-color-field-bg-2);
+    background-color: var(--rp-ui-color-field-bg-2);
   }
 
   &.hidden {
@@ -22,22 +22,22 @@
   }
 
   &:hover:not(:active) {
-    background: var(--rp-ui-kit-color-bg-3);
+    background: var(--rp-ui-color-bg-3);
   }
 
   &.selected {
-    color: var(--rp-ui-kit-color-primary-text);
+    color: var(--rp-ui-color-primary-text);
   }
 
   &.hover:not(.disabled) {
     padding: 8px 11px 6px;
-    background-color: var(--rp-ui-kit-color-bg-3);
-    border: 1px solid var(--rp-ui-kit-color-primary-focused);
+    background-color: var(--rp-ui-color-bg-3);
+    border: 1px solid var(--rp-ui-color-primary-focused);
   }
 
   &.hover:not(.disabled):hover {
     &:hover:not(:active) {
-      background: var(--rp-ui-kit-color-bg-3);
+      background: var(--rp-ui-color-bg-3);
     }
     border: none;
     padding: 9px 12px 7px;

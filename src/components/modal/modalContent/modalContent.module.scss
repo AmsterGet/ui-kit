@@ -4,10 +4,10 @@
 .modal-content {
   width: calc(100% - 34px);
   margin-top: 13px;
-  font-family: var(--rp-ui-kit-font-family-base);
+  font-family: var(--rp-ui-base-font-family);
   font-weight: $fw-regular;
   @include font-scale();
-  color: var(--rp-ui-kit-color-text);
+  color: var(--rp-ui-color-text);
   white-space: pre-line;
   word-break: break-word;
 }

@@ -3,10 +3,10 @@
 
 .modal-header {
   position: relative;
-  font-family: var(--rp-ui-kit-font-family-base);
+  font-family: var(--rp-ui-base-font-family);
   font-weight: $fw-regular;
   @include font-scale(x4-medium);
-  color: var(--rp-ui-kit-color-text);
+  color: var(--rp-ui-color-text);
   padding-bottom: 24px;
 }
 

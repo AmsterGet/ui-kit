@@ -26,11 +26,11 @@ $WIDTH-LARGE: 720px;
 }
 
 .overlay-default {
-  background-color: var(--rp-ui-kit-overlay);
+  background-color: var(--rp-ui-base-overlay);
 }
 
 .overlay-light-cyan {
-  background-color: var(--rp-ui-kit-overlay-light-cyan);
+  background-color: var(--rp-ui-base-overlay-light-cyan);
 }
 
 .scrolling-content {
@@ -47,10 +47,10 @@ $WIDTH-LARGE: 720px;
   margin-bottom: 10px;
   padding: 32px 48px;
   box-sizing: border-box;
-  background-color: var(--rp-ui-kit-bg-100);
+  background-color: var(--rp-ui-base-bg-100);
   text-align: left;
   border-radius: 16px;
-  box-shadow: var(--rp-ui-kit-shadow-secondary);
+  box-shadow: var(--rp-ui-base-shadow-secondary);
   opacity: 1;
   outline: none;
   max-height: 90%;
