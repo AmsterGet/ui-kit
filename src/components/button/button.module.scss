@@ -11,7 +11,7 @@
   margin: 0;
   outline: none;
   border-radius: 3px;
-  font-family: var(--rp-ui-kit-font-family-base);
+  font-family: var(--rp-ui-base-font-family);
   font-weight: $fw-medium;
   @include font-scale();
   cursor: pointer;
@@ -19,53 +19,53 @@
 }
 
 .primary {
-  border: 1px solid var(--rp-ui-kit-color-primary);
-  background-color: var(--rp-ui-kit-color-primary);
-  color: var(--rp-ui-kit-bg-000);
+  border: 1px solid var(--rp-ui-color-primary);
+  background-color: var(--rp-ui-color-primary);
+  color: var(--rp-ui-base-bg-000);
   &:hover:not(.disabled) {
-    border: 1px solid var(--rp-ui-kit-color-primary-hover);
-    background-color: var(--rp-ui-kit-color-primary-hover);
+    border: 1px solid var(--rp-ui-color-primary-hover);
+    background-color: var(--rp-ui-color-primary-hover);
   }
   &:active:not(.disabled) {
-    border: 1px solid var(--rp-ui-kit-color-primary-pressed);
-    background-color: var(--rp-ui-kit-color-primary-pressed);
+    border: 1px solid var(--rp-ui-color-primary-pressed);
+    background-color: var(--rp-ui-color-primary-pressed);
   }
   &:focus:not(.disabled, :active) {
-    border: 2px solid var(--rp-ui-kit-color-primary-focused);
+    border: 2px solid var(--rp-ui-color-primary-focused);
   }
 }
 
 .ghost {
-  border: 1px solid var(--rp-ui-kit-color-primary);
+  border: 1px solid var(--rp-ui-color-primary);
   background-color: transparent;
-  color: var(--rp-ui-kit-color-primary-text);
+  color: var(--rp-ui-color-primary-text);
   &:hover:not(.disabled) {
-    border: 1px solid var(--rp-ui-kit-dark-topaz-hover);
-    color: var(--rp-ui-kit-dark-topaz-hover);
+    border: 1px solid var(--rp-ui-base-dark-topaz-hover);
+    color: var(--rp-ui-base-dark-topaz-hover);
   }
   &:active:not(.disabled) {
-    border: 1px solid var(--rp-ui-kit-color-primary-pressed);
-    color: var(--rp-ui-kit-color-primary-pressed);
+    border: 1px solid var(--rp-ui-color-primary-pressed);
+    color: var(--rp-ui-color-primary-pressed);
   }
   &:focus:not(.disabled, :active) {
-    border: 2px solid var(--rp-ui-kit-color-primary-focused);
-    color: var(--rp-ui-kit-color-primary-focused);
+    border: 2px solid var(--rp-ui-color-primary-focused);
+    color: var(--rp-ui-color-primary-focused);
   }
 }
 
 .danger {
-  border: 1px solid var(--rp-ui-kit-color-error);
-  background-color: var(--rp-ui-kit-color-error);
-  color: var(--rp-ui-kit-bg-000);
+  border: 1px solid var(--rp-ui-color-error);
+  background-color: var(--rp-ui-color-error);
+  color: var(--rp-ui-base-bg-000);
   &:hover:not(.disabled) {
     opacity: 0.9;
   }
   &:active:not(.disabled) {
-    border: 1px solid var(--rp-ui-kit-color-error-pressed);
-    background-color: var(--rp-ui-kit-color-error-pressed);
+    border: 1px solid var(--rp-ui-color-error-pressed);
+    background-color: var(--rp-ui-color-error-pressed);
   }
   &:focus:not(.disabled, :active) {
-    border: 2px solid var(--rp-ui-kit-color-error-focused);
+    border: 2px solid var(--rp-ui-color-error-focused);
   }
 }
 
@@ -76,32 +76,32 @@
   padding: 0;
   background: none;
   line-height: 22px;
-  color: var(--rp-ui-kit-color-primary-text);
+  color: var(--rp-ui-color-primary-text);
   &:hover:not(.disabled) {
-    color: var(--rp-ui-kit-color-primary-hover);
+    color: var(--rp-ui-color-primary-hover);
     svg * {
-      fill: var(--rp-ui-kit-color-primary-hover);
+      fill: var(--rp-ui-color-primary-hover);
     }
   }
   &:active:not(.disabled) {
-    color: var(--rp-ui-kit-color-primary-pressed);
+    color: var(--rp-ui-color-primary-pressed);
     svg * {
-      fill: var(--rp-ui-kit-color-primary-pressed);
+      fill: var(--rp-ui-color-primary-pressed);
     }
   }
   &:focus:not(.disabled, :active) {
-    color: var(--rp-ui-kit-color-primary-focused);
+    color: var(--rp-ui-color-primary-focused);
     svg * {
-      fill: var(--rp-ui-kit-color-primary-focused);
+      fill: var(--rp-ui-color-primary-focused);
     }
   }
   svg * {
-    fill: var(--rp-ui-kit-color-primary-text);
+    fill: var(--rp-ui-color-primary-text);
   }
 }
 
 .disabled {
-  opacity: var(--rp-ui-kit-opacity-default);
+  opacity: var(--rp-ui-opacity-default);
   cursor: default;
 }
 

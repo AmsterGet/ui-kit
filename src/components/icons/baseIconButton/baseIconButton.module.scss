@@ -14,7 +14,7 @@
   border: none;
   cursor: pointer;
 
-  @include fill-svg(var(--rp-ui-kit-e-300));
+  @include fill-svg(var(--rp-ui-base-e-300));
 
   &.disabled {
     opacity: 40%;
@@ -22,12 +22,12 @@
   }
 
   &:hover:not(.disabled) {
-    @include fill-svg(var(--rp-ui-kit-e-400));
+    @include fill-svg(var(--rp-ui-base-e-400));
   }
   &:active:not(.disabled) {
-    @include fill-svg(var(--rp-ui-kit-topaz-pressed));
+    @include fill-svg(var(--rp-ui-base-topaz-pressed));
   }
   &:focus:not(.disabled, :active) {
-    @include fill-svg(var(--rp-ui-kit-topaz-focused));
+    @include fill-svg(var(--rp-ui-base-topaz-focused));
   }
 }

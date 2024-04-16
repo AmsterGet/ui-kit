@@ -14,11 +14,11 @@
 .label {
   display: block;
   margin-bottom: 4px;
-  font-family: var(--rp-ui-kit-font-family-base);
+  font-family: var(--rp-ui-base-font-family);
   font-weight: $fw-medium;
   @include font-scale();
   text-indent: 1px;
-  color: var(--rp-ui-kit-almost-black);
+  color: var(--rp-ui-base-almost-black);
 }
 
 .sign {
@@ -30,25 +30,25 @@
   display: inline-flex;
   align-items: center;
   padding: 6px 8px;
-  border: 1px solid var(--rp-ui-kit-e-200);
+  border: 1px solid var(--rp-ui-base-e-200);
   box-sizing: border-box;
   border-radius: 3px;
-  background: var(--rp-ui-kit-bg-000);
+  background: var(--rp-ui-base-bg-000);
   user-select: none;
 
   &:focus-within:not(.error.touched) {
     padding: 5px 7px;
     border-width: 2px;
-    border-color: var(--rp-ui-kit-topaz-focused);
+    border-color: var(--rp-ui-base-topaz-focused);
   }
 
   &:hover:not(.disabled):not(:focus-within):not(.error.touched),
   &.filled:not(:focus-within) {
-    border-color: var(--rp-ui-kit-e-300);
+    border-color: var(--rp-ui-base-e-300);
   }
 
   &.error.touched {
-    border-color: var(--rp-ui-kit-error);
+    border-color: var(--rp-ui-base-error);
   }
 }
 
@@ -83,7 +83,7 @@
   }
 
   &::placeholder {
-    color: var(--rp-ui-kit-e-200);
+    color: var(--rp-ui-base-e-200);
   }
 
   &::-webkit-inner-spin-button,

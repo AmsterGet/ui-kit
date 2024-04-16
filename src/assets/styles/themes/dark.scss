@@ -1,37 +1,37 @@
 .rp-ui-kit-theme-dark {
-  --rp-ui-kit-color-bg: var(--rp-ui-kit-dark-bg);
-  --rp-ui-kit-color-bg-2: var(--rp-ui-kit-dark-bg);
-  --rp-ui-kit-color-bg-3: var(--rp-ui-kit-dark-bg-solid-98);
+  --rp-ui-color-bg: var(--rp-ui-base-dark-bg);
+  --rp-ui-color-bg-2: var(--rp-ui-base-dark-bg);
+  --rp-ui-color-bg-3: var(--rp-ui-base-dark-bg-solid-98);
 
-  --rp-ui-kit-color-primary: var(--rp-ui-kit-dark-topaz-main);
-  --rp-ui-kit-color-primary-hover: var(--rp-ui-kit-dark-topaz-hover);
-  --rp-ui-kit-color-primary-focused: var(--rp-ui-kit-dark-topaz-focused);
-  --rp-ui-kit-color-primary-pressed: var(--rp-ui-kit-dark-topaz-pressed);
-  --rp-ui-kit-color-primary-text: var(--rp-ui-kit-dark-topaz-text);
+  --rp-ui-color-primary: var(--rp-ui-base-dark-topaz-main);
+  --rp-ui-color-primary-hover: var(--rp-ui-base-dark-topaz-hover);
+  --rp-ui-color-primary-focused: var(--rp-ui-base-dark-topaz-focused);
+  --rp-ui-color-primary-pressed: var(--rp-ui-base-dark-topaz-pressed);
+  --rp-ui-color-primary-text: var(--rp-ui-base-dark-topaz-text);
 
   // TODO: Discuss with UX team these colors for dark theme
-  --rp-ui-kit-color-error: var(--rp-ui-kit-dark-error);
-  --rp-ui-kit-color-error-hover: var(--rp-ui-kit-error-hover);
-  --rp-ui-kit-color-error-pressed: var(--rp-ui-kit-error-pressed);
-  --rp-ui-kit-color-error-focused: var(--rp-ui-kit-error-focused);
+  --rp-ui-color-error: var(--rp-ui-base-dark-error);
+  --rp-ui-color-error-hover: var(--rp-ui-base-error-hover);
+  --rp-ui-color-error-pressed: var(--rp-ui-base-error-pressed);
+  --rp-ui-color-error-focused: var(--rp-ui-base-error-focused);
 
-  --rp-ui-kit-color-text: var(--rp-ui-kit-dark-e-50);
-  --rp-ui-kit-color-text-2: var(--rp-ui-kit-dark-e-100);
-  --rp-ui-kit-color-text-3: var(--rp-ui-kit-bg-000);
+  --rp-ui-color-text: var(--rp-ui-base-dark-e-50);
+  --rp-ui-color-text-2: var(--rp-ui-base-dark-e-100);
+  --rp-ui-color-text-3: var(--rp-ui-base-bg-000);
 
-  --rp-ui-kit-color-field-bg: var(--rp-ui-kit-dark-e-400);
-  --rp-ui-kit-color-field-bg-2: var(--rp-ui-kit-dark-e-400);
-  --rp-ui-kit-color-field-border: var(--rp-ui-kit-dark-e-400);
-  --rp-ui-kit-color-field-border-2: var(--rp-ui-kit-dark-e-100);
-  --rp-ui-kit-color-field-border-2-hover: var(--rp-ui-kit-dark-e-50);
-  --rp-ui-kit-color-field-hover: var(--rp-ui-kit-e-200);
-  --rp-ui-kit-color-field-hover-2: var(--rp-ui-kit-e-300);
-  --rp-ui-kit-color-field-opened: var(--rp-ui-kit-e-200);
-  --rp-ui-kit-color-field-placeholder: var(--rp-ui-kit-dark-e-200);
+  --rp-ui-color-field-bg: var(--rp-ui-base-dark-e-400);
+  --rp-ui-color-field-bg-2: var(--rp-ui-base-dark-e-400);
+  --rp-ui-color-field-border: var(--rp-ui-base-dark-e-400);
+  --rp-ui-color-field-border-2: var(--rp-ui-base-dark-e-100);
+  --rp-ui-color-field-border-2-hover: var(--rp-ui-base-dark-e-50);
+  --rp-ui-color-field-hover: var(--rp-ui-base-e-200);
+  --rp-ui-color-field-hover-2: var(--rp-ui-base-e-300);
+  --rp-ui-color-field-opened: var(--rp-ui-base-e-200);
+  --rp-ui-color-field-placeholder: var(--rp-ui-base-dark-e-200);
 
-  --rp-ui-kit-color-radio-cheked: var(--rp-ui-kit-dark-topaz-main);
+  --rp-ui-color-radio-cheked: var(--rp-ui-base-dark-topaz-main);
 
-  --rp-ui-kit-color-disabled: var(--rp-ui-kit-dark-e-100);
+  --rp-ui-color-disabled: var(--rp-ui-base-dark-e-100);
 
-  --rp-ui-kit-opacity-default: 50%;
+  --rp-ui-opacity-default: 50%;
 }
