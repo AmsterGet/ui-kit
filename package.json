@@ -24,6 +24,7 @@
     "react-dom": "17.x-18.x"
   },
   "dependencies": {
+    "@floating-ui/react-dom": "^2.0.1",
     "classnames": "^2.3.2",
     "downshift": "^6.1.12",
     "framer-motion": "^10.15.2",

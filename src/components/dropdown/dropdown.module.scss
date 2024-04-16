@@ -120,9 +120,7 @@ $Z-INDEX-POPUP: 10;
 .select-list {
   position: absolute;
   top: 100%;
-  margin-top: 5px;
   padding: 8px 0;
-  display: none;
   width: 100%;
   min-height: 10px;
   border-radius: 3px;
@@ -131,11 +129,8 @@ $Z-INDEX-POPUP: 10;
   box-shadow: var(--rp-ui-base-shadow-secondary);
   background: var(--rp-ui-color-field-bg);
 
-  &.opened {
-    display: block;
-    &:focus-visible {
-      outline: none;
-    }
+  &.opened:focus-visible {
+    outline: none;
   }
 }
 

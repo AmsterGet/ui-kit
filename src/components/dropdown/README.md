@@ -35,3 +35,8 @@ via _icon_ prop to display it on the left side
 
 By default, width is set to 240px.
 To disable this behavior set the _defaultWidth_ prop to false
+
+### Positioning
+
+Automatic positioning is used according to the no space strategy.
+Dropdown will be positioned to the upside of the screen if there is not enough space on the downside.
