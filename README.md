@@ -190,7 +190,7 @@ All components get the appropriate theme values at runtime based on the cascadin
 
 This approach was chosen because it is easy to implement and maintain, and CSS Custom Properties are part of [WEB standards](https://www.w3.org/TR/css-variables-1/) and supported by [all major browsers](https://developer.mozilla.org/en-US/docs/Web/CSS/--*#browser_compatibility).
 
-The CSS custom properties that come from DS are prefixed with `rp-ui-kit-base` to avoid conflicts with other CSS properties and can be found in the [base.scss](./src/assets/styles/themes/base.scss).
+The CSS custom properties that come from DS are prefixed with `rp-ui-base` to avoid conflicts with other CSS properties and can be found in the [base.scss](./src/assets/styles/themes/base.scss).
 
 ### External libs
 
