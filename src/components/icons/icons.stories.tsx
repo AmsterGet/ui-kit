@@ -21,7 +21,7 @@ type Story = StoryObj<typeof BaseIconButton>;
 export const Icons: Story = {
   render: () => {
     return (
-      <div>
+      <>
         {icons.map((Icon) => {
           return (
             <BaseIconButton>
@@ -29,7 +29,7 @@ export const Icons: Story = {
             </BaseIconButton>
           );
         })}
-      </div>
+      </>
     );
   },
 };

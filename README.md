@@ -110,6 +110,46 @@ The number of custom themes is not limited and actual theme can be easily switch
 
 To see a published showcase of the latest components released with its API and use cases, follow the [link]() (to be provided).
 
+### Icons
+
+The library provides a set of SVG icons and the `BaseIconButton` component to apply basic styles for hover, disabled and others to them.
+
+The list of available icons can be found in the [icons](./src/components/icons/svg) folder.
+
+The icons exported as React components:
+
+```jsx
+import { PlusIcon } from '@reportportal/ui-kit';
+
+const MyComponent = () => (
+    <PlusIcon />
+);
+```
+
+To use the `BaseIconButton` component, you need to pass the icon component as a child:
+
+```jsx
+import { BaseIconButton, PlusIcon } from '@reportportal/ui-kit';
+
+const MyComponent = () => {
+    const handleIconClick = () => {
+        console.log('Icon clicked');
+    };
+    
+    return (
+        <BaseIconButton
+            className={cx('my-icon')}
+            disabled={false}
+            onClick={handleIconClick}
+        >
+            <PlusIcon />
+        </BaseIconButton>
+    );
+}
+```
+
+`BaseIconButton` supports all the props of the `button` HTML element.
+
 ## Build process
 
 We use [vite](https://vitejs.dev/) as a build tool.
