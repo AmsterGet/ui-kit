@@ -1,5 +1,6 @@
 import { useRef, useState, ReactNode, FC, ReactElement, KeyboardEventHandler } from 'react';
 import classNames from 'classnames/bind';
+import { useFloating, offset, flip } from '@floating-ui/react-dom';
 import { useSelect } from 'downshift';
 import { Scrollbars } from 'rc-scrollbars';
 import { useOnClickOutside } from '@common/hooks';
@@ -58,6 +59,15 @@ export const Dropdown: FC<DropdownProps> = ({
   const [opened, setOpened] = useState(false);
   const containerRef = useRef(null);
   const [eventName, setEventName] = useState<string | null>(null);
+
+  const { refs, floatingStyles } = useFloating({
+    middleware: [
+      offset(5),
+      flip({
+        fallbackPlacements: ['bottom', 'top'],
+      }),
+    ],
+  });
 
   const handleClickOutside = () => {
     if (opened) {
@@ -195,6 +205,7 @@ export const Dropdown: FC<DropdownProps> = ({
           }),
           onClick: onDropdownClick,
           onKeyDown: handleToggleButtonKeyDown,
+          ref: refs.setReference,
         })}
       >
         {icon && <span className={cx('icon')}>{icon}</span>}
@@ -203,14 +214,20 @@ export const Dropdown: FC<DropdownProps> = ({
           <DropdownIcon />
         </BaseIconButton>
       </button>
-      <div
-        className={cx('select-list', { opened })}
-        {...getMenuProps({ onKeyDown: handleKeyDownMenu })}
-      >
-        <Scrollbars autoHeight autoHeightMax={216} hideTracksWhenNotNeeded>
-          {renderOptions()}
-        </Scrollbars>
-      </div>
+      {opened && (
+        <div
+          style={floatingStyles}
+          className={cx('select-list', { opened })}
+          {...getMenuProps({
+            onKeyDown: handleKeyDownMenu,
+            ref: refs.setFloating,
+          })}
+        >
+          <Scrollbars autoHeight autoHeightMax={216} hideTracksWhenNotNeeded>
+            {renderOptions()}
+          </Scrollbars>
+        </div>
+      )}
     </div>
   );
 };
