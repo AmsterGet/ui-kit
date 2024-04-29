@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
+import classNames from 'classnames/bind';
 import '@assets/styles/themes/index.scss';
 import styles from './themeProvider.module.scss';
-import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
 
@@ -36,5 +36,5 @@ export function ThemeProvider({
 
   const currentThemeClassName = themes[theme] || builtinThemes.light;
 
-  return <div className={`${cx('theme-provider', className)} ${currentThemeClassName}`}>{children}</div>;
+  return <div className={cx('theme-provider', className, currentThemeClassName)}>{children}</div>;
 }
