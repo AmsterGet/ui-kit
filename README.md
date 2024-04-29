@@ -198,7 +198,7 @@ The CSS custom properties that come from DS are prefixed with `rp-ui-base` to av
 - [downshift](https://www.npmjs.com/package/downshift) - used to build simple, flexible, WAI-ARIA compliant React autocomplete/dropdown/select/combobox components.
 - [framer-motion](https://www.npmjs.com/package/framer-motion) - used for animations.
 - [rc-scrollbars](https://www.npmjs.com/package/rc-scrollbars) - used for custom scrollbars.
-- [@floating-ui/react-dom](https://www.npmjs.com/package/@floating-ui/react-dom) - used for positioning menus, dropdown elements, autocompletes, etc..
+- [@floating-ui/react-dom](https://www.npmjs.com/package/@floating-ui/react-dom) - used for positioning menus, dropdown elements, autocompletes, etc.
 
 ### Testing
 
