@@ -1,5 +1,9 @@
 import { ReactNode } from 'react';
+import classNames from 'classnames/bind';
 import '@assets/styles/themes/index.scss';
+import styles from './themeProvider.module.scss';
+
+const cx = classNames.bind(styles);
 
 type ThemeKey = 'light' | 'dark' | string;
 
@@ -11,6 +15,7 @@ interface IThemeProviderProps {
   children?: ReactNode;
   theme?: ThemeKey;
   customThemes?: ITheme;
+  className?: string;
 }
 
 const builtinThemes: ITheme = {
@@ -22,6 +27,7 @@ export function ThemeProvider({
   children,
   theme = 'light',
   customThemes = {},
+  className,
 }: IThemeProviderProps) {
   const themes = {
     ...builtinThemes,
@@ -30,5 +36,5 @@ export function ThemeProvider({
 
   const currentThemeClassName = themes[theme] || builtinThemes.light;
 
-  return <div className={currentThemeClassName}>{children}</div>;
+  return <div className={cx('theme-provider', className, currentThemeClassName)}>{children}</div>;
 }
