@@ -108,7 +108,7 @@ The number of custom themes is not limited and actual theme can be easily switch
 
 ## Components
 
-To see a published showcase of the latest components released with its API and use cases, follow the [link]() (to be provided).
+To see a published showcase of the latest components released with its API and use cases, follow the [link](https://reportportal.io/ui-kit/).
 
 ### Icons
 
