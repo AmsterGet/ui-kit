@@ -3,7 +3,7 @@ env:
   BUILD_DIR : "storybook-static/"
 
 on:
-  # TODO: enable auto-publishing once all quality gates are set
+  # TODO: enable auto-deploy once all quality gates are set
   #  push:
   #    branches:
   #      - develop
