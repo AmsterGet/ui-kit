@@ -15,5 +15,9 @@ const config: StorybookConfig = {
   docs: {
     autodocs: 'tag',
   },
+  managerHead: (head) => `
+    ${head}
+    <meta name="robots" content="noindex" />
+  `,
 };
 export default config;
