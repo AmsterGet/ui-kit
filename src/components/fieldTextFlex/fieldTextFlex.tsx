@@ -29,7 +29,10 @@ export interface FieldTextFlexProps extends ComponentPropsWithRef<'textarea'> {
   onKeyUp?: KeyboardEventHandler<HTMLTextAreaElement>;
 }
 
+// TODO: Remove ts-ignore
 // DS link - https://www.figma.com/file/gjYQPbeyf4YsH3wZiVKoaj/%F0%9F%9B%A0-RP-DS-6?type=design&node-id=13023-1859&mode=design&t=vL74fEo9Hq6GFAXW-0
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 export const FieldTextFlex: FC<FieldTextFlexProps> = forwardRef(
   (
     {

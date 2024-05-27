@@ -75,6 +75,11 @@
   --rp-ui-base-shadow-hover: 0px 1px 3px rgba(55, 67, 98, 0.2);
   --rp-ui-base-shadow-secondary: 0 8px 40px rgba(0, 0, 0, 0.15);
 
+  // TODO: discuss with UX
+  /* colors rgb */
+  --rp-ui-base-almost-black-light: rgba(63, 63, 63, 0.75);
+  --rp-ui-base-almost-black-slight-light: rgba(63, 63, 63, 0.95);
+
   /* overlays */
   --rp-ui-base-overlay: rgba(141, 149, 161, 0.35);
   --rp-ui-base-overlay-light-cyan: rgba(208, 240, 241, 0.7);

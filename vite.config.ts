@@ -40,6 +40,7 @@ export default defineConfig(() => ({
         baseIconButton: resolve('src', 'components', 'icons', 'baseIconButton'),
         fieldNumber: resolve('src', 'components', 'fieldNumber'),
         bubblesLoader: resolve('src', 'components', 'bubblesLoader'),
+        tooltip: resolve('src', 'components', 'tooltip'),
       },
       name: 'ui-kit',
       formats: ['es'],
