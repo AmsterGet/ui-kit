@@ -1,0 +1,149 @@
+@use "sass:math";
+@import 'src/assets/styles/variables/typography';
+@import 'src/assets/styles/mixins/font-scale';
+
+$ARROW_HEIGHT: 9px;
+$ARROW_WIDTH: 18px;
+$DEFAULT_MARGIN: 4px;
+$ARROW_LINE: math.div($ARROW-WIDTH, 2);
+$triangle-color: var(--rp-ui-base-almost-black-light);
+
+.tooltip-wrapper {
+  display: block;
+  width: fit-content;
+  height: fit-content;
+  cursor: pointer;
+}
+
+.tooltip {
+  transition: opacity 300ms ease;
+  margin: $DEFAULT_MARGIN;
+  &[data-placement*='bottom'] {
+    padding-top: $ARROW_HEIGHT;
+    z-index: 2;
+  }
+
+  &[data-placement*='top'] {
+    padding-bottom: $ARROW_HEIGHT;
+  }
+
+  &[data-placement*='left'] {
+    padding-right: $ARROW_HEIGHT;
+  }
+
+  &[data-placement*='right'] {
+    padding-left: $ARROW_HEIGHT;
+  }
+}
+
+.tooltip-content {
+  padding: 16px;
+  border-radius: 8px;
+  background-color: var(--rp-ui-base-almost-black-slight-light);
+  font-family: var(--rp-ui-base-font-family);
+  font-weight: $fw-medium;
+  @include font-scale('s-small');
+  color: var(--rp-ui-base-bg-000);
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+.tooltip-arrow {
+  position: absolute;
+
+  &::before,
+  &::after {
+    content: '';
+    margin: auto;
+    display: block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+  }
+
+  &::after {
+    position: absolute;
+  }
+
+  &[data-placement*='bottom'] {
+    top: 0;
+    width: $ARROW_WIDTH;
+    height: $ARROW_HEIGHT;
+
+    &::before,
+    &::after {
+      border-width: 0 $ARROW_LINE $ARROW_HEIGHT;
+    }
+
+    &::before {
+      border-color: transparent transparent $triangle-color;
+    }
+
+    &::after {
+      top: 0;
+      border-color: transparent transparent $triangle-color;
+    }
+  }
+
+  &[data-placement*='top'] {
+    bottom: 0;
+    width: $ARROW_WIDTH;
+    height: $ARROW_HEIGHT;
+
+    &::before,
+    &::after {
+      border-width: $ARROW_HEIGHT $ARROW_LINE 0;
+    }
+
+    &::before {
+      border-color: $triangle-color transparent transparent;
+    }
+
+    &::after {
+      bottom: 0;
+      border-color: $triangle-color transparent transparent;
+    }
+  }
+
+  &[data-placement*='left'] {
+    right: 0;
+    width: $ARROW_HEIGHT;
+    height: $ARROW_WIDTH;
+
+    &::before,
+    &::after {
+      border-width: $ARROW_LINE 0 $ARROW_LINE $ARROW_HEIGHT;
+    }
+
+    &::before {
+      border-color: transparent transparent transparent $triangle-color;
+    }
+
+    &::after {
+      top: 0;
+      right: 0;
+      border-color: transparent transparent transparent $triangle-color;
+    }
+  }
+
+  &[data-placement*='right'] {
+    left: 0;
+    width: $ARROW_HEIGHT;
+    height: $ARROW_WIDTH;
+
+    &::before,
+    &::after {
+      border-width: $ARROW_LINE $ARROW_HEIGHT $ARROW_LINE 0;
+    }
+
+    &::before {
+      border-color: transparent $triangle-color transparent transparent;
+    }
+
+    &::after {
+      top: 0;
+      left: 0;
+      border-color: transparent $triangle-color transparent transparent;
+    }
+  }
+}

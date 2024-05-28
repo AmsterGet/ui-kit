@@ -34,6 +34,9 @@ interface FieldTextProps extends ComponentPropsWithRef<'input'> {
   type?: string;
 }
 
+// TODO: Remove ts-ignore
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 export const FieldText: FC<FieldTextProps> = forwardRef(
   (
     {
