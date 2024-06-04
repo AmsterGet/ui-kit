@@ -35,13 +35,8 @@ import styles from './popover.module.scss';
 const cx = classNames.bind(styles);
 const TRIANGLE_WIDTH = 16;
 const TRIANGLE_HEIGHT = 8;
-const middlePlacements : Placement[] = [
-  'top',
-  'right',
-  'bottom',
-  'left',
-];
-const verticalPlacements : Placement[] = [
+const middlePlacements: Placement[] = ['top', 'right', 'bottom', 'left'];
+const verticalPlacements: Placement[] = [
   'right',
   'right-start',
   'right-end',
@@ -49,7 +44,7 @@ const verticalPlacements : Placement[] = [
   'left-start',
   'left-end',
 ];
-const allPlacements : Placement[] = [
+const allPlacements: Placement[] = [
   'top',
   'top-start',
   'top-end',
@@ -65,25 +60,25 @@ const allPlacements : Placement[] = [
 ];
 
 interface PopoverProps {
-  className?: string,
-  content: ReactNode,
-  children: ReactNode,
-  placement?: Placement,
-  fallbackPlacements?: Placement[],
-  title?: string,
-  arrowOffset?: number,
-  safeZone?: number,
-  arrowColor?: string,
-  dataAutomationId?: string,
-  onClose?: () => void,
-  onClickHandle?: (isOpened: boolean, setIsOpen: (isOpen: boolean) => void) => void,
+  className?: string;
+  content: ReactNode;
+  children: ReactNode;
+  placement?: Placement;
+  fallbackPlacements?: Placement[];
+  title?: string;
+  arrowOffset?: number;
+  safeZone?: number;
+  arrowColor?: string;
+  dataAutomationId?: string;
+  onClose?: () => void;
+  onClickHandle?: (isOpened: boolean, setIsOpen: (isOpen: boolean) => void) => void;
 }
 
 export const Popover: FC<PopoverProps> = ({
   className,
   content,
   children,
-  placement : initialPlacement = 'bottom',
+  placement: initialPlacement = 'bottom',
   fallbackPlacements = allPlacements,
   title,
   arrowOffset = 16,
@@ -92,7 +87,7 @@ export const Popover: FC<PopoverProps> = ({
   dataAutomationId,
   onClose,
   onClickHandle,
-}) : ReactElement => {
+}): ReactElement => {
   const arrowRef = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -108,14 +103,20 @@ export const Popover: FC<PopoverProps> = ({
     }
   };
 
-  const { placement, refs, floatingStyles, context} = useFloating({
+  const { placement, refs, floatingStyles, context } = useFloating({
     open: isOpen,
     onOpenChange,
     placement: initialPlacement,
     middleware: [
-      offset(({rects, placement: currentPlacement}) => ({
+      offset(({ rects, placement: currentPlacement }) => ({
         mainAxis: safeZone + TRIANGLE_HEIGHT,
-        alignmentAxis: ((verticalPlacements.includes(currentPlacement) ? rects.reference.height : rects.reference.width) - TRIANGLE_WIDTH) / 2 - arrowOffset,
+        alignmentAxis:
+          ((verticalPlacements.includes(currentPlacement)
+            ? rects.reference.height
+            : rects.reference.width) -
+            TRIANGLE_WIDTH) /
+            2 -
+          arrowOffset,
       })),
       flip({
         fallbackAxisSideDirection: 'start',
@@ -132,11 +133,7 @@ export const Popover: FC<PopoverProps> = ({
   const dismiss = useDismiss(context);
   const role = useRole(context);
 
-  const { getReferenceProps, getFloatingProps } = useInteractions([
-    click,
-    dismiss,
-    role,
-  ]);
+  const { getReferenceProps, getFloatingProps } = useInteractions([click, dismiss, role]);
 
   return (
     <>
