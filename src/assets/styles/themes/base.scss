@@ -87,6 +87,7 @@
   /* fonts */
   --rp-ui-base-font-family: Roboto, Arial, Helvetica, sans-serif;
   --rp-ui-base-font-family-heading: OpenSans, Segoe UI, Tahoma, sans-serif;
+  --rp-ui-base-font-family-heading-semibold: OpenSans-Semibold, sans-serif;
 
   // Default theme if the theme provider doesn't used
   @include light-theme;
