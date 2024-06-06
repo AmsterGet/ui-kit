@@ -12,13 +12,8 @@
 - **safeZone**: _number_, optional, default = 4
 - **arrowColor**: _string_, optional, default = 'white'
 - **dataAutomationId**: _string_, optional, default = ''
-- **onClose**: _func_, optional, default = () => {}
-- **onClickHandle**: _func_, optional, default = () => {}
-
-### Events:
-
-- **onClose**
-- **onClickHandle**
+- **isOpened**: _bool_, optional, default = false
+- **setIsOpened**: _func_, optional, default = undefined
 
 ### Size
 

@@ -70,8 +70,8 @@ interface PopoverProps {
   safeZone?: number;
   arrowColor?: string;
   dataAutomationId?: string;
-  onClose?: () => void;
-  onClickHandle?: (isOpened: boolean, setIsOpen: (isOpen: boolean) => void) => void;
+  isOpened?: boolean;
+  setIsOpened?: (isOpened: boolean) => void;
 }
 
 export const Popover: FC<PopoverProps> = ({
@@ -85,26 +85,24 @@ export const Popover: FC<PopoverProps> = ({
   safeZone = 4,
   arrowColor = 'white',
   dataAutomationId,
-  onClose,
-  onClickHandle,
+  isOpened,
+  setIsOpened,
 }): ReactElement => {
   const arrowRef = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
 
-  const onOpenChange = (isOpened: boolean) => {
-    if (!isOpened && onClose) {
-      onClose();
-    }
+  const isPopoverOpen = setIsOpened ? isOpened : isOpen;
 
-    if (onClickHandle?.length) {
-      onClickHandle(isOpened, setIsOpen);
+  const onOpenChange = (isPopoverOpened: boolean) => {
+    if (setIsOpened) {
+      setIsOpened(isPopoverOpened);
     } else {
-      setIsOpen(isOpened);
+      setIsOpen(isPopoverOpened);
     }
   };
 
   const { placement, refs, floatingStyles, context } = useFloating({
-    open: isOpen,
+    open: isPopoverOpen,
     onOpenChange,
     placement: initialPlacement,
     middleware: [
@@ -144,7 +142,7 @@ export const Popover: FC<PopoverProps> = ({
       >
         {children}
       </div>
-      {isOpen && (
+      {isPopoverOpen && (
         <FloatingFocusManager context={context} modal={false}>
           <div
             className={cx('popover')}
