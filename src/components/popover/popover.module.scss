@@ -1,0 +1,42 @@
+@import 'src/assets/styles/variables/typography';
+@import 'src/assets/styles/mixins/font-scale';
+
+$Z-INDEX-POPUP: 10;
+
+.popover-wrapper {
+  display: block;
+  width: fit-content;
+  height: fit-content;
+  cursor: pointer;
+}
+
+.popover {
+  display: block;
+  position: absolute;
+  z-index: $Z-INDEX-POPUP;
+  font-family: var(--rp-ui-base-font-family);
+  @include font-scale(s-small);
+  background-color: var(--rp-ui-color-bg);
+  border-radius: 8px;
+  box-shadow: var(--rp-ui-base-shadow-secondary);
+  padding: 16px;
+  min-height: 52px;
+  min-width: 160px;
+  max-width: fit-content;
+  box-sizing: border-box;
+  outline: 0;
+  width: max-content;
+  color: var(--rp-ui-color-text);
+}
+
+.content {
+  display: block;
+}
+
+.title {
+  display: inline-block;
+  font-family: var(--rp-ui-base-font-family-heading);
+  font-weight: $fw-bold;
+  @include font-scale();
+  margin-bottom: 8px;
+}
