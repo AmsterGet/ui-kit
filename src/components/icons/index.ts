@@ -6,3 +6,5 @@ export { default as PlusIcon } from './svg/plus.svg';
 export { default as MinusIcon } from './svg/minus.svg';
 export { default as DeleteIcon } from './svg/delete.svg';
 export { default as DropdownIcon } from './svg/dropdown.svg';
+export { default as PrevPageIcon } from './svg/prevPage.svg';
+export { default as PrevChapterIcon } from './svg/prevChapter.svg';

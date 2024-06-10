@@ -32,6 +32,7 @@ interface FieldTextProps extends ComponentPropsWithRef<'input'> {
   isRequired?: boolean;
   hasDoubleMessage?: boolean;
   type?: string;
+  displayError?: boolean;
 }
 
 // TODO: Remove ts-ignore
@@ -58,6 +59,7 @@ export const FieldText: FC<FieldTextProps> = forwardRef(
       isRequired = false,
       hasDoubleMessage = false,
       type = 'text',
+      displayError = true,
       ...rest
     },
     ref: ForwardedRef<HTMLInputElement>,
@@ -68,6 +70,7 @@ export const FieldText: FC<FieldTextProps> = forwardRef(
       }
     };
 
+    const showError = displayError && error && touched;
     const helpTextElement = <span className={cx('text', 'help-text')}>{helpText}</span>;
 
     return (
@@ -122,9 +125,9 @@ export const FieldText: FC<FieldTextProps> = forwardRef(
             </span>
           )}
         </div>
-        {((error && touched) || helpText) && (
+        {(showError || helpText) && (
           <div className={cx('additional-content', { disabled })}>
-            {error && touched ? (
+            {showError ? (
               <>
                 <span className={cx('text', 'error-text')}>{error}</span>
                 {hasDoubleMessage && helpTextElement}

@@ -1,0 +1,21 @@
+@import 'src/assets/styles/variables/typography';
+@import 'src/assets/styles/mixins/font-scale';
+
+.active-page {
+  display: inline-block;
+  width: 124px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: right;
+}
+
+.page-selector {
+  text-align: left;
+}
+
+.page-selector-button {
+  margin-left: 4px;
+  font-weight: $fw-bold;
+  @include font-scale('s-small');
+}
