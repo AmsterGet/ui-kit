@@ -1,0 +1,16 @@
+@import 'src/assets/styles/variables/typography';
+@import 'src/assets/styles/mixins/font-scale';
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  padding: 24px 0;
+
+  font-family: var(--rp-ui-base-font-family);
+  font-weight: $fw-regular;
+  @include font-scale('s-small');
+  color: var(--rp-ui-base-almost-black);
+}

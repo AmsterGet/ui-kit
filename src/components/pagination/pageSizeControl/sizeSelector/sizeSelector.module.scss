@@ -1,0 +1,39 @@
+@import 'src/assets/styles/variables/typography';
+@import 'src/assets/styles/mixins/font-scale';
+
+.size-selector {
+  display: flex;
+  flex-direction: column;
+}
+
+.size-option {
+  width: 88px;
+  padding: 8px 0;
+  outline: none;
+  border: none;
+  background: none;
+  cursor: pointer;
+
+  font-family: var(--rp-ui-base-font-family);
+  font-weight: $fw-regular;
+  @include font-scale();
+  text-align: left;
+  color: var(--rp-ui-base-almost-black);
+
+  &:first-child {
+    padding-top: 0;
+  }
+  &:last-child {
+    padding-bottom: 0;
+  }
+
+  &:hover {
+    color: var(--rp-ui-base-topaz-hover);
+  }
+  &:active {
+    color: var(--rp-ui-base-topaz-pressed);
+  }
+  &.selected {
+    color: var(--rp-ui-base-topaz);
+  }
+}

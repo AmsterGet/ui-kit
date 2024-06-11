@@ -135,17 +135,13 @@ export const Popover: FC<PopoverProps> = ({
 
   return (
     <>
-      <div
-        ref={refs.setReference}
-        {...getReferenceProps()}
-        className={cx('popover-wrapper', className)}
-      >
+      <div ref={refs.setReference} {...getReferenceProps()} className={cx('popover-wrapper')}>
         {children}
       </div>
       {isPopoverOpen && (
         <FloatingFocusManager context={context} modal={false}>
           <div
-            className={cx('popover')}
+            className={cx('popover', className)}
             data-automation-id={dataAutomationId}
             ref={refs.setFloating}
             style={floatingStyles}
@@ -160,7 +156,7 @@ export const Popover: FC<PopoverProps> = ({
               staticOffset={middlePlacements.includes(placement) ? null : arrowOffset}
             />
             {title && <div className={cx('title')}>{title}</div>}
-            <div className={cx('content')}>{content}</div>
+            {content}
           </div>
         </FloatingFocusManager>
       )}
