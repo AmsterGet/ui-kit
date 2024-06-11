@@ -1,0 +1,1 @@
+export { PageNavigator } from './pageNavigator';

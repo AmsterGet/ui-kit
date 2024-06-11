@@ -2,6 +2,7 @@ import { FC, ReactElement } from 'react';
 import classNames from 'classnames/bind';
 import { ChangePage } from '../types';
 import { ActivePage } from './activePage/activePage';
+import { PageNavigator } from './pageNavigator/pageNavigator';
 import styles from './pageControls.module.scss';
 
 const cx = classNames.bind(styles);
@@ -36,6 +37,7 @@ export const PageControls: FC<PageControlsProps> = ({
         goToText={captions.goTo}
         goActionText={captions.goAction}
       />
+      <PageNavigator changePage={changePage} activePage={activePage} totalPages={totalPages} />
       <span className={cx('total-pages')}>
         {`${captions.of} `}
         {totalPages}
