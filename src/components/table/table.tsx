@@ -2,14 +2,7 @@ import { CSSProperties, useMemo, useState, FC } from 'react';
 import styles from './table.module.scss';
 import classNames from 'classnames/bind';
 import { ArrowDownIcon, ArrowUpIcon } from '@components/icons';
-import {
-  FixedColumn,
-  PrimaryColumn,
-  RowData,
-  SortConfig,
-  TableComponentProps,
-  SortDirection,
-} from './types';
+import { FixedColumn, PrimaryColumn, RowData, TableComponentProps, SortDirection } from './types';
 import { Checkbox } from '@/components';
 
 const cx = classNames.bind(styles);
@@ -26,26 +19,17 @@ export const Table: FC<TableComponentProps> = ({
   sortingColumn = primaryColumn,
   onChangeSorting = () => {},
   onToggleRowSelection = () => {},
+  onToggleAllRowsSelection = () => {},
 }) => {
-  const [sortConfig, setSortConfig] = useState<SortConfig>({
-    key: sortingColumn.key,
-    direction: sortingDirection,
-  });
   const [hoveredColumn, setHoveredColumn] = useState<string | null>(null);
   const [hoveredRow, setHoveredRow] = useState<number | null>(null);
-  const [checkedRows, setCheckedRows] = useState<Set<number | string>>(new Set(selectedRowIds));
 
   const sortedColumns: (PrimaryColumn | FixedColumn)[] = useMemo(() => {
     return [{ ...primaryColumn, primary: true }, ...fixedColumns.sort((a, b) => a.order - b.order)];
   }, [primaryColumn, fixedColumns]);
 
   const handleSort = (key: string) => {
-    let direction: SortDirection = SortDirection.ASC;
-    if (sortConfig && sortConfig.key === key && sortConfig.direction === SortDirection.ASC) {
-      direction = SortDirection.DESC;
-    }
-    onChangeSorting({ key, direction });
-    setSortConfig({ key, direction });
+    onChangeSorting({ key, direction: sortingDirection });
   };
 
   const getCellStyle = (column: FixedColumn): CSSProperties => {
@@ -72,27 +56,15 @@ export const Table: FC<TableComponentProps> = ({
   };
 
   const handleRowCheck = (id: number | string) => {
-    const newCheckedRows = new Set(checkedRows);
-    if (newCheckedRows.has(id)) {
-      newCheckedRows.delete(id);
-    } else {
-      newCheckedRows.add(id);
-    }
-    setCheckedRows(newCheckedRows);
     onToggleRowSelection(id);
   };
 
   const handleCheckAll = () => {
-    if (checkedRows.size === data.length) {
-      setCheckedRows(new Set());
-    } else {
-      const allRows = new Set(data.map((item) => item.id));
-      setCheckedRows(allRows);
-    }
+    onToggleAllRowsSelection();
   };
 
-  const isAllChecked: boolean = data.every((item) => [...checkedRows].includes(item.id));
-  const isAnyChecked: boolean = data.some((item) => [...checkedRows].includes(item.id));
+  const isAllChecked: boolean = data.every((item) => selectedRowIds.includes(item.id));
+  const isAnyChecked: boolean = data.some((item) => selectedRowIds.includes(item.id));
 
   const getSizeClassName = (item: RowData): string => {
     const size = item.rowConfigs?.size ?? 'default';
@@ -100,8 +72,8 @@ export const Table: FC<TableComponentProps> = ({
   };
 
   const getSortIcon = (columnKey: string) => {
-    if (sortConfig?.key === columnKey) {
-      return sortConfig.direction === SortDirection.ASC ? <ArrowUpIcon /> : <ArrowDownIcon />;
+    if (sortingColumn?.key === columnKey) {
+      return sortingDirection === SortDirection.ASC ? <ArrowUpIcon /> : <ArrowDownIcon />;
     }
     return <ArrowUpIcon />;
   };
@@ -135,7 +107,7 @@ export const Table: FC<TableComponentProps> = ({
           >
             <span>{column.header}</span>
 
-            {(hoveredColumn === column.key || sortConfig?.key === column.key) &&
+            {(hoveredColumn === column.key || sortingColumn?.key === column.key) &&
               getSortIcon(column.key)}
           </button>
         ))}
@@ -154,7 +126,7 @@ export const Table: FC<TableComponentProps> = ({
               <div className={cx('table-cell', 'checkbox-cell')}>
                 {(isAnyChecked || hoveredRow === index) && (
                   <Checkbox
-                    value={checkedRows.has(item.id)}
+                    value={selectedRowIds.includes(item.id)}
                     onChange={() => handleRowCheck(item.id)}
                     className={cx('checkbox-cell')}
                   />

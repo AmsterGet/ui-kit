@@ -44,4 +44,5 @@ export interface TableComponentProps {
   sortingColumn?: Column;
   onChangeSorting?: (sortConfig?: SortConfig) => void;
   onToggleRowSelection?: (id: string | number) => void;
+  onToggleAllRowsSelection?: () => void;
 }
