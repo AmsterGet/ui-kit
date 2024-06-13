@@ -8,7 +8,7 @@
   background-position: center;
   background-image: url("data:image/svg+xml,%3Csvg width='12' height='9' viewBox='0 0 12 9' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.5 4.25L4.5 7.25L10.5 0.75' stroke='white' stroke-width='2'/%3E%3C/svg%3E");
 }
-@mixin not-all-checked-state($border-color, $rect-fill) {
+@mixin partially-checked-state($border-color, $rect-fill) {
   border-color: $border-color;
   background-repeat: no-repeat;
   background-position: center;
@@ -87,20 +87,20 @@
     border: 2px solid var(--rp-ui-color-primary-focused);
   }
   
-  &.not-all-checked:not(:checked){
+  &.partially-checked:not(:checked){
     & + .control {
-      @include not-all-checked-state(var(--rp-ui-color-field-border), var(--rp-ui-color-field-border-2));
+      @include partially-checked-state(var(--rp-ui-color-field-border), var(--rp-ui-color-field-border-2));
     }
     
     &:hover + .control {
-      @include not-all-checked-state(var(--rp-ui-color-field-border-2-hover), var(--rp-ui-color-primary-hover));
+      @include partially-checked-state(var(--rp-ui-color-field-border-2-hover), var(--rp-ui-color-primary-hover));
     }
     
     &:active:not(:disabled) + .control {
-      @include not-all-checked-state(var(--rp-ui-color-primary-focused), var(--rp-ui-color-field-border-2));
+      @include partially-checked-state(var(--rp-ui-color-primary-focused), var(--rp-ui-color-field-border-2));
     }
     &:disabled + .control {
-      @include not-all-checked-state(var(--rp-ui-color-field-borderd), var(--rp-ui-color-field-border));
+      @include partially-checked-state(var(--rp-ui-color-field-borderd), var(--rp-ui-color-field-border));
     }
 
   }

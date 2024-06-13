@@ -19,7 +19,7 @@ interface CheckboxProps extends HTMLAttributes<HTMLInputElement> {
   disabled?: boolean;
   className?: string;
   onChange?: ChangeEventHandler<HTMLInputElement>;
-  notAllChecked?: boolean;
+  partiallyChecked?: boolean;
 }
 
 // DS link - https://www.figma.com/file/gjYQPbeyf4YsH3wZiVKoaj/%F0%9F%9B%A0-RP-DS-6?type=design&node-id=2350-8764&mode=design&t=GAXsAg9jOEgkVVlq-0
@@ -29,7 +29,7 @@ export const Checkbox: FC<CheckboxProps> = ({
   onChange,
   className,
   value,
-  notAllChecked,
+  partiallyChecked,
   ...rest
 }): ReactElement => {
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -61,7 +61,7 @@ export const Checkbox: FC<CheckboxProps> = ({
         tabIndex={0}
         type="checkbox"
         onKeyDown={handleKeyDown}
-        className={cx('input', { 'not-all-checked': notAllChecked })}
+        className={cx('input', { 'partially-checked': partiallyChecked })}
         disabled={disabled}
         onChange={onChange}
         checked={value}

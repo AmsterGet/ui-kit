@@ -1,0 +1,47 @@
+import { ReactNode } from 'react';
+
+export interface Column {
+  key: string;
+  header: string;
+}
+export interface PrimaryColumn extends Column {
+  primary: boolean;
+}
+export interface FixedColumn extends Column {
+  width: number;
+  align?: 'left' | 'center' | 'right';
+  order: number;
+}
+export interface RowConfigs {
+  size?: 'small' | 'medium' | 'large';
+}
+export interface DetailedCellData {
+  content: string | number;
+  component: ReactNode;
+}
+export interface RowData {
+  id: string | number;
+  [key: string]: DetailedCellData | RowConfigs | string | number | any;
+  rowConfigs?: RowConfigs;
+}
+export enum SortDirection {
+  ASC = 'asc',
+  DESC = 'desc',
+}
+export interface SortConfig {
+  key: string;
+  direction: SortDirection;
+}
+export interface TableComponentProps {
+  data: RowData[];
+  primaryColumn: Column;
+  fixedColumns: FixedColumn[];
+  rowActionMenu?: ReactNode;
+  selectable?: boolean;
+  className?: string;
+  selectedRowIds?: (string | number)[];
+  sortingDirection?: SortDirection;
+  sortingColumn?: Column;
+  onChangeSorting?: (sortConfig?: SortConfig) => void;
+  onToggleRowSelection?: (id: string | number) => void;
+}
