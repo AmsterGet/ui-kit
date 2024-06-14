@@ -1,7 +1,6 @@
 import { RowData, SortConfig, SortDirection } from './types';
 
 export const sortTableData = (tableData: RowData[], sortConfig?: SortConfig): RowData[] => {
-  console.log(sortConfig);
   if (sortConfig) {
     tableData.sort((a, b) => {
       const contentA = a[sortConfig.key].content || a[sortConfig.key];
@@ -16,6 +15,5 @@ export const sortTableData = (tableData: RowData[], sortConfig?: SortConfig): Ro
       return 0;
     });
   }
-  console.log(tableData);
   return tableData;
 };

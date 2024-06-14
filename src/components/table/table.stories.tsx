@@ -73,14 +73,12 @@ const fixedColumns: FixedColumn[] = [
   {
     key: 'age',
     header: 'Age',
-    order: 3,
     align: 'right',
     width: 100,
   },
   {
     key: 'city',
     header: 'City',
-    order: 2,
     width: 150,
   },
 ];

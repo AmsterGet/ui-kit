@@ -3,7 +3,7 @@ import styles from './table.module.scss';
 import classNames from 'classnames/bind';
 import { ArrowDownIcon, ArrowUpIcon } from '@components/icons';
 import { FixedColumn, PrimaryColumn, RowData, TableComponentProps, SortDirection } from './types';
-import { Checkbox } from '@/components';
+import { Checkbox } from '@components/checkbox';
 
 const cx = classNames.bind(styles);
 
@@ -24,8 +24,8 @@ export const Table: FC<TableComponentProps> = ({
   const [hoveredColumn, setHoveredColumn] = useState<string | null>(null);
   const [hoveredRow, setHoveredRow] = useState<number | null>(null);
 
-  const sortedColumns: (PrimaryColumn | FixedColumn)[] = useMemo(() => {
-    return [{ ...primaryColumn, primary: true }, ...fixedColumns.sort((a, b) => a.order - b.order)];
+  const columns: (PrimaryColumn | FixedColumn)[] = useMemo(() => {
+    return [{ ...primaryColumn, primary: true }, ...fixedColumns];
   }, [primaryColumn, fixedColumns]);
 
   const handleSort = (key: string) => {
@@ -93,7 +93,7 @@ export const Table: FC<TableComponentProps> = ({
             )}
           </div>
         )}
-        {sortedColumns.map((column) => (
+        {columns.map((column) => (
           <button
             key={column.key}
             className={cx('table-header-cell', {
@@ -134,7 +134,7 @@ export const Table: FC<TableComponentProps> = ({
               </div>
             )}
             <div className={cx('table-row-content')}>
-              {sortedColumns.map((column) => (
+              {columns.map((column) => (
                 <div
                   key={column.key}
                   className={cx('table-cell', 'table-cell', {

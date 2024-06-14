@@ -8,9 +8,8 @@ export interface PrimaryColumn extends Column {
   primary: boolean;
 }
 export interface FixedColumn extends Column {
-  width: number;
+  width: string | number;
   align?: 'left' | 'center' | 'right';
-  order: number;
 }
 export interface RowConfigs {
   size?: 'small' | 'medium' | 'large';
