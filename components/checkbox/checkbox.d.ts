@@ -5,6 +5,7 @@ interface CheckboxProps extends HTMLAttributes<HTMLInputElement> {
     disabled?: boolean;
     className?: string;
     onChange?: ChangeEventHandler<HTMLInputElement>;
+    partiallyChecked?: boolean;
 }
 export declare const Checkbox: FC<CheckboxProps>;
 export {};

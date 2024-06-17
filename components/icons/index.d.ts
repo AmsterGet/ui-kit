@@ -5,3 +5,8 @@ export { default as PlusIcon } from './svg/plus.svg';
 export { default as MinusIcon } from './svg/minus.svg';
 export { default as DeleteIcon } from './svg/delete.svg';
 export { default as DropdownIcon } from './svg/dropdown.svg';
+export { default as PrevPageIcon } from './svg/prevPage.svg';
+export { default as PrevChapterIcon } from './svg/prevChapter.svg';
+export { default as ArrowDownIcon } from './svg/arrowDown.svg';
+export { default as ArrowUpIcon } from './svg/arrowUp.svg';
+export { default as MeatballMenuIcon } from './svg/meatballMenu.svg';

@@ -18,6 +18,7 @@ interface FieldTextProps extends ComponentPropsWithRef<'input'> {
     isRequired?: boolean;
     hasDoubleMessage?: boolean;
     type?: string;
+    displayError?: boolean;
 }
 export declare const FieldText: FC<FieldTextProps>;
 export {};
