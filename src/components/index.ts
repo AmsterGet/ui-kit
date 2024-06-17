@@ -13,4 +13,5 @@ export { Radio } from './radio';
 export { Tooltip } from './tooltip';
 export { Popover } from './popover';
 export { Pagination } from './pagination';
+export { Table } from './table';
 export * from './icons';

@@ -45,6 +45,7 @@ export default defineConfig(() => ({
         radio: resolve('src', 'components', 'radio'),
         fieldTextFlex: resolve('src', 'components', 'fieldTextFlex'),
         pagination: resolve('src', 'components', 'pagination'),
+        table: resolve('src', 'components', 'table'),
       },
       name: 'ui-kit',
       formats: ['es'],
