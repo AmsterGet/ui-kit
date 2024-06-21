@@ -112,7 +112,7 @@ To see a published showcase of the latest components released with its API and u
 
 ### Icons
 
-The library provides a set of SVG icons and the `BaseIconButton` component to apply basic styles for hover, disabled and others to them.
+The library provides a set of SVG icons and the `BaseIconButton` component to apply basic styles for hover, disabled and other states to them.
 
 The list of available icons can be found in the [icons](./src/components/icons/svg) folder.
 
@@ -149,6 +149,8 @@ const MyComponent = () => {
 ```
 
 `BaseIconButton` supports all the props of the `button` HTML element.
+
+**Note:** To support styling via `BaseIconButton`, it is recommended to use *path-based*, *single-color* SVG icons.
 
 ## Development
 
