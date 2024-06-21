@@ -150,15 +150,6 @@ const MyComponent = () => {
 
 `BaseIconButton` supports all the props of the `button` HTML element.
 
-## Build process
-
-We use [vite](https://vitejs.dev/) as a build tool.
-
-To build the library run
-```console
-npm run build
-```
-
 ## Development
 
 The library is developed using [React](https://reactjs.org/) and [TypeScript](https://www.typescriptlang.org/).
@@ -170,10 +161,33 @@ To run it locally use
 npm run start
 ```
 
-To create a ready-to-deploy version of the Storybook run
+To create a ready-to-deploy version of the Storybook, run
 ```console
 npm run build:storybook
 ```
+
+### Build process
+
+We use [vite](https://vitejs.dev/) as a build tool.
+
+To build the library run
+```console
+npm run build
+```
+
+### Storybook showcase deploy
+
+While the library is in alpha, the showcase hosted on [GitHub Pages](https://reportportal.io/ui-kit/) should be updated based on changes from the `develop` branch.
+
+#### Deployment steps
+
+1. Navigate to the "Actions" page within the [repository](https://github.com/reportportal/ui-kit/actions).
+2. Choose the "Deploy dev storybook showcase" action from list of available workflows.
+3. Click "Run workflow" button on the right and select the `develop` branch.
+4. Wait for the deployment process to complete. The progress can be tracked on the "Actions" page.
+5. Once the deployment is finished, verify that the changes have been deployed correctly, visiting [GitHub Pages](https://reportportal.io/ui-kit/).
+
+That's it! If you encounter any issues during the deployment process, please consult the documentation or reach out to the project maintainers for assistance.
 
 ### Code style
 
