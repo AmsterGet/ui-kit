@@ -2,6 +2,8 @@
 
 This library is designed to reflect [ReportPortal Design System](https://www.figma.com/file/gjYQPbeyf4YsH3wZiVKoaj/RP-DS-6) components as React components.
 
+**alpha versions available**
+
 ## Installation
 
 Install the package into your project using your favourite package manager:
@@ -190,6 +192,20 @@ While the library is in alpha, the showcase hosted on [GitHub Pages](https://rep
 5. Once the deployment is finished, verify that the changes have been deployed correctly, visiting [GitHub Pages](https://reportportal.io/ui-kit/).
 
 That's it! If you encounter any issues during the deployment process, please consult the documentation or reach out to the project maintainers for assistance.
+
+### Release
+
+While the library is in alpha, the [NPM package](https://www.npmjs.com/package/@reportportal/ui-kit) should be built and published from the `develop` branch with `alpha` tag.
+
+#### Release steps
+
+1. Navigate to the "Actions" page within the [repository](https://github.com/reportportal/ui-kit/actions).
+2. Choose the "Publish dev package version" action from list of available workflows.
+3. Click "Run workflow" button on the right and select the `develop` branch.
+4. Wait for the publishing process to complete. The progress can be tracked on the "Actions" page.
+5. Once the publishing is finished, verify that the changes have been published correctly, visiting [NPM registry](https://www.npmjs.com/package/@reportportal/ui-kit?activeTab=versions).
+
+That's it! If you encounter any issues during the release process, please consult the documentation or reach out to the project maintainers for assistance.
 
 ### Code style
 
