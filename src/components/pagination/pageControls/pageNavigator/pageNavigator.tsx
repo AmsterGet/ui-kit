@@ -1,6 +1,7 @@
 import { FC, ReactElement } from 'react';
 import classNames from 'classnames/bind';
 import { BaseIconButton, PrevPageIcon, PrevChapterIcon } from '@components/icons';
+import { Bar } from './bar';
 import { ChangePage } from '../../types';
 import styles from './pageNavigator.module.scss';
 
@@ -10,12 +11,16 @@ export interface PageNavigatorProps {
   activePage: number;
   totalPages: number;
   changePage: ChangePage;
+  captions: {
+    goTo: string;
+  };
 }
 
 export const PageNavigator: FC<PageNavigatorProps> = ({
   activePage,
   changePage,
   totalPages,
+  captions,
 }): ReactElement => {
   const toFirstPage = () => {
     changePage(1);
@@ -48,6 +53,12 @@ export const PageNavigator: FC<PageNavigatorProps> = ({
           <PrevPageIcon />
         </BaseIconButton>
       </div>
+      <Bar
+        totalPagesCount={totalPages}
+        selectedPageNumber={activePage}
+        setSelectedPageNumber={changePage}
+        captions={captions}
+      />
       <div className={cx('page-buttons')}>
         <BaseIconButton
           className={cx('page-button', 'next')}

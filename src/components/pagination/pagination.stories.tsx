@@ -30,7 +30,7 @@ export const Primary: Story = {
           pageSize={pageSize}
           activePage={page}
           totalItems={200}
-          totalPages={10}
+          totalPages={100}
           pageSizeOptions={[10, 20, 30, 40, 50]}
           changePage={(newPage) => {
             setPage(newPage);

@@ -1,0 +1,68 @@
+@import 'src/assets/styles/variables/typography';
+@import 'src/assets/styles/mixins/font-scale';
+
+.bar {
+  width: 260px;
+  height: 8px;
+  margin: 4px 0;
+  border-radius: 3px;
+  background-color: var(--rp-ui-base-e-100);
+}
+
+.section-with-tooltip {
+  display: inline-block;
+  height: 16px;
+
+  &:hover .section {
+    background-color: var(--rp-ui-base-topaz-hover);
+  }
+
+  &:active .section {
+    background-color: var(--rp-ui-base-topaz-pressed);
+  }
+
+  &:first-child .section {
+    border-radius: 3px 0 0 3px;
+  }
+
+  &:last-child .section {
+    border-radius: 0 3px 3px 0;
+  }
+}
+
+.section {
+  position: relative;
+  top: 4px;
+  height: 8px;
+  background-color: transparent;
+  margin: 4px 0;
+
+  &.selected {
+    background-color: var(--rp-ui-base-topaz);
+  }
+}
+
+.tooltip-wrapper {
+  width: inherit;
+  height: 16px;
+}
+
+.tooltip {
+  font-family: var(--rp-ui-base-font-family);
+  @include font-scale('s-small');
+  text-align: center;
+
+  .tooltip-text {
+    font-weight: $fw-regular;
+    padding-bottom: 8px;
+  }
+
+  .page-number {
+    font-weight: $fw-bold;
+  }
+}
+
+.section-with-tooltip, .tooltip-wrapper {
+  position: relative;
+  top: -4px;
+}
