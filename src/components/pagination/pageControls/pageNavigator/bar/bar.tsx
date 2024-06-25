@@ -1,14 +1,15 @@
 import { FC, ReactElement } from 'react';
 import classNames from 'classnames/bind';
-import { Tooltip } from '@/components';
+import { Tooltip } from '@components/tooltip';
+import { ChangePage } from '../../../types'
 import styles from './bar.module.scss';
 
 const cx = classNames.bind(styles);
 
 export interface BarProps {
-  totalPagesCount: number;
-  selectedPageNumber: number;
-  setSelectedPageNumber: (pageNumber: number) => void;
+  totalPages: number;
+  activePage: number;
+  changePage: ChangePage;
   captions: {
     goTo: string;
   };
@@ -18,20 +19,20 @@ const MIN_SELECTOR_WIDTH = 13;
 const BAR_WIDTH = 260;
 
 export const Bar: FC<BarProps> = ({
-  totalPagesCount,
-  selectedPageNumber,
-  setSelectedPageNumber,
+  totalPages,
+  activePage,
+  changePage,
   captions,
 }): ReactElement => {
-  const pixelsPerPage = BAR_WIDTH / totalPagesCount;
-  const sectionsCount = Math.min(Math.ceil(BAR_WIDTH / MIN_SELECTOR_WIDTH), totalPagesCount);
+  const pixelsPerPage = BAR_WIDTH / totalPages;
+  const sectionsCount = Math.min(Math.ceil(BAR_WIDTH / MIN_SELECTOR_WIDTH), totalPages);
   const selectorWidth = Math.max(MIN_SELECTOR_WIDTH, pixelsPerPage);
 
   const sections = [];
-  for (let i = 0; i < totalPagesCount; i++) {
+  for (let i = 1; i <= totalPages; i++) {
     sections.push({
-      end: (i + 1) * pixelsPerPage,
-      page: i + 1,
+      end: i * pixelsPerPage,
+      page: i,
     });
   }
 
@@ -50,7 +51,7 @@ export const Bar: FC<BarProps> = ({
         <div
           className={cx('section-with-tooltip')}
           style={{ width: selectorWidth }}
-          onClick={() => setSelectedPageNumber(section.pages[0])}
+          onClick={() => changePage(section.pages[0])}
         >
           <Tooltip
             content={
@@ -64,7 +65,7 @@ export const Bar: FC<BarProps> = ({
           >
             <div
               key={index}
-              className={cx('section', { selected: section.pages.includes(selectedPageNumber) })}
+              className={cx('section', { selected: section.pages.includes(activePage) })}
             />
           </Tooltip>
         </div>

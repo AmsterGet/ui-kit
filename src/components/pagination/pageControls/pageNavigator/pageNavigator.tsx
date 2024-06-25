@@ -54,9 +54,9 @@ export const PageNavigator: FC<PageNavigatorProps> = ({
         </BaseIconButton>
       </div>
       <Bar
-        totalPagesCount={totalPages}
-        selectedPageNumber={activePage}
-        setSelectedPageNumber={changePage}
+        totalPages={totalPages}
+        activePage={activePage}
+        changePage={changePage}
         captions={captions}
       />
       <div className={cx('page-buttons')}>
