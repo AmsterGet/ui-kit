@@ -28,44 +28,53 @@ export const Bar: FC<BarProps> = ({
   const sectionsCount = Math.min(Math.ceil(BAR_WIDTH / MIN_SELECTOR_WIDTH), totalPages);
   const selectorWidth = Math.max(MIN_SELECTOR_WIDTH, pixelsPerPage);
 
-  const sections = [];
+  const pages = [];
   for (let i = 1; i <= totalPages; i++) {
-    sections.push({
+    pages.push({
       end: i * pixelsPerPage,
-      page: i,
+      pageNumber: i,
     });
   }
 
-  const mergedSections: Array<{ pages: Array<number> }> = Array.from(
-    { length: sectionsCount },
-    () => ({ pages: [] }),
-  );
-  sections.forEach((section) => {
-    const index = Math.ceil(section.end / selectorWidth) - 1;
-    mergedSections[index].pages.push(section.page);
+  const sections: Array<{ pages: { from: number | undefined; to: number | undefined } }> =
+    Array.from({ length: sectionsCount }, () => ({ pages: { from: undefined, to: undefined } }));
+  pages.forEach((page) => {
+    const index = Math.ceil(page.end / selectorWidth) - 1;
+    const currentSectionPages = sections[index].pages;
+
+    if (!currentSectionPages.from) {
+      currentSectionPages.from = page.pageNumber;
+    }
+    currentSectionPages.to = page.pageNumber;
   });
 
   return (
     <div className={cx('bar')}>
-      {mergedSections.map((section, index) => (
+      {sections.map((section, index) => (
         <div
+          key={index}
           className={cx('section-with-tooltip')}
           style={{ width: selectorWidth }}
-          onClick={() => changePage(section.pages[0])}
+          onClick={() => section.pages.from && changePage(section.pages.from)}
         >
           <Tooltip
             content={
               <div className={cx('tooltip')}>
                 <div className={cx('tooltip-text')}>{captions.goTo}</div>
-                <div className={cx('page-number')}>{section.pages[0]}</div>
+                <div className={cx('page-number')}>{section.pages.from}</div>
               </div>
             }
             className={cx('tooltip-wrapper')}
             placement={'top'}
           >
             <div
-              key={index}
-              className={cx('section', { selected: section.pages.includes(activePage) })}
+              className={cx('section', {
+                selected:
+                  section.pages.from &&
+                  section.pages.to &&
+                  section.pages.from <= activePage &&
+                  activePage <= section.pages.to,
+              })}
             />
           </Tooltip>
         </div>
