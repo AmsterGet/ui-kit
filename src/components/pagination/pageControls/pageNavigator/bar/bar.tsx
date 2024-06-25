@@ -1,7 +1,7 @@
 import { FC, ReactElement } from 'react';
 import classNames from 'classnames/bind';
 import { Tooltip } from '@components/tooltip';
-import { ChangePage } from '../../../types'
+import { ChangePage } from '../../../types';
 import styles from './bar.module.scss';
 
 const cx = classNames.bind(styles);
