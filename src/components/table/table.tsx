@@ -4,7 +4,7 @@ import classNames from 'classnames/bind';
 import { ArrowDownIcon, ArrowUpIcon } from '@components/icons';
 import { FixedColumn, PrimaryColumn, RowData, TableComponentProps, SortDirection } from './types';
 import { Checkbox } from '@components/checkbox';
-import { getColumnsKeys } from '@components/table/utils';
+import { getColumnsKeys } from './utils';
 
 const cx = classNames.bind(styles);
 
