@@ -4,6 +4,7 @@ import classNames from 'classnames/bind';
 import { ArrowDownIcon, ArrowUpIcon } from '@components/icons';
 import { FixedColumn, PrimaryColumn, RowData, TableComponentProps, SortDirection } from './types';
 import { Checkbox } from '@components/checkbox';
+import { getColumnsKeys } from '@components/table/utils';
 
 const cx = classNames.bind(styles);
 
@@ -17,6 +18,7 @@ export const Table: FC<TableComponentProps> = ({
   selectedRowIds = [],
   sortingDirection = SortDirection.ASC,
   sortingColumn = primaryColumn,
+  sortableColumns = getColumnsKeys([primaryColumn, ...fixedColumns]),
   onChangeSorting = () => {},
   onToggleRowSelection = () => {},
   onToggleAllRowsSelection = () => {},
@@ -29,6 +31,7 @@ export const Table: FC<TableComponentProps> = ({
   }, [primaryColumn, fixedColumns]);
 
   const handleSort = (key: string) => {
+    if (!sortableColumns.includes(key)) return;
     onChangeSorting({ key, direction: sortingDirection });
   };
 
@@ -72,6 +75,7 @@ export const Table: FC<TableComponentProps> = ({
   };
 
   const getSortIcon = (columnKey: string) => {
+    if (!sortableColumns.includes(columnKey)) return;
     if (sortingColumn?.key === columnKey) {
       return sortingDirection === SortDirection.ASC ? <ArrowUpIcon /> : <ArrowDownIcon />;
     }
