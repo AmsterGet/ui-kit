@@ -41,6 +41,7 @@ export interface TableComponentProps {
   selectedRowIds?: (string | number)[];
   sortingDirection?: SortDirection;
   sortingColumn?: Column;
+  sortableColumns?: string[];
   onChangeSorting?: (sortConfig?: SortConfig) => void;
   onToggleRowSelection?: (id: string | number) => void;
   onToggleAllRowsSelection?: () => void;

@@ -114,6 +114,7 @@ export const Default: Story = {
         <Table
           {...args}
           data={tableData}
+          sortableColumns={[primaryColumn.key]}
           onChangeSorting={(sortConfigParam = sortConfig) => {
             let { direction } = sortConfigParam;
             const { key } = sortConfigParam;

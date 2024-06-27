@@ -1,4 +1,4 @@
-import { RowData, SortConfig, SortDirection } from './types';
+import { Column, RowData, SortConfig, SortDirection } from './types';
 
 export const sortTableData = (tableData: RowData[], sortConfig?: SortConfig): RowData[] => {
   if (sortConfig) {
@@ -16,4 +16,8 @@ export const sortTableData = (tableData: RowData[], sortConfig?: SortConfig): Ro
     });
   }
   return tableData;
+};
+
+export const getColumnsKeys = (columns: Column[]): string[] => {
+  return columns.map((column) => column.key);
 };
