@@ -36,6 +36,7 @@ $HEIGHT-LARGE: 80px;
     box-shadow: var(--rp-ui-base-shadow-hover);
     background-color: var(--rp-ui-base-bg-000);
     border-radius: 4px;
+    max-width: 100%;
   }
 
   &.size-small {
@@ -82,10 +83,14 @@ $HEIGHT-LARGE: 80px;
     height: 100%;
     cursor: pointer;
     flex-shrink: 0;
+
+    & + .table-row-content{
+      max-width: calc(100% - 48px);
+    }
   }
 
   &.primary-cell {
-    flex: 1 0 320px;
+    flex: 1 1 320px;
     font-weight: $fw-medium;
     text-align: left;
   }
