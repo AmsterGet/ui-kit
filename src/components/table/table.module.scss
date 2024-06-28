@@ -46,10 +46,6 @@ $HEIGHT-LARGE: 80px;
   &.size-large {
     height: $HEIGHT-LARGE;
   }
-
-  &:hover {
-    color: var(--rp-ui-base-topaz-hover);
-  }
 }
 
 .table-body {
