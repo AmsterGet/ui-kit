@@ -14,6 +14,8 @@ export const Table: FC<TableComponentProps> = ({
   fixedColumns,
   rowActionMenu,
   className = '',
+  rowClassName = '',
+  headerClassName = '',
   selectable = false,
   selectedRowIds = [],
   sortingDirection = SortDirection.ASC,
@@ -84,7 +86,7 @@ export const Table: FC<TableComponentProps> = ({
 
   return (
     <div className={cx('table', className)}>
-      <div className={cx('table-header')}>
+      <div className={cx('table-header', headerClassName)}>
         {selectable && (
           <div className={cx('table-header-cell', 'checkbox-cell')}>
             {isAnyChecked && (
@@ -122,7 +124,7 @@ export const Table: FC<TableComponentProps> = ({
         {data.map((item, index) => (
           <div
             key={item.id}
-            className={cx('table-row', getSizeClassName(item))}
+            className={cx('table-row', getSizeClassName(item), rowClassName)}
             onMouseEnter={() => handleRowMouseEnter(index)}
             onMouseLeave={handleRowMouseLeave}
           >

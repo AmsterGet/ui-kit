@@ -38,6 +38,8 @@ export interface TableComponentProps {
   rowActionMenu?: ReactNode;
   selectable?: boolean;
   className?: string;
+  headerClassName?: string;
+  rowClassName?: string;
   selectedRowIds?: (string | number)[];
   sortingDirection?: SortDirection;
   sortingColumn?: Column;
