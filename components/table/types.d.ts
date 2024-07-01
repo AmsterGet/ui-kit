@@ -37,9 +37,12 @@ export interface TableComponentProps {
     rowActionMenu?: ReactNode;
     selectable?: boolean;
     className?: string;
+    headerClassName?: string;
+    rowClassName?: string;
     selectedRowIds?: (string | number)[];
     sortingDirection?: SortDirection;
     sortingColumn?: Column;
+    sortableColumns?: string[];
     onChangeSorting?: (sortConfig?: SortConfig) => void;
     onToggleRowSelection?: (id: string | number) => void;
     onToggleAllRowsSelection?: () => void;
