@@ -25,12 +25,12 @@ export const Primary: Story = {
     const [page, setPage] = useState(2);
 
     return (
-      <div style={{ width: '600px' }}>
+      <div style={{ width: '900px' }}>
         <Pagination
           pageSize={pageSize}
           activePage={page}
-          totalItems={200}
-          totalPages={10}
+          totalItems={400}
+          totalPages={400 / pageSize}
           pageSizeOptions={[10, 20, 30, 40, 50]}
           changePage={(newPage) => {
             setPage(newPage);

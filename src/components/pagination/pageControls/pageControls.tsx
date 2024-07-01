@@ -37,7 +37,12 @@ export const PageControls: FC<PageControlsProps> = ({
         goToText={captions.goTo}
         goActionText={captions.goAction}
       />
-      <PageNavigator changePage={changePage} activePage={activePage} totalPages={totalPages} />
+      <PageNavigator
+        changePage={changePage}
+        activePage={activePage}
+        totalPages={totalPages}
+        captions={{ goTo: captions.goTo }}
+      />
       <span className={cx('total-pages')}>
         {`${captions.of} `}
         {totalPages}
