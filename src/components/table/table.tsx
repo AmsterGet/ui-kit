@@ -105,16 +105,20 @@ export const Table: FC<TableComponentProps> = ({
             className={cx('table-header-cell', {
               [`align-${(column as FixedColumn).align}`]: 'align' in column,
               'primary-cell': 'primary' in column && column.primary,
+              'sortable-cell': sortableColumns.includes(column.key),
             })}
             style={getCellStyle(column as FixedColumn)}
-            onClick={() => handleSort(column.key)}
-            onMouseEnter={() => handleMouseEnter(column.key)}
-            onMouseLeave={handleMouseLeave}
           >
-            <span>{column.header}</span>
-
-            {(hoveredColumn === column.key || sortingColumn?.key === column.key) &&
-              getSortIcon(column.key)}
+            <div
+              className={cx('label')}
+              onClick={() => handleSort(column.key)}
+              onMouseEnter={() => handleMouseEnter(column.key)}
+              onMouseLeave={handleMouseLeave}
+            >
+              <span>{column.header}</span>
+              {(hoveredColumn === column.key || sortingColumn?.key === column.key) &&
+                getSortIcon(column.key)}
+            </div>
           </button>
         ))}
         {rowActionMenu && <div className={cx('table-header-cell', 'action-menu-cell')} />}
@@ -143,7 +147,7 @@ export const Table: FC<TableComponentProps> = ({
               {columns.map((column) => (
                 <div
                   key={column.key}
-                  className={cx('table-cell', 'table-cell', {
+                  className={cx('table-cell', {
                     'primary-cell': 'primary' in column && column.primary,
                   })}
                   style={getCellStyle(column as FixedColumn)}
