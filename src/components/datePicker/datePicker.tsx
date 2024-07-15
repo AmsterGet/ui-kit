@@ -24,7 +24,7 @@ const CustomInput = forwardRef((props: any, ref) => {
   return <Input {...props} ref={ref} />;
 });
 
-export interface DatePickerProps {
+interface DatePickerProps {
   onChange: (data: Date | null) => void;
   onBlur: () => void;
   onFocus: () => void;

@@ -27,8 +27,8 @@ const getYearsFrom = (start: number, amountYearsToGenerate = 20) => {
 };
 
 export interface DatePickerHeaderProps {
-  changeYear: () => void;
-  changeMonth: () => void;
+  changeYear: (year: any) => void;
+  changeMonth: (month: any) => void;
   decreaseMonth: () => void;
   increaseMonth: () => void;
   headerNodes: ReactNode;
@@ -74,9 +74,8 @@ export const DatePickerHeader: FC<DatePickerHeaderProps> = ({
     );
   }, [yearsOptions]);
 
-  const displayedYear: DropdownValue | undefined = yearDropdownOptions.find(
-    ({ value }) => value === year,
-  )?.label;
+  const displayedYear: DropdownValue =
+    yearDropdownOptions.find(({ value }) => value === year)?.label || '';
 
   const displayedMonth = monthDropdownOptions[month].label;
 
@@ -102,7 +101,7 @@ export const DatePickerHeader: FC<DatePickerHeaderProps> = ({
           />
           <Dropdown
             options={yearDropdownOptions}
-            value={displayedYear || ''}
+            value={displayedYear}
             onChange={changeYear}
             transparentBackground
             className={cx('dropdown')}

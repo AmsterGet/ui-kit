@@ -1,4 +1,4 @@
-import { forwardRef } from 'react';
+import { forwardRef, ForwardRefRenderFunction } from 'react';
 import classNames from 'classnames/bind';
 import { CalendarIcon } from '@components/icons';
 import { FieldText } from '@components/fieldText';
@@ -12,7 +12,10 @@ interface InputProps {
   onClick: () => void;
   customPlaceholder: string;
 }
-const Input: React.FC<InputProps> = ({ value, onChange, customPlaceholder, onClick }, ref) => {
+const Input: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
+  { value, onChange, customPlaceholder, onClick },
+  ref,
+) => {
   return (
     <FieldText
       className={cx('input')}
