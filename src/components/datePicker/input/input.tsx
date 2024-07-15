@@ -9,17 +9,19 @@ const cx = classNames.bind(styles);
 interface InputProps {
   value: string;
   onChange: () => void;
-  placeholder: string;
+  onClick: () => void;
+  customPlaceholder: string;
 }
-const Input: React.FC<InputProps> = ({ value, onChange, placeholder }, ref) => {
+const Input: React.FC<InputProps> = ({ value, onChange, customPlaceholder, onClick }, ref) => {
   return (
     <FieldText
       className={cx('input')}
       defaultWidth={false}
       onChange={onChange}
       value={value}
-      placeholder={placeholder}
+      placeholder={customPlaceholder}
       endIcon={<CalendarIcon />}
+      onClick={onClick}
       ref={ref}
     />
   );

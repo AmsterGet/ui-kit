@@ -92,7 +92,7 @@ export const DatePicker: FC<DatePickerProps> = ({
 
   return (
     <ReactDatePicker
-      customInput={<CustomInput placeholder={placeholder} inputRef={inputRef} />}
+      customInput={<CustomInput customPlaceholder={placeholder} inputRef={inputRef} />}
       selected={selected}
       startDate={startDate}
       endDate={endDate}
