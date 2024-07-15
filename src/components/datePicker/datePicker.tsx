@@ -2,13 +2,13 @@ import ReactDatePicker, { registerLocale } from 'react-datepicker';
 import classNames from 'classnames/bind';
 import { FC, ReactNode, useMemo, useRef, forwardRef } from 'react';
 import { be, ru, enGB, es, uk, zhCN } from 'date-fns/locale';
-import { DatePickerHeader } from './header';
-import Input from './input/input.tsx';
+import { DatePickerHeader } from './header/datePickerHeader';
+import Input from './input/input';
 import styles from './datePicker.module.scss';
 
 const cx = classNames.bind(styles);
 
-const currentLanguageToLocale: {[key: string]: Locale} = {
+const currentLanguageToLocale: { [key: string]: Locale } = {
   en: enGB,
   es,
   be,
@@ -21,13 +21,13 @@ const DEFAULT_LOCALE = 'en';
 const DEFAULT_DATE_FORMAT = 'MM-dd-yyyy';
 
 const CustomInput = forwardRef((props: any, ref) => {
-  return <Input {...props} ref={ref}/>;
+  return <Input {...props} ref={ref} />;
 });
 
 export interface DatePickerProps {
   onChange: (data: Date | null) => void;
-  onBlur:  () => void;
-  onFocus:  () => void;
+  onBlur: () => void;
+  onFocus: () => void;
   headerNodes: ReactNode;
   disabled: boolean;
   shouldCloseOnSelect: boolean;
@@ -39,11 +39,11 @@ export interface DatePickerProps {
   calendarClassName: string;
   customTimeInput: ReactNode;
   language: string;
-  yearsOptions: number[],
-  placeholder: string,
-  dateFormat: string,
-  selects: 'start' | 'end' | string,
-  selected: Date | null,
+  yearsOptions: number[];
+  placeholder: string;
+  dateFormat: string;
+  selects: 'start' | 'end' | string;
+  selected: Date | null;
 }
 
 export const DatePicker: FC<DatePickerProps> = ({
@@ -80,9 +80,7 @@ export const DatePicker: FC<DatePickerProps> = ({
     const isEndDate = isValidEndDate && displayedDateToString === endDateToString;
 
     const isInsideSelectedRange =
-      (startDate && endDate) &&
-      displayedDates > startDate &&
-      displayedDates < endDate;
+      startDate && endDate && displayedDates > startDate && displayedDates < endDate;
 
     return cx('date', {
       'current-date': isCurrentDate,
@@ -110,7 +108,7 @@ export const DatePicker: FC<DatePickerProps> = ({
         <DatePickerHeader
           {...customHeaderProps}
           headerNodes={headerNodes}
-          customClass={customClassName}
+          customClassName={customClassName}
           yearsOptions={yearsOptions}
         />
       )}

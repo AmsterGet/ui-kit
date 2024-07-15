@@ -1,9 +1,9 @@
-import classNames from 'classnames/bind';
 import { FC, ReactNode, useMemo } from 'react';
+import classNames from 'classnames/bind';
 import { Dropdown } from '@/components/dropdown';
-import styles from './datePickerHeader.module.scss';
 import { CalendarArrowIcon } from '@components/icons';
-import {DropdownOptionType, DropdownValue} from '@components/dropdown/types.ts';
+import { DropdownOptionType, DropdownValue } from '@components/dropdown/types';
+import styles from './datePickerHeader.module.scss';
 
 const cx = classNames.bind(styles);
 
@@ -27,16 +27,16 @@ const getYearsFrom = (start: number, amountYearsToGenerate = 20) => {
 };
 
 export interface DatePickerHeaderProps {
-  changeYear: () => void,
-  changeMonth: () => void,
-  decreaseMonth: () => void,
-  increaseMonth: () => void,
-  headerNodes: ReactNode,
-  date: Date,
-  prevMonthButtonDisabled: boolean,
-  nextMonthButtonDisabled: boolean,
-  customClassName: string,
-  yearsOptions: number[],
+  changeYear: (year: DropdownValue | number) => void;
+  changeMonth: () => void;
+  decreaseMonth: () => void;
+  increaseMonth: () => void;
+  headerNodes: ReactNode;
+  date: Date;
+  prevMonthButtonDisabled: boolean;
+  nextMonthButtonDisabled: boolean;
+  customClassName: string;
+  yearsOptions: number[];
 }
 
 export const DatePickerHeader: FC<DatePickerHeaderProps> = ({
@@ -56,7 +56,7 @@ export const DatePickerHeader: FC<DatePickerHeaderProps> = ({
 
   const monthDropdownOptions = useMemo(
     () =>
-      months.reduce((acc: { value: number, label: string }[], monthValue, monthNumber) => {
+      months.reduce((acc: { value: number; label: string }[], monthValue, monthNumber) => {
         return acc.concat({
           value: monthNumber,
           label: monthValue,
@@ -68,12 +68,15 @@ export const DatePickerHeader: FC<DatePickerHeaderProps> = ({
   const yearDropdownOptions: DropdownOptionType[] = useMemo(() => {
     const yearValues = yearsOptions.length > 0 ? yearsOptions : getYearsFrom(year);
     return yearValues.reduce(
-      (acc: { value: number, label: string }[], yearValue) => acc.concat({ value: yearValue, label: `${yearValue}` }),
+      (acc: { value: number; label: string }[], yearValue) =>
+        acc.concat({ value: yearValue, label: `${yearValue}` }),
       [],
     );
   }, [yearsOptions]);
 
-  const displayedYear: DropdownValue | undefined = yearDropdownOptions.find(({ value }) => value === year)?.label;
+  const displayedYear: DropdownValue | undefined = yearDropdownOptions.find(
+    ({ value }) => value === year,
+  )?.label;
 
   const displayedMonth = monthDropdownOptions[month].label;
 

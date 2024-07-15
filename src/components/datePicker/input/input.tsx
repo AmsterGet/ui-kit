@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import { forwardRef } from 'react';
 import classNames from 'classnames/bind';
 import { CalendarIcon } from '@components/icons';
 import { FieldText } from '@components/fieldText';
@@ -11,10 +11,7 @@ interface InputProps {
   onChange: () => void;
   placeholder: string;
 }
-const Input: React.FC<InputProps> = (
-  { value, onChange, placeholder },
-  ref
-) => {
+const Input: React.FC<InputProps> = ({ value, onChange, placeholder }, ref) => {
   return (
     <FieldText
       className={cx('input')}
