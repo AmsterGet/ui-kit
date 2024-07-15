@@ -1,7 +1,7 @@
 import ReactDatePicker, { registerLocale } from 'react-datepicker';
 import classNames from 'classnames/bind';
 import { FC, ReactNode, useMemo, useRef, forwardRef } from 'react';
-import { be, ru, enGB, es, uk, zhCN } from 'date-fns/locale';
+import { be, ru, enGB, es, uk, zhCN, Locale } from 'date-fns/locale';
 import { DatePickerHeader } from './header/datePickerHeader';
 import Input from './input/input';
 import styles from './datePicker.module.scss';

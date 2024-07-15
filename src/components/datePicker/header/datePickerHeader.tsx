@@ -27,7 +27,7 @@ const getYearsFrom = (start: number, amountYearsToGenerate = 20) => {
 };
 
 export interface DatePickerHeaderProps {
-  changeYear: (year: DropdownValue | number) => void;
+  changeYear: () => void;
   changeMonth: () => void;
   decreaseMonth: () => void;
   increaseMonth: () => void;
