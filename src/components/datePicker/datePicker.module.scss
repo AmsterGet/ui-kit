@@ -65,6 +65,15 @@ $POPOVER_Z_INDEX: 10;
         position: relative;
       }
     }
+
+    &.react-datepicker__day--selected {
+      position: relative;
+      border-radius: 50%;
+      background-color: var(--rp-ui-base-topaz);
+      font-family: var(--rp-ui-base-font-family);
+      font-weight: $fw-bold;
+      color: var(--rp-ui-base-bg-000);
+    }
   }
 
   .react-datepicker__day--disabled {
@@ -156,7 +165,7 @@ $POPOVER_Z_INDEX: 10;
   width: 344px;
   padding: 30px 32px 32px;
   border-radius: 8px;
-  box-shadow: 0px 8px 40px var(--rp-ui-base-almost-black-slight-light);
+  box-shadow: 0px 8px 40px var(--rp-ui-base-dark-bg-light);
   border: none;
   margin-top: 4px;
 
@@ -175,7 +184,7 @@ $POPOVER_Z_INDEX: 10;
 
   .date {
     background-color: transparent;
-    border-radius: none;
+    border-radius: unset;
     color: inherit;
     text-align: center;
   }

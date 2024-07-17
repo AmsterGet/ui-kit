@@ -2,33 +2,19 @@ import { FC, ReactNode, useMemo } from 'react';
 import classNames from 'classnames/bind';
 import { Dropdown } from '@/components/dropdown';
 import { CalendarArrowIcon } from '@components/icons';
-import { DropdownOptionType, DropdownValue } from '@components/dropdown/types';
+import {DropdownOptionType, DropdownValue} from '@components/dropdown/types';
 import styles from './datePickerHeader.module.scss';
 
 const cx = classNames.bind(styles);
 
-const months = [
-  'january',
-  'february',
-  'march',
-  'april',
-  'may',
-  'june',
-  'july',
-  'august',
-  'september',
-  'october',
-  'november',
-  'december',
-];
 const getYearsFrom = (start: number, amountYearsToGenerate = 20) => {
   const yearsFromCurrent = start + amountYearsToGenerate;
   return new Array(yearsFromCurrent - start).fill(undefined).map((_, i) => start - i);
 };
 
 export interface DatePickerHeaderProps {
-  changeYear: (year: any) => void;
-  changeMonth: (month: any) => void;
+  changeYear: (year: number) => void;
+  changeMonth: (month: number) => void;
   decreaseMonth: () => void;
   increaseMonth: () => void;
   headerNodes: ReactNode;
@@ -37,6 +23,7 @@ export interface DatePickerHeaderProps {
   nextMonthButtonDisabled: boolean;
   customClassName: string;
   yearsOptions: number[];
+  locale: string;
 }
 
 export const DatePickerHeader: FC<DatePickerHeaderProps> = ({
@@ -50,13 +37,21 @@ export const DatePickerHeader: FC<DatePickerHeaderProps> = ({
   headerNodes = null,
   customClassName = '',
   yearsOptions = [],
+  locale,
 }) => {
   const year = date.getFullYear();
   const month = date.getMonth();
 
+  const monthList = Array(12).keys();
+  const formatter = new Intl.DateTimeFormat(locale, {
+    month: "long"
+  });
+  const getMonthName = (monthIndex: number) =>  formatter.format(new Date(year, monthIndex));
+  const months = Array.from(monthList , getMonthName);
+
   const monthDropdownOptions = useMemo(
     () =>
-      months.reduce((acc: { value: number; label: string }[], monthValue, monthNumber) => {
+      months.reduce((acc: DropdownOptionType[], monthValue, monthNumber) => {
         return acc.concat({
           value: monthNumber,
           label: monthValue,
@@ -68,16 +63,23 @@ export const DatePickerHeader: FC<DatePickerHeaderProps> = ({
   const yearDropdownOptions: DropdownOptionType[] = useMemo(() => {
     const yearValues = yearsOptions.length > 0 ? yearsOptions : getYearsFrom(year);
     return yearValues.reduce(
-      (acc: { value: number; label: string }[], yearValue) =>
+      (acc: DropdownOptionType[], yearValue) =>
         acc.concat({ value: yearValue, label: `${yearValue}` }),
       [],
     );
   }, [yearsOptions]);
 
-  const displayedYear: DropdownValue =
-    yearDropdownOptions.find(({ value }) => value === year)?.label || '';
-
   const displayedMonth = monthDropdownOptions[month].label;
+
+  const onMonthChange = (month: DropdownValue) => {
+    const stringMonth:number = month as number;
+    changeMonth(stringMonth);
+  }
+
+  const onYearChange = (year: DropdownValue) => {
+    const numberYear: number = year as number;
+    changeYear(numberYear)
+  }
 
   return (
     <>
@@ -94,15 +96,15 @@ export const DatePickerHeader: FC<DatePickerHeaderProps> = ({
           <Dropdown
             options={monthDropdownOptions}
             value={displayedMonth}
-            onChange={changeMonth}
+            onChange={onMonthChange}
             transparentBackground
             className={cx('dropdown', 'month-dropdown')}
             toggleButtonClassName={cx('toggle-button')}
           />
           <Dropdown
             options={yearDropdownOptions}
-            value={displayedYear}
-            onChange={changeYear}
+            value={year}
+            onChange={onYearChange}
             transparentBackground
             className={cx('dropdown')}
             toggleButtonClassName={cx('toggle-button')}

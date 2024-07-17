@@ -12,14 +12,17 @@ const meta: Meta<typeof DatePicker> = {
   tags: ['autodocs'],
   render: (args) => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    const [startDate, setStartDate] = useState<Date | null>(null);
+    const [startDate, setStartDate] = useState<Date | undefined>(undefined);
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    const [endDate, setEndDate] = useState<Date | null>(null);
+    const [endDate, setEndDate] = useState<Date | undefined>(undefined);
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const [date, setDate] = useState<Date | undefined>(undefined);
     return (
       <>
+        Range DatePicker:
         <DatePicker
           {...args}
-          selected={startDate}
+          value={startDate}
           startDate={startDate}
           endDate={endDate}
           onChange={setStartDate}
@@ -27,11 +30,18 @@ const meta: Meta<typeof DatePicker> = {
         />
         <DatePicker
           {...args}
-          selected={endDate}
+          value={endDate}
           startDate={startDate}
           endDate={endDate}
           onChange={setEndDate}
           selects={'end'}
+        />
+        Single DatePicker:
+        <DatePicker
+          {...args}
+          value={date}
+          onChange={setDate}
+          locale={'ru'}
         />
       </>
     );
