@@ -1,13 +1,14 @@
-import ReactDatePicker from 'react-datepicker';
+import ReactDatePicker, { registerLocale } from 'react-datepicker';
 import classNames from 'classnames/bind';
 import { FC, ReactNode, useRef, forwardRef, ReactElement } from 'react';
 import { DatePickerHeader } from './header/datePickerHeader';
 import Input from './input/input';
+import { Locale } from 'date-fns';
 import styles from './datePicker.module.scss';
 
 const cx = classNames.bind(styles);
 
-const DEFAULT_LOCALE = 'en';
+const DEFAULT_LANGUAGE = 'en';
 const DEFAULT_DATE_FORMAT = 'MM-dd-yyyy';
 
 const CustomInput = forwardRef((props: any, ref) => {
@@ -28,13 +29,17 @@ interface DatePickerProps {
   popperClassName?: string;
   calendarClassName?: string;
   customTimeInput?: ReactElement;
-  locale?: string;
+  language?: string;
   yearsOptions?: number[];
   placeholder?: string;
   dateFormat?: string;
   selects?: 'start' | 'end' | string;
   value?: Date | null;
 }
+
+export const registerDatePickerLocale = (language: string, locale: Locale) => {
+  registerLocale(language, locale);
+};
 
 export const DatePicker: FC<DatePickerProps> = ({
   onChange = () => {},
@@ -50,7 +55,7 @@ export const DatePicker: FC<DatePickerProps> = ({
   popperClassName = '',
   calendarClassName = '',
   fixedHeight = false,
-  locale = DEFAULT_LOCALE,
+  language = DEFAULT_LANGUAGE,
   yearsOptions = [],
   placeholder = DEFAULT_DATE_FORMAT.toUpperCase(),
   dateFormat = DEFAULT_DATE_FORMAT,
@@ -88,7 +93,7 @@ export const DatePicker: FC<DatePickerProps> = ({
       disabled={disabled}
       shouldCloseOnSelect={shouldCloseOnSelect}
       fixedHeight={fixedHeight}
-      locale={locale}
+      locale={language}
       showPopperArrow={false}
       dayClassName={getDayClassName}
       calendarClassName={cx(calendarClassName, 'calendar')}
@@ -98,7 +103,7 @@ export const DatePicker: FC<DatePickerProps> = ({
           headerNodes={headerNodes}
           customClassName={customClassName}
           yearsOptions={yearsOptions}
-          locale={locale}
+          locale={language}
         />
       )}
       onChange={onChange}

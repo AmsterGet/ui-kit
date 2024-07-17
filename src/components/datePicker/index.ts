@@ -1,5 +1,5 @@
-import { DatePicker } from './datePicker';
+import { DatePicker, registerDatePickerLocale } from './datePicker';
 
-export { DatePicker };
+export { DatePicker, registerDatePickerLocale };
 
 export default DatePicker;

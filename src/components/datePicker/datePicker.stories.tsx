@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { DatePicker } from './datePicker';
+import { DatePicker, registerDatePickerLocale } from './datePicker';
 import { useState } from 'react';
+import { ru } from 'date-fns/locale';
 
 const meta: Meta<typeof DatePicker> = {
   title: 'DatePicker',
@@ -17,6 +18,7 @@ const meta: Meta<typeof DatePicker> = {
     const [endDate, setEndDate] = useState<Date | undefined>(undefined);
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const [date, setDate] = useState<Date | undefined>(undefined);
+    registerDatePickerLocale('ru', ru);
     return (
       <>
         Range DatePicker:
@@ -37,7 +39,7 @@ const meta: Meta<typeof DatePicker> = {
           selects={'end'}
         />
         Single DatePicker:
-        <DatePicker {...args} value={date} onChange={setDate} locale={'ru'} />
+        <DatePicker {...args} value={date} onChange={setDate} language={'ru'} />
       </>
     );
   },

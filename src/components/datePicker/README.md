@@ -23,8 +23,12 @@ width - 380px. Max height - flexible.
 - **selects** : _string('start' | 'end')_, optional, default = ''
 - **value** : _Date_, optional, default = null
 
-### Events
+### Events:
 
 - **onChange**
 - **onBlur**
 - **onFocus**
+
+
+### Setup:
+- **registerDatePickerLocale**
