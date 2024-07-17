@@ -37,12 +37,7 @@ const meta: Meta<typeof DatePicker> = {
           selects={'end'}
         />
         Single DatePicker:
-        <DatePicker
-          {...args}
-          value={date}
-          onChange={setDate}
-          locale={'ru'}
-        />
+        <DatePicker {...args} value={date} onChange={setDate} locale={'ru'} />
       </>
     );
   },

@@ -2,7 +2,7 @@ import { FC, ReactNode, useMemo } from 'react';
 import classNames from 'classnames/bind';
 import { Dropdown } from '@/components/dropdown';
 import { CalendarArrowIcon } from '@components/icons';
-import {DropdownOptionType, DropdownValue} from '@components/dropdown/types';
+import { DropdownOptionType, DropdownValue } from '@components/dropdown/types';
 import styles from './datePickerHeader.module.scss';
 
 const cx = classNames.bind(styles);
@@ -44,10 +44,10 @@ export const DatePickerHeader: FC<DatePickerHeaderProps> = ({
 
   const monthList = Array(12).keys();
   const formatter = new Intl.DateTimeFormat(locale, {
-    month: "long"
+    month: 'long',
   });
-  const getMonthName = (monthIndex: number) =>  formatter.format(new Date(year, monthIndex));
-  const months = Array.from(monthList , getMonthName);
+  const getMonthName = (monthIndex: number) => formatter.format(new Date(year, monthIndex));
+  const months = Array.from(monthList, getMonthName);
 
   const monthDropdownOptions = useMemo(
     () =>
@@ -71,15 +71,15 @@ export const DatePickerHeader: FC<DatePickerHeaderProps> = ({
 
   const displayedMonth = monthDropdownOptions[month].label;
 
-  const onMonthChange = (month: DropdownValue) => {
-    const stringMonth:number = month as number;
+  const onMonthChange = (changedMonth: DropdownValue) => {
+    const stringMonth: number = changedMonth as number;
     changeMonth(stringMonth);
-  }
+  };
 
-  const onYearChange = (year: DropdownValue) => {
-    const numberYear: number = year as number;
-    changeYear(numberYear)
-  }
+  const onYearChange = (changedYear: DropdownValue) => {
+    const numberYear: number = changedYear as number;
+    changeYear(numberYear);
+  };
 
   return (
     <>
