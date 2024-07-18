@@ -255,3 +255,8 @@ $POPOVER_Z_INDEX: 10;
 .popper {
   z-index: $POPOVER_Z_INDEX;
 }
+
+.input {
+  width: 100%;
+  min-width: 138px;
+}

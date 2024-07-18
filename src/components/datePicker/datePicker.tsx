@@ -1,19 +1,16 @@
 import ReactDatePicker, { registerLocale } from 'react-datepicker';
 import classNames from 'classnames/bind';
-import { FC, ReactNode, useRef, forwardRef, ReactElement } from 'react';
-import { DatePickerHeader } from './header/datePickerHeader';
-import Input from './input/input';
 import { Locale } from 'date-fns';
+import { FC, ReactNode, useRef, ReactElement } from 'react';
+import FieldText from '@components/fieldText';
+import { CalendarIcon } from '@/components/icons';
+import { DatePickerHeader } from './header/datePickerHeader';
 import styles from './datePicker.module.scss';
 
 const cx = classNames.bind(styles);
 
 const DEFAULT_LANGUAGE = 'en';
 const DEFAULT_DATE_FORMAT = 'MM-dd-yyyy';
-
-const CustomInput = forwardRef((props: any, ref) => {
-  return <Input {...props} ref={ref} />;
-});
 
 interface DatePickerProps {
   onChange?: (date: Date | any) => void;
@@ -85,7 +82,15 @@ export const DatePicker: FC<DatePickerProps> = ({
 
   return (
     <ReactDatePicker
-      customInput={<CustomInput customPlaceholder={placeholder} inputRef={inputRef} />}
+      customInput={
+        <FieldText
+          className={cx('input')}
+          defaultWidth={false}
+          endIcon={<CalendarIcon />}
+          ref={inputRef}
+        />
+      }
+      placeholderText={placeholder}
       selected={value}
       startDate={startDate}
       endDate={endDate}
