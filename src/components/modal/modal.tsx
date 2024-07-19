@@ -18,7 +18,7 @@ const MODAL_HEADER_AND_FOOTER_HEIGHT = 176;
 type ModalOverlay = 'default' | 'light-cyan';
 
 interface ModalProps {
-  onClose: () => void;
+  onClose?: () => void;
   title?: ReactNode;
   headerNode?: ReactNode;
   children?: ReactNode;
@@ -31,6 +31,10 @@ interface ModalProps {
   okButton?: ButtonProps;
   cancelButton?: ButtonProps;
   scrollable?: boolean;
+  withoutFooter?: boolean;
+  CustomFooter?: FC<{ closeHandler: () => void }>;
+  headerContentClassName?: string;
+  headerDescription?: string;
 }
 
 // TODO: Fix issue with modal positioning
@@ -48,6 +52,10 @@ export const Modal: FC<ModalProps> = ({
   zIndex = 2,
   allowCloseOutside = true,
   scrollable = false,
+  withoutFooter = false,
+  CustomFooter = null,
+  headerContentClassName = '',
+  headerDescription = '',
 }) => {
   const [isShown, setShown] = useState(false);
   const [modalHeight, setModalHeight] = useState(0);
@@ -106,7 +114,13 @@ export const Modal: FC<ModalProps> = ({
             exit={{ opacity: 0, marginTop: -modalMargin }}
             transition={{ duration: 0.3 }}
           >
-            <ModalHeader title={title} headerNode={headerNode} onClose={closeModal} />
+            <ModalHeader
+              title={title}
+              headerNode={headerNode}
+              onClose={closeModal}
+              headerContentClassName={headerContentClassName}
+              headerDescription={headerDescription}
+            />
             {scrollable ? (
               <Scrollbars autoHeight autoHeightMax={contentMaxHeight} hideTracksWhenNotNeeded>
                 <ModalContent>{children}</ModalContent>
@@ -114,13 +128,18 @@ export const Modal: FC<ModalProps> = ({
             ) : (
               <ModalContent>{children}</ModalContent>
             )}
-            <ModalFooter
-              size={size}
-              footerNode={footerNode}
-              okButton={okButton}
-              cancelButton={cancelButton}
-              closeHandler={closeModal}
-            />
+            {!withoutFooter &&
+              (CustomFooter ? (
+                <CustomFooter closeHandler={closeModal} />
+              ) : (
+                <ModalFooter
+                  size={size}
+                  footerNode={footerNode}
+                  okButton={okButton}
+                  cancelButton={cancelButton}
+                  closeHandler={closeModal}
+                />
+              ))}
           </motion.div>
         </div>
       )}
