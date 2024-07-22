@@ -1,16 +1,12 @@
 import { FC, ReactNode, useMemo } from 'react';
 import classNames from 'classnames/bind';
-import { Dropdown } from '@/components/dropdown';
+import { Dropdown } from '@components/dropdown';
 import { CalendarArrowIcon } from '@components/icons';
 import { DropdownOptionType, DropdownValue } from '@components/dropdown/types';
+import { getYearsFrom } from '../utils';
 import styles from './datePickerHeader.module.scss';
 
 const cx = classNames.bind(styles);
-
-const getYearsFrom = (start: number, amountYearsToGenerate = 20) => {
-  const yearsFromCurrent = start + amountYearsToGenerate;
-  return new Array(yearsFromCurrent - start).fill(undefined).map((_, i) => start - i);
-};
 
 export interface DatePickerHeaderProps {
   changeYear: (year: number) => void;
@@ -42,23 +38,21 @@ export const DatePickerHeader: FC<DatePickerHeaderProps> = ({
   const year = date.getFullYear();
   const month = date.getMonth();
 
-  const monthList = Array(12).keys();
-  const formatter = new Intl.DateTimeFormat(locale, {
-    month: 'long',
-  });
-  const getMonthName = (monthIndex: number) => formatter.format(new Date(year, monthIndex));
-  const months = Array.from(monthList, getMonthName);
+  const monthDropdownOptions = useMemo(() => {
+    const monthList = Array(12).keys();
+    const formatter = new Intl.DateTimeFormat(locale, {
+      month: 'long',
+    });
+    const getMonthName = (monthIndex: number) => formatter.format(new Date(year, monthIndex));
+    const months = Array.from(monthList, getMonthName);
 
-  const monthDropdownOptions = useMemo(
-    () =>
-      months.reduce((acc: DropdownOptionType[], monthValue, monthNumber) => {
-        return acc.concat({
-          value: monthNumber,
-          label: monthValue,
-        });
-      }, []),
-    [],
-  );
+    return months.reduce((acc: DropdownOptionType[], monthValue, monthNumber) => {
+      return acc.concat({
+        value: monthNumber,
+        label: monthValue,
+      });
+    }, []);
+  }, []);
 
   const yearDropdownOptions: DropdownOptionType[] = useMemo(() => {
     const yearValues = yearsOptions.length > 0 ? yearsOptions : getYearsFrom(year);
@@ -69,11 +63,9 @@ export const DatePickerHeader: FC<DatePickerHeaderProps> = ({
     );
   }, [yearsOptions]);
 
-  const displayedMonth = monthDropdownOptions[month].label;
-
   const onMonthChange = (changedMonth: DropdownValue) => {
-    const stringMonth: number = changedMonth as number;
-    changeMonth(stringMonth);
+    const numberMonth: number = changedMonth as number;
+    changeMonth(numberMonth);
   };
 
   const onYearChange = (changedYear: DropdownValue) => {
@@ -83,19 +75,20 @@ export const DatePickerHeader: FC<DatePickerHeaderProps> = ({
 
   return (
     <>
-      {headerNodes ? <div className={cx(customClassName)}>{headerNodes}</div> : null}
+      {headerNodes && <div className={cx(customClassName)}>{headerNodes}</div>}
       <div className={cx('header')}>
-        <i
+        <button
           aria-label="Previous Months"
-          onClick={prevMonthButtonDisabled ? undefined : decreaseMonth}
-          className={cx('icon-prev', { disabled: prevMonthButtonDisabled })}
+          disabled={prevMonthButtonDisabled}
+          onClick={decreaseMonth}
+          className={cx('button-prev', { disabled: prevMonthButtonDisabled })}
         >
           <CalendarArrowIcon />
-        </i>
+        </button>
         <div className={cx('dropdowns-wrapper')}>
           <Dropdown
             options={monthDropdownOptions}
-            value={displayedMonth}
+            value={month}
             onChange={onMonthChange}
             transparentBackground
             className={cx('dropdown', 'month-dropdown')}
@@ -110,13 +103,14 @@ export const DatePickerHeader: FC<DatePickerHeaderProps> = ({
             toggleButtonClassName={cx('toggle-button')}
           />
         </div>
-        <i
+        <button
           aria-label="Next Months"
-          onClick={nextMonthButtonDisabled ? undefined : increaseMonth}
-          className={cx('icon-next', { disabled: nextMonthButtonDisabled })}
+          disabled={nextMonthButtonDisabled}
+          onClick={increaseMonth}
+          className={cx('button-next', { disabled: nextMonthButtonDisabled })}
         >
           <CalendarArrowIcon />
-        </i>
+        </button>
       </div>
     </>
   );

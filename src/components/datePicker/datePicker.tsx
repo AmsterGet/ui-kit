@@ -1,9 +1,8 @@
-import ReactDatePicker, { registerLocale } from 'react-datepicker';
+import ReactDatePicker, { ReactDatePickerCustomHeaderProps } from 'react-datepicker';
 import classNames from 'classnames/bind';
-import { Locale } from 'date-fns';
 import { FC, ReactNode, useRef, ReactElement } from 'react';
-import FieldText from '@components/fieldText';
-import { CalendarIcon } from '@/components/icons';
+import { FieldText } from '@components/fieldText';
+import { CalendarIcon } from '@components/icons';
 import { DatePickerHeader } from './header/datePickerHeader';
 import styles from './datePicker.module.scss';
 
@@ -30,13 +29,9 @@ interface DatePickerProps {
   yearsOptions?: number[];
   placeholder?: string;
   dateFormat?: string;
-  selects?: 'start' | 'end' | string;
+  selects?: 'start' | 'end' | 'none';
   value?: Date | null;
 }
-
-export const registerDatePickerLocale = (language: string, locale: Locale) => {
-  registerLocale(language, locale);
-};
 
 export const DatePicker: FC<DatePickerProps> = ({
   onChange = () => {},
@@ -56,18 +51,18 @@ export const DatePicker: FC<DatePickerProps> = ({
   yearsOptions = [],
   placeholder = DEFAULT_DATE_FORMAT.toUpperCase(),
   dateFormat = DEFAULT_DATE_FORMAT,
-  selects = '',
+  selects = 'start',
   value = null,
 }) => {
   const inputRef = useRef(null);
-  const startDateToString = startDate?.toDateString();
-  const endDateToString = endDate?.toDateString();
+  const startDateString = startDate?.toDateString();
+  const endDateString = endDate?.toDateString();
   const isValidEndDate = endDate && startDate && endDate > startDate;
 
   const getDayClassName = (displayedDates: Date) => {
-    const displayedDateToString = displayedDates.toDateString();
-    const isCurrentDate = displayedDateToString === startDateToString;
-    const isEndDate = isValidEndDate && displayedDateToString === endDateToString;
+    const displayedDateString = displayedDates.toDateString();
+    const isCurrentDate = displayedDateString === startDateString;
+    const isEndDate = isValidEndDate && displayedDateString === endDateString;
 
     const isInsideSelectedRange =
       startDate && endDate && displayedDates > startDate && displayedDates < endDate;
@@ -102,7 +97,7 @@ export const DatePicker: FC<DatePickerProps> = ({
       showPopperArrow={false}
       dayClassName={getDayClassName}
       calendarClassName={cx(calendarClassName, 'calendar')}
-      renderCustomHeader={(customHeaderProps) => (
+      renderCustomHeader={(customHeaderProps: ReactDatePickerCustomHeaderProps) => (
         <DatePickerHeader
           {...customHeaderProps}
           headerNodes={headerNodes}

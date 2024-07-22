@@ -135,7 +135,7 @@ export const Dropdown: FC<DropdownProps> = ({
   };
 
   const getDisplayedValue = () => {
-    if (!value && value !== false) return placeholder;
+    if (!value && value !== false && value !== 0) return placeholder;
     let displayedValue = value;
     options.forEach((option) => {
       if (option.value === value) {

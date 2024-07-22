@@ -37,8 +37,10 @@
     column-gap: 8px;
   }
 
-  .icon-prev,
-  .icon-next {
+  .button-prev,
+  .button-next {
+    all: unset;
+
     @include setArrowDefaultProps();
     @include arrowHoverState(var(--rp-ui-base-e-400));
     &.disabled {
@@ -46,7 +48,7 @@
     }
   }
 
-  .icon-next {
+  .button-next {
     transform: rotate(180deg);
   }
 

@@ -1,8 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { DatePicker, registerDatePickerLocale } from './datePicker';
 import { useState } from 'react';
 import { ru } from 'date-fns/locale';
+import { DatePicker } from './datePicker';
+import { registerDatePickerLocale } from './utils';
 
 const meta: Meta<typeof DatePicker> = {
   title: 'DatePicker',
@@ -13,12 +14,31 @@ const meta: Meta<typeof DatePicker> = {
   tags: ['autodocs'],
   render: (args) => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
+    const [date, setDate] = useState<Date | undefined>(undefined);
+    registerDatePickerLocale('ru', ru);
+    return (
+      <>
+        Single DatePicker:
+        <DatePicker {...args} value={date} onChange={setDate} language={'ru'} />
+      </>
+    );
+  },
+};
+
+export default meta;
+
+type Story = StoryObj<typeof DatePicker>;
+
+export const Default: Story = {
+  args: {},
+};
+
+export const Range: Story = {
+  render: (args) => {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const [startDate, setStartDate] = useState<Date | undefined>(undefined);
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const [endDate, setEndDate] = useState<Date | undefined>(undefined);
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const [date, setDate] = useState<Date | undefined>(undefined);
-    registerDatePickerLocale('ru', ru);
     return (
       <>
         Range DatePicker:
@@ -38,19 +58,9 @@ const meta: Meta<typeof DatePicker> = {
           onChange={setEndDate}
           selects={'end'}
         />
-        Single DatePicker:
-        <DatePicker {...args} value={date} onChange={setDate} language={'ru'} />
       </>
     );
   },
-};
-
-export default meta;
-
-type Story = StoryObj<typeof DatePicker>;
-
-export const Default: Story = {
-  args: {},
 };
 
 export const Disabled: Story = {
