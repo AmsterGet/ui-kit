@@ -68,9 +68,7 @@ export const Range: Story = {
 export const WithLocale: Story = {
   render: (args) => {
     registerDatePickerLocale('ru', ru);
-    return (
-      <DatePicker {...args} language={'ru'} />
-    );
+    return <DatePicker {...args} language={'ru'} />;
   },
 };
 
