@@ -1,3 +1,6 @@
+@import 'src/assets/styles/variables/typography';
+@import 'src/assets/styles/mixins/font-scale';
+
 $WIDTH-SMALL: 320px;
 $WIDTH-DEFAULT: 480px;
 $WIDTH-LARGE: 720px;
@@ -54,6 +57,16 @@ $WIDTH-LARGE: 720px;
   opacity: 1;
   outline: none;
   max-height: 90%;
+}
+
+.modal-header-description {
+  display: inline-block;
+  width: 100%;
+  padding-bottom: 24px;
+  font-family: var(--rp-ui-base-font-family);
+  font-weight: $fw-regular;
+  @include font-scale();
+  color: var(--rp-ui-base-almost-black);
 }
 
 .size-default {

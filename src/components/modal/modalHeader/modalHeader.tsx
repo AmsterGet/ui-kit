@@ -7,28 +7,14 @@ const cx = classNames.bind(styles);
 
 interface ModalHeaderProps {
   title?: ReactNode;
-  headerContentClassName?: string;
-  headerNode?: ReactNode;
-  headerDescription?: string;
   onClose: () => void;
+  withDescription?: boolean;
 }
 
-export const ModalHeader: FC<ModalHeaderProps> = ({
-  title,
-  headerContentClassName = '',
-  headerDescription,
-  onClose,
-  headerNode,
-}) => (
-  <div className={cx('modal-header')}>
-    <div className={cx('modal-header-content', headerContentClassName)}>
+export const ModalHeader: FC<ModalHeaderProps> = ({ title, onClose, withDescription = false }) => (
+  <div className={cx('modal-header', { 'width-description': withDescription })}>
+    <div className={cx('modal-header-content')}>
       {title && <span className={cx('modal-title')}>{title}</span>}
-      {headerNode && headerNode}
-      {headerDescription ? (
-        <span className={cx('modal-header-description')}>{headerDescription}</span>
-      ) : (
-        <div className={cx('modal-header-spacer')} />
-      )}
     </div>
     <BaseIconButton className={cx('close-modal-icon')} onClick={onClose}>
       <CloseIcon />

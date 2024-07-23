@@ -17,6 +17,7 @@ Default width - 480px, height 100%
 - **className**: _string_, optional, default = ""
 - **size**: _string_, optional, default = "default"
 - **onClose**: _function_, optional, default = () => {}
+- **contextHeight**: _boolean_, optional, default = undefined
 
 ### Variants
 

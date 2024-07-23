@@ -7,7 +7,11 @@
   font-weight: $fw-regular;
   @include font-scale(x4-medium);
   color: var(--rp-ui-color-text);
-  padding-bottom: 8px;
+  padding-bottom: 24px;
+
+  &.width-description {
+    padding-bottom: 8px;
+  }
 }
 
 .modal-header-content {
@@ -30,19 +34,4 @@
   right: 0;
   line-height: normal;
   cursor: pointer;
-}
-
-.modal-header-description {
-  display: inline-block;
-  width: 100%;
-  padding-bottom: 16px;
-  font-family: var(--rp-ui-base-font-family);
-  font-weight: $fw-regular;
-  @include font-scale();
-  color: var(--rp-ui-base-almost-black);
-}
-
-.modal-header-spacer {
-  width: 100%;
-  height: 8px;
 }
