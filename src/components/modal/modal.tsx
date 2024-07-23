@@ -23,7 +23,6 @@ type ModalOverlay = 'default' | 'light-cyan';
 interface ModalProps {
   onClose?: () => void;
   title?: ReactNode;
-  headerNode?: ReactNode;
   children?: ReactNode;
   footerNode?: ReactNode;
   className?: string;
@@ -36,14 +35,12 @@ interface ModalProps {
   scrollable?: boolean;
   withoutFooter?: boolean;
   CustomFooter?: FC<{ closeHandler: () => void }>;
-  headerDescription?: string;
-  contextHeight?: number;
+  description?: ReactNode;
 }
 
 // TODO: Fix issue with modal positioning
 export const Modal: FC<ModalProps> = ({
   title,
-  headerNode,
   children,
   footerNode,
   okButton,
@@ -57,8 +54,7 @@ export const Modal: FC<ModalProps> = ({
   scrollable = false,
   withoutFooter = false,
   CustomFooter = null,
-  headerDescription = '',
-  contextHeight,
+  description = null,
 }) => {
   const [isShown, setShown] = useState(false);
   const [modalHeight, setModalHeight] = useState(0);
@@ -69,16 +65,12 @@ export const Modal: FC<ModalProps> = ({
   const modalMaxHeight = windowHeight * MODAL_MAX_RATIO;
   const modalMargin = (windowHeight - modalHeight) / 2;
   const getContentMaxHeight = () => {
-    if (contextHeight) {
-      return contextHeight;
-    }
-
     let contentMaxHeight = modalMaxHeight - MODAL_LAYOUT_PADDING;
     if (!withoutFooter) {
       contentMaxHeight = contentMaxHeight - MODAL_FOOTER_HEIGHT;
     }
 
-    if (headerDescription) {
+    if (description) {
       contentMaxHeight = contentMaxHeight - MODAL_HEADER_WITH_DESCRIPTION_HEIGHT;
     } else {
       contentMaxHeight = contentMaxHeight - MODAL_HEADER_HEIGHT;
@@ -129,23 +121,23 @@ export const Modal: FC<ModalProps> = ({
             animate={{ opacity: 1, marginTop: modalMargin }}
             exit={{ opacity: 0, marginTop: -modalMargin }}
             transition={{ duration: 0.3 }}
-            onAnimationComplete={() => modalRef.current?.focus()}
+            onAnimationStart={() => modalRef.current?.focus()}
           >
-            <ModalHeader
-              title={title}
-              onClose={closeModal}
-              withDescription={!!headerNode || !!headerDescription}
-            />
-            {headerNode && headerNode}
-            {headerDescription && (
-              <span className={cx('modal-header-description')}>{headerDescription}</span>
-            )}
+            <ModalHeader title={title} onClose={closeModal} withDescription={!!description} />
             {scrollable ? (
               <Scrollbars autoHeight autoHeightMax={getContentMaxHeight()} hideTracksWhenNotNeeded>
+                {description && (
+                  <span className={cx('modal-header-description')}>{description}</span>
+                )}
                 <ModalContent>{children}</ModalContent>
               </Scrollbars>
             ) : (
-              <ModalContent>{children}</ModalContent>
+              <>
+                {description && (
+                  <span className={cx('modal-header-description')}>{description}</span>
+                )}
+                <ModalContent>{children}</ModalContent>
+              </>
             )}
             {!withoutFooter &&
               (CustomFooter ? (

@@ -37,7 +37,7 @@ export const Default: Story = {
 export const WithoutFooter: Story = {
   args: {
     withoutFooter: true,
-    headerDescription: 'title description',
+    description: 'title description',
   },
 };
 
@@ -98,6 +98,7 @@ export const OverlayLightCyan: Story = {
 export const Scrollable: Story = {
   args: {
     scrollable: true,
+    description: 'title description',
     children: (
       <>
         <p style={{ marginBlockEnd: 0, marginBlockStart: 0 }}>
