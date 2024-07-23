@@ -14,4 +14,5 @@ export { Tooltip } from './tooltip';
 export { Popover } from './popover';
 export { Pagination } from './pagination';
 export { Table } from './table';
+export { DatePicker } from './datePicker';
 export * from './icons';

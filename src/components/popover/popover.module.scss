@@ -13,7 +13,7 @@ $Z-INDEX-POPUP: 10;
 .popover {
   display: block;
   position: absolute;
-  z-index: $Z-INDEX-POPUP;
+  z-index: 10;
   font-family: var(--rp-ui-base-font-family);
   @include font-scale(s-small);
   background-color: var(--rp-ui-color-bg);

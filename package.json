@@ -29,7 +29,8 @@
     "classnames": "^2.3.2",
     "downshift": "^6.1.12",
     "framer-motion": "^10.15.2",
-    "rc-scrollbars": "^1.1.6"
+    "rc-scrollbars": "^1.1.6",
+    "react-datepicker": "^7.3.0"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^7.2.0",
@@ -42,10 +43,12 @@
     "@storybook/testing-library": "^0.2.0",
     "@types/node": "^20.4.5",
     "@types/react": "^18.3.3",
+    "@types/react-datepicker": "^6.2.0",
     "@types/react-dom": "^18.2.7",
     "@typescript-eslint/eslint-plugin": "^5.62.0",
     "@typescript-eslint/parser": "^5.62.0",
     "@vitejs/plugin-react": "^4.0.3",
+    "date-fns": "^3.6.0",
     "eslint": "^8.46.0",
     "eslint-config-airbnb-typescript": "^15.0.0",
     "eslint-config-prettier": "^8.10.0",
