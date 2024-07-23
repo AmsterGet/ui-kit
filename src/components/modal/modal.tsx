@@ -109,10 +109,6 @@ export const Modal: FC<ModalProps> = ({
   useEffect(() => {
     setShown(true);
 
-    if (modalRef && modalRef.current) {
-      modalRef.current.focus();
-    }
-
     document.addEventListener('keydown', onKeydown, false);
 
     return () => document.removeEventListener('keydown', onKeydown, false);
@@ -133,6 +129,7 @@ export const Modal: FC<ModalProps> = ({
             animate={{ opacity: 1, marginTop: modalMargin }}
             exit={{ opacity: 0, marginTop: -modalMargin }}
             transition={{ duration: 0.3 }}
+            onAnimationComplete={() => modalRef.current?.focus()}
           >
             <ModalHeader
               title={title}
