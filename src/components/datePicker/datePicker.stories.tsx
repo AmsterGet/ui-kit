@@ -12,17 +12,6 @@ const meta: Meta<typeof DatePicker> = {
     layout: 'centered',
   },
   tags: ['autodocs'],
-  render: (args) => {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const [date, setDate] = useState<Date | undefined>(undefined);
-    registerDatePickerLocale('ru', ru);
-    return (
-      <>
-        Single DatePicker:
-        <DatePicker {...args} value={date} onChange={setDate} language={'ru'} />
-      </>
-    );
-  },
 };
 
 export default meta;
@@ -31,6 +20,19 @@ type Story = StoryObj<typeof DatePicker>;
 
 export const Default: Story = {
   args: {},
+};
+
+export const Single: Story = {
+  render: (args) => {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const [date, setDate] = useState<Date | undefined>(undefined);
+    return (
+      <>
+        Single DatePicker:
+        <DatePicker {...args} value={date} onChange={setDate} />
+      </>
+    );
+  },
 };
 
 export const Range: Story = {
@@ -59,6 +61,15 @@ export const Range: Story = {
           selects={'end'}
         />
       </>
+    );
+  },
+};
+
+export const WithLocale: Story = {
+  render: (args) => {
+    registerDatePickerLocale('ru', ru);
+    return (
+      <DatePicker {...args} language={'ru'} />
     );
   },
 };
