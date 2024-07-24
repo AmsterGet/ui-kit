@@ -126,16 +126,12 @@ export const Modal: FC<ModalProps> = ({
             <ModalHeader title={title} onClose={closeModal} withDescription={!!description} />
             {scrollable ? (
               <Scrollbars autoHeight autoHeightMax={getContentMaxHeight()} hideTracksWhenNotNeeded>
-                {description && (
-                  <span className={cx('modal-header-description')}>{description}</span>
-                )}
+                {description && <span className={cx('description')}>{description}</span>}
                 <ModalContent>{children}</ModalContent>
               </Scrollbars>
             ) : (
               <>
-                {description && (
-                  <span className={cx('modal-header-description')}>{description}</span>
-                )}
+                {description && <span className={cx('description')}>{description}</span>}
                 <ModalContent>{children}</ModalContent>
               </>
             )}
