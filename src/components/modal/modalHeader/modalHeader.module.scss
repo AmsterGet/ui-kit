@@ -8,12 +8,13 @@
   @include font-scale(x4-medium);
   color: var(--rp-ui-color-text);
   padding-bottom: 24px;
+
+  &.width-description {
+    padding-bottom: 8px;
+  }
 }
 
 .modal-header-content {
-  display: flex;
-  justify-content: stretch;
-  align-items: center;
   width: 100%;
   padding-right: 30px;
   box-sizing: border-box;

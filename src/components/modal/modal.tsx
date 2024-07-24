@@ -13,14 +13,16 @@ import styles from './modal.module.scss';
 const cx = classNames.bind(styles);
 
 const MODAL_MAX_RATIO = 0.9;
-const MODAL_HEADER_AND_FOOTER_HEIGHT = 176;
+const MODAL_HEADER_HEIGHT = 32 + 24;
+const MODAL_HEADER_WITH_DESCRIPTION_HEIGHT = 32 + 8;
+const MODAL_FOOTER_HEIGHT = 36 + 16;
+const MODAL_LAYOUT_PADDING = 32 * 2;
 
 type ModalOverlay = 'default' | 'light-cyan';
 
 interface ModalProps {
-  onClose: () => void;
+  onClose?: () => void;
   title?: ReactNode;
-  headerNode?: ReactNode;
   children?: ReactNode;
   footerNode?: ReactNode;
   className?: string;
@@ -31,12 +33,14 @@ interface ModalProps {
   okButton?: ButtonProps;
   cancelButton?: ButtonProps;
   scrollable?: boolean;
+  withoutFooter?: boolean;
+  CustomFooter?: FC<{ closeHandler: () => void }>;
+  description?: ReactNode;
 }
 
 // TODO: Fix issue with modal positioning
 export const Modal: FC<ModalProps> = ({
   title,
-  headerNode,
   children,
   footerNode,
   okButton,
@@ -48,6 +52,9 @@ export const Modal: FC<ModalProps> = ({
   zIndex = 2,
   allowCloseOutside = true,
   scrollable = false,
+  withoutFooter = false,
+  CustomFooter = null,
+  description = null,
 }) => {
   const [isShown, setShown] = useState(false);
   const [modalHeight, setModalHeight] = useState(0);
@@ -57,7 +64,20 @@ export const Modal: FC<ModalProps> = ({
   const windowHeight = windowSize.height;
   const modalMaxHeight = windowHeight * MODAL_MAX_RATIO;
   const modalMargin = (windowHeight - modalHeight) / 2;
-  const contentMaxHeight = modalMaxHeight - MODAL_HEADER_AND_FOOTER_HEIGHT;
+  const getContentMaxHeight = () => {
+    let contentMaxHeight = modalMaxHeight - MODAL_LAYOUT_PADDING;
+    if (!withoutFooter) {
+      contentMaxHeight = contentMaxHeight - MODAL_FOOTER_HEIGHT;
+    }
+
+    if (description) {
+      contentMaxHeight = contentMaxHeight - MODAL_HEADER_WITH_DESCRIPTION_HEIGHT;
+    } else {
+      contentMaxHeight = contentMaxHeight - MODAL_HEADER_HEIGHT;
+    }
+
+    return contentMaxHeight;
+  };
 
   const closeModal = () => {
     setShown(false);
@@ -81,10 +101,6 @@ export const Modal: FC<ModalProps> = ({
   useEffect(() => {
     setShown(true);
 
-    if (modalRef && modalRef.current) {
-      modalRef.current.focus();
-    }
-
     document.addEventListener('keydown', onKeydown, false);
 
     return () => document.removeEventListener('keydown', onKeydown, false);
@@ -105,22 +121,32 @@ export const Modal: FC<ModalProps> = ({
             animate={{ opacity: 1, marginTop: modalMargin }}
             exit={{ opacity: 0, marginTop: -modalMargin }}
             transition={{ duration: 0.3 }}
+            onAnimationStart={() => modalRef.current?.focus()}
           >
-            <ModalHeader title={title} headerNode={headerNode} onClose={closeModal} />
+            <ModalHeader title={title} onClose={closeModal} withDescription={!!description} />
             {scrollable ? (
-              <Scrollbars autoHeight autoHeightMax={contentMaxHeight} hideTracksWhenNotNeeded>
+              <Scrollbars autoHeight autoHeightMax={getContentMaxHeight()} hideTracksWhenNotNeeded>
+                {description && <span className={cx('description')}>{description}</span>}
                 <ModalContent>{children}</ModalContent>
               </Scrollbars>
             ) : (
-              <ModalContent>{children}</ModalContent>
+              <>
+                {description && <span className={cx('description')}>{description}</span>}
+                <ModalContent>{children}</ModalContent>
+              </>
             )}
-            <ModalFooter
-              size={size}
-              footerNode={footerNode}
-              okButton={okButton}
-              cancelButton={cancelButton}
-              closeHandler={closeModal}
-            />
+            {!withoutFooter &&
+              (CustomFooter ? (
+                <CustomFooter closeHandler={closeModal} />
+              ) : (
+                <ModalFooter
+                  size={size}
+                  footerNode={footerNode}
+                  okButton={okButton}
+                  cancelButton={cancelButton}
+                  closeHandler={closeModal}
+                />
+              ))}
           </motion.div>
         </div>
       )}

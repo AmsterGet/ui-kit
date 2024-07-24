@@ -9,7 +9,6 @@ Default width - 480px, height 100%
 ### Props :
 
 - **title**: _string_, optional, default = ""
-- **headerNode**: _node_, optional, default = null
 - **children**: _node_, optional, default = null
 - **footerNode**: _node_, optional, default = null
 - **okButton**: _object_, optional, default = null
@@ -17,6 +16,7 @@ Default width - 480px, height 100%
 - **className**: _string_, optional, default = ""
 - **size**: _string_, optional, default = "default"
 - **onClose**: _function_, optional, default = () => {}
+- **description**: _node_, optional, default = null
 
 ### Variants
 
