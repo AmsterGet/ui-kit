@@ -20,13 +20,14 @@ import { useFloating, flip, Placement } from '@floating-ui/react-dom';
 import styles from './tooltip.module.scss';
 
 const cx = classNames.bind(styles);
-const TOOLTIP_DELAY_MS = 2000;
+const TOOLTIP_DELAY_MS = 300;
 const SAFE_ZONE = 100;
 
 interface TooltipProps {
   content: ReactNode;
   children: ReactNode;
-  className?: string;
+  wrapperClassName?: string;
+  contentClassName?: string;
   dynamicWidth?: boolean;
   width?: number;
   placement?: Placement;
@@ -35,7 +36,8 @@ interface TooltipProps {
 
 export const Tooltip: FC<TooltipProps> = ({
   content,
-  className,
+  wrapperClassName,
+  contentClassName,
   dynamicWidth,
   width,
   placement = 'bottom',
@@ -75,7 +77,7 @@ export const Tooltip: FC<TooltipProps> = ({
     <>
       <div
         ref={(node) => refs.setReference(node as HTMLElement)}
-        className={cx('tooltip-wrapper', className)}
+        className={cx('tooltip-wrapper', wrapperClassName)}
         onMouseDown={handleHideTooltip}
         onMouseEnter={handleShowTooltip}
         onMouseLeave={handleHideTooltip}
@@ -93,7 +95,7 @@ export const Tooltip: FC<TooltipProps> = ({
           data-automation-id={dataAutomationId}
         >
           <div
-            className={cx('tooltip-content')}
+            className={cx('tooltip-content', contentClassName)}
             style={{
               maxWidth: `${maxWidth}px`,
             }}
