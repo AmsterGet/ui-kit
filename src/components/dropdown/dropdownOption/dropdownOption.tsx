@@ -29,7 +29,7 @@ export const DropdownOption: FC<DropdownOptionProps> = forwardRef(
           hidden,
           hover: highlightHovered,
         })}
-        title={(disabled && title) || undefined}
+        title={title}
         onClick={onChangeHandler}
         ref={ref}
         onMouseEnter={onMouseEnter}

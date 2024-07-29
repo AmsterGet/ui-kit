@@ -173,22 +173,25 @@ export const Dropdown: FC<DropdownProps> = ({
     }
   };
 
-  const renderOptions = () =>
-    options.map((option, index) => (
-      <DropdownOption
-        key={option.value}
-        {...getItemProps({
-          item: option,
-          index,
-        })}
-        selected={option.value === (selectedItem?.value ?? selectedItem)}
-        option={option}
-        highlightHovered={highlightedIndex === index && eventName !== EventName.ON_CLICK}
-        render={renderOption}
-        onChange={option.disabled ? null : () => handleChange(option)}
-        onMouseEnter={() => setHighlightedIndex(index)}
-      />
-    ));
+  const renderOptions = () => (
+    <div className={cx('options-container')}>
+      {options.map((option, index) => (
+        <DropdownOption
+          key={option.value}
+          {...getItemProps({
+            item: option,
+            index,
+          })}
+          selected={option.value === (selectedItem?.value ?? selectedItem)}
+          option={{ title: option.label, ...option }}
+          highlightHovered={highlightedIndex === index && eventName !== EventName.ON_CLICK}
+          render={renderOption}
+          onChange={option.disabled ? null : () => handleChange(option)}
+          onMouseEnter={() => setHighlightedIndex(index)}
+        />
+      ))}
+    </div>
+  );
 
   return (
     <div ref={containerRef} className={cx('container', className)} title={title}>
