@@ -10,6 +10,7 @@
   @include font-scale();
   color: var(--rp-ui-base-almost-black);
   cursor: pointer;
+  width: 32px;
 }
 
 .children-container {

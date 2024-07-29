@@ -30,8 +30,8 @@ interface ModalProps {
   size?: ModalSize;
   overlay?: ModalOverlay;
   allowCloseOutside?: boolean;
-  okButton?: ButtonProps;
-  cancelButton?: ButtonProps;
+  okButton?: ButtonProps & { text: string };
+  cancelButton?: ButtonProps & { text: string };
   scrollable?: boolean;
   withoutFooter?: boolean;
   CustomFooter?: FC<{ closeHandler: () => void }>;

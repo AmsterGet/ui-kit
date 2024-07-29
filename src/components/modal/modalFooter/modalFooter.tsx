@@ -10,8 +10,8 @@ export type ModalSize = 'default' | 'small' | 'large';
 interface ModalFooterProps {
   closeHandler: MouseEventHandler<HTMLButtonElement>;
   footerNode?: ReactNode;
-  okButton?: ButtonProps;
-  cancelButton?: ButtonProps;
+  okButton?: ButtonProps & { text: string };
+  cancelButton?: ButtonProps & { text: string };
   size?: ModalSize;
 }
 
@@ -33,12 +33,16 @@ export const ModalFooter: FC<ModalFooterProps> = ({
               adjustWidthOn={size === 'small' ? 'parent' : 'content'}
               onClick={closeHandler}
               {...cancelButton}
-            />
+            >
+              {cancelButton.text}
+            </Button>
           </div>
         )}
         {okButton && (
           <div className={cx('button-container')}>
-            <Button adjustWidthOn={size === 'small' ? 'parent' : 'content'} {...okButton} />
+            <Button adjustWidthOn={size === 'small' ? 'parent' : 'content'} {...okButton}>
+              {okButton.text}
+            </Button>
           </div>
         )}
       </div>
