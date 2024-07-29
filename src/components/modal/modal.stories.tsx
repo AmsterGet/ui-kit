@@ -15,13 +15,13 @@ const meta: Meta<typeof Modal> = {
     children: 'Some modal content',
     okButton: {
       type: 'submit',
-      text: 'Login',
+      children: 'Login',
       onClick: () => {
         console.log('Logged in successfully');
       },
     },
     cancelButton: {
-      text: 'Cancel',
+      children: 'Cancel',
     },
   },
 };
