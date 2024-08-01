@@ -21,6 +21,7 @@
 }
 
 .modal-title {
+  font-family: var(--rp-ui-base-font-family-heading);
   flex-grow: 1;
   vertical-align: middle;
   text-overflow: ellipsis;

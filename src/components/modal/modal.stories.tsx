@@ -55,14 +55,20 @@ export const WithSteps: Story = {
             gap: 18,
           }}
         >
-          <Button variant={'ghost'} onClick={() => setStep(1)}>
+          <Button style={{ minWidth: 'fit-content' }} variant={'ghost'} onClick={() => setStep(1)}>
             Go to 1 step
           </Button>
-          <Button variant={'ghost'} onClick={() => setStep(2)}>
+          <Button style={{ minWidth: 'fit-content' }} variant={'ghost'} onClick={() => setStep(2)}>
             Go to 2 step
           </Button>
-          <Button onClick={() => console.log('done')}>OK</Button>
-          <Button variant={'danger'} onClick={() => closeHandler()}>
+          <Button style={{ minWidth: 'fit-content' }} onClick={() => console.log('done')}>
+            OK
+          </Button>
+          <Button
+            style={{ minWidth: 'fit-content' }}
+            variant={'danger'}
+            onClick={() => closeHandler()}
+          >
             Cancel
           </Button>
         </div>
