@@ -45,6 +45,7 @@ export const WithSteps: Story = {
   render: (args) => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const [step, setStep] = useState<number>(1);
+    const buttonStyle = { minWidth: 'fit-content' };
 
     const CustomFooter: FC<{ closeHandler: () => void }> = ({ closeHandler }) => {
       return (
@@ -55,20 +56,16 @@ export const WithSteps: Story = {
             gap: 18,
           }}
         >
-          <Button style={{ minWidth: 'fit-content' }} variant={'ghost'} onClick={() => setStep(1)}>
+          <Button style={buttonStyle} variant={'ghost'} onClick={() => setStep(1)}>
             Go to 1 step
           </Button>
-          <Button style={{ minWidth: 'fit-content' }} variant={'ghost'} onClick={() => setStep(2)}>
+          <Button style={buttonStyle} variant={'ghost'} onClick={() => setStep(2)}>
             Go to 2 step
           </Button>
-          <Button style={{ minWidth: 'fit-content' }} onClick={() => console.log('done')}>
+          <Button style={buttonStyle} onClick={() => console.log('done')}>
             OK
           </Button>
-          <Button
-            style={{ minWidth: 'fit-content' }}
-            variant={'danger'}
-            onClick={() => closeHandler()}
-          >
+          <Button style={buttonStyle} variant={'danger'} onClick={() => closeHandler()}>
             Cancel
           </Button>
         </div>
