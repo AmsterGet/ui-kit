@@ -64,7 +64,7 @@ export const Bar: FC<BarProps> = ({
                 <div className={cx('page-number')}>{section.pages.from}</div>
               </div>
             }
-            className={cx('tooltip-wrapper')}
+            wrapperClassName={cx('tooltip-wrapper')}
             placement={'top'}
           >
             <div
