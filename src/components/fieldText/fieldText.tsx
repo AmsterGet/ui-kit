@@ -41,7 +41,7 @@ interface FieldTextProps extends ComponentPropsWithRef<'input'> {
 export const FieldText: FC<FieldTextProps> = forwardRef(
   (
     {
-      value,
+      value = '',
       className,
       error,
       placeholder,
@@ -117,7 +117,7 @@ export const FieldText: FC<FieldTextProps> = forwardRef(
               <span className={cx('icon')}>{endIcon}</span>
             </span>
           )}
-          {clearable && (
+          {clearable && value.length > 0 && (
             <span className={cx('icon-container-end')}>
               <button type="button" className={cx('clear-icon', { disabled })} onClick={clearInput}>
                 <ClearIcon />
