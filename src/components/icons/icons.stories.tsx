@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { BaseIconButton } from './baseIconButton/baseIconButton';
-import { CloseIcon, DeleteIcon, DropdownIcon, MinusIcon, PlusIcon } from './index';
+import { CloseIcon, DeleteIcon, DropdownIcon, MinusIcon, PlusIcon, SearchIcon } from './index';
 
-const icons = [CloseIcon, PlusIcon, MinusIcon, DeleteIcon, DropdownIcon];
+const icons = [CloseIcon, PlusIcon, MinusIcon, DeleteIcon, DropdownIcon, SearchIcon];
 
 const meta: Meta<typeof BaseIconButton> = {
   title: 'Icons',

@@ -64,12 +64,13 @@
   width: 100%;
   padding: 7px 12px;
   box-sizing: border-box;
-  border: 1px solid var(--rp-ui-base-e-200);
+  border: 1px solid var(--rp-ui-color-field-border-3);
   border-radius: 3px;
-  background-color: var(--rp-ui-base-bg-000);
+  background-color: var(--rp-ui-color-field-bg-3);
 
   &:hover:not(.disabled) {
-    border-color: var(--rp-ui-base-e-300);
+    border-color: var(--rp-ui-color-field-border-3-hover);
+    background-color: var(--rp-ui-color-field-bg-3-hover);
   }
 
   &:focus-within:not(.error.touched) {
@@ -111,7 +112,7 @@
   background: transparent;
   overflow: hidden;
   text-overflow: ellipsis;
-  color: var(--rp-ui-color-text);
+  color: var(--rp-ui-color-text-3);
 
   &:focus {
     outline: none;
@@ -126,7 +127,7 @@
   @include font-scale();
   font-family: var(--rp-ui-base-font-family);
   font-weight: $fw-regular;
-  color: var(--rp-ui-base-dark-e-300);
+   color: var(--rp-ui-color-field-placeholder-3);
   position: absolute;
   top: 2px;
   left: 0;
@@ -195,4 +196,3 @@
 .help-text {
   color: var(--rp-ui-base-dark-e-300);
 }
-
