@@ -33,7 +33,7 @@ interface DropdownProps {
   onFocus?: () => void;
   onBlur?: () => void;
   renderOption?: RenderDropdownOption;
-  isDropdownListExpanded?: boolean;
+  isListWidthLimited?: boolean;
 }
 
 // DS link - https://www.figma.com/file/gjYQPbeyf4YsH3wZiVKoaj/%F0%9F%9B%A0-RP-DS-6?type=design&node-id=3424-12207&mode=design&t=dDq6moPaTzQLviS1-0
@@ -56,7 +56,7 @@ export const Dropdown: FC<DropdownProps> = ({
   transparentBackground = false,
   className,
   toggleButtonClassName,
-  isDropdownListExpanded = false,
+  isListWidthLimited = false,
 }): ReactElement => {
   const [opened, setOpened] = useState(false);
   const containerRef = useRef(null);
@@ -222,7 +222,7 @@ export const Dropdown: FC<DropdownProps> = ({
       {opened && (
         <div
           style={floatingStyles}
-          className={cx('select-list', { opened, expanded: isDropdownListExpanded })}
+          className={cx('select-list', { opened, 'limited-width': isListWidthLimited })}
           {...getMenuProps({
             onKeyDown: handleKeyDownMenu,
             ref: refs.setFloating,
