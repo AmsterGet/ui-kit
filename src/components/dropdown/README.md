@@ -15,6 +15,7 @@ Default width - 240px
 - **variant**: _string_, optional, default = "light"
 - **placeholder**: _string_, optional, default = ""
 - **defaultWidth**: _bool_, optional, default = true
+- **isListWidthLimited**: _bool_, optional, default = false
 
 ### Events:
 
@@ -40,3 +41,7 @@ To disable this behavior set the _defaultWidth_ prop to false
 
 Automatic positioning is used according to the no space strategy.
 Dropdown will be positioned to the upside of the screen if there is not enough space on the downside.
+
+### List width limitation
+
+When the _isListWidthLimited_ option is set to true, the width of the dropdown list is restricted to a maximum of 384px. Default value is false.
