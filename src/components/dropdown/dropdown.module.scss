@@ -122,8 +122,8 @@ $Z-INDEX-POPUP: 10;
   top: 100%;
   padding: 8px 0;
   width: max-content;
-  max-width: 384px;
-  min-width: 240px;
+  max-width: 100%;
+  min-width: 100%;
   min-height: 10px;
   border-radius: 3px;
   box-sizing: border-box;
@@ -133,6 +133,10 @@ $Z-INDEX-POPUP: 10;
 
   &.opened:focus-visible {
     outline: none;
+  }
+
+  &.expanded {
+    max-width: 384px;
   }
 }
 
