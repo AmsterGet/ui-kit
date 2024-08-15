@@ -1,13 +1,19 @@
 @import 'src/assets/styles/variables/typography';
 @import 'src/assets/styles/mixins/font-scale';
 
-// TODO: Discuss with UX team. There are no designs for the dark theme, so the theme-independent CSS properties are used
-
 @mixin fill-svg($color) {
   svg {
     fill: $color;
 
     & > rect {
+      fill: $color;
+    }
+  }
+}
+
+@mixin fill-svg-path($color) {
+  svg {
+    & > path {
       fill: $color;
     }
   }
@@ -156,6 +162,7 @@
   font: inherit;
   outline: inherit;
   cursor: pointer;
+  @include fill-svg-path(var(--rp-ui-color-bg-2));
 
   &.disabled {
     pointer-events: none;
