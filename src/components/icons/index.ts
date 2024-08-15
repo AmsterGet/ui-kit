@@ -13,3 +13,4 @@ export { default as ArrowUpIcon } from './svg/arrowUp.svg';
 export { default as MeatballMenuIcon } from './svg/meatballMenu.svg';
 export { default as CalendarArrowIcon } from './svg/calendarArrow.svg';
 export { default as CalendarIcon } from './svg/calendar.svg';
+export { default as SearchIcon } from './svg/search.svg';
