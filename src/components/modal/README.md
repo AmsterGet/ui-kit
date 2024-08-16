@@ -17,6 +17,7 @@ Default width - 480px, height 100%
 - **size**: _string_, optional, default = "default"
 - **onClose**: _function_, optional, default = () => {}
 - **description**: _node_, optional, default = null
+- **createFooter**: _function_, optional, default = null
 
 ### Variants
 

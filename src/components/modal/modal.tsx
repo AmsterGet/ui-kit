@@ -34,7 +34,7 @@ interface ModalProps {
   cancelButton?: ButtonProps;
   scrollable?: boolean;
   withoutFooter?: boolean;
-  CustomFooter?: FC<{ closeHandler: () => void }>;
+  createFooter?: (closeHandler: () => void) => ReactNode;
   description?: ReactNode;
 }
 
@@ -53,7 +53,7 @@ export const Modal: FC<ModalProps> = ({
   allowCloseOutside = true,
   scrollable = false,
   withoutFooter = false,
-  CustomFooter = null,
+  createFooter = null,
   description = null,
 }) => {
   const [isShown, setShown] = useState(false);
@@ -126,8 +126,12 @@ export const Modal: FC<ModalProps> = ({
             <ModalHeader title={title} onClose={closeModal} withDescription={!!description} />
             {scrollable ? (
               <Scrollbars autoHeight autoHeightMax={getContentMaxHeight()} hideTracksWhenNotNeeded>
-                {description && <span className={cx('description')}>{description}</span>}
-                <ModalContent>{children}</ModalContent>
+                {description && (
+                  <span className={cx('description', { scrollable: scrollable })}>
+                    {description}
+                  </span>
+                )}
+                <ModalContent scrollable>{children}</ModalContent>
               </Scrollbars>
             ) : (
               <>
@@ -136,8 +140,8 @@ export const Modal: FC<ModalProps> = ({
               </>
             )}
             {!withoutFooter &&
-              (CustomFooter ? (
-                <CustomFooter closeHandler={closeModal} />
+              (createFooter ? (
+                createFooter(closeModal)
               ) : (
                 <ModalFooter
                   size={size}

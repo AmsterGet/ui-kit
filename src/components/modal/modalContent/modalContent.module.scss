@@ -2,7 +2,7 @@
 @import 'src/assets/styles/mixins/font-scale';
 
 .modal-content {
-  width: calc(100% - 34px);
+  width: 100%;
   font-family: var(--rp-ui-base-font-family);
   font-weight: $fw-regular;
   @include font-scale();
@@ -10,4 +10,8 @@
   white-space: pre-line;
   word-break: break-word;
   padding: 0 0 16px;
+
+  &.scrollable {
+    width: calc(100% - 34px);
+  }
 }

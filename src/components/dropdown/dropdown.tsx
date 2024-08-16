@@ -212,6 +212,7 @@ export const Dropdown: FC<DropdownProps> = ({
           onKeyDown: handleToggleButtonKeyDown,
           ref: refs.setReference,
         })}
+        type="button"
       >
         {icon && <span className={cx('icon')}>{icon}</span>}
         <span className={cx('value', { placeholder: !value })}>{getDisplayedValue()}</span>
