@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Modal } from './modal';
-import { FC, useState } from 'react';
+import { useState } from 'react';
 import { Button } from '@components/button';
 
 const meta: Meta<typeof Modal> = {
@@ -47,7 +47,7 @@ export const WithSteps: Story = {
     const [step, setStep] = useState<number>(1);
     const buttonStyle = { minWidth: 'fit-content' };
 
-    const CustomFooter: FC<{ closeHandler: () => void }> = ({ closeHandler }) => {
+    const createFooter = (closeHandler: () => void) => {
       return (
         <div
           style={{
@@ -73,7 +73,7 @@ export const WithSteps: Story = {
     };
 
     return (
-      <Modal {...args} title={'Modal with steps'} CustomFooter={CustomFooter}>
+      <Modal {...args} title={'Modal with steps'} createFooter={createFooter}>
         content for step {step}
       </Modal>
     );
