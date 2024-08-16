@@ -34,8 +34,7 @@ interface ModalProps {
   cancelButton?: ButtonProps;
   scrollable?: boolean;
   withoutFooter?: boolean;
-  CustomFooter?: FC<{ closeHandler: () => void }>;
-  customFooterProps?: object;
+  createFooter?: (closeHandler: () => void) => ReactNode;
   description?: ReactNode;
 }
 
@@ -54,8 +53,7 @@ export const Modal: FC<ModalProps> = ({
   allowCloseOutside = true,
   scrollable = false,
   withoutFooter = false,
-  CustomFooter = null,
-  customFooterProps,
+  createFooter = null,
   description = null,
 }) => {
   const [isShown, setShown] = useState(false);
@@ -138,8 +136,8 @@ export const Modal: FC<ModalProps> = ({
               </>
             )}
             {!withoutFooter &&
-              (CustomFooter ? (
-                <CustomFooter closeHandler={closeModal} {...customFooterProps} />
+              (createFooter ? (
+                createFooter(closeModal)
               ) : (
                 <ModalFooter
                   size={size}
