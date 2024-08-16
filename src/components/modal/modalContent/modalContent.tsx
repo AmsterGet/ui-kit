@@ -5,9 +5,10 @@ import styles from './modalContent.module.scss';
 const cx = classNames.bind(styles);
 
 interface ModalContentProps {
+  scrollable?: boolean;
   children?: ReactNode;
 }
 
-export const ModalContent: FC<ModalContentProps> = ({ children }) => (
-  <div className={cx('modal-content')}>{children}</div>
+export const ModalContent: FC<ModalContentProps> = ({ scrollable = false, children }) => (
+  <div className={cx('modal-content', { scrollable: scrollable })}>{children}</div>
 );

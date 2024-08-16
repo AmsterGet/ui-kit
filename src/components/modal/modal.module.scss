@@ -67,6 +67,10 @@ $WIDTH-LARGE: 720px;
   font-weight: $fw-regular;
   @include font-scale();
   color: var(--rp-ui-base-almost-black);
+
+  &.scrollable{
+    width: calc(100% - 34px);
+  }
 }
 
 .size-default {
