@@ -5,15 +5,13 @@ $HEIGHT-SMALL: 44px;
 $HEIGHT-DEFAULT: 64px;
 $HEIGHT-LARGE: 80px;
 
-
-* {
-  box-sizing: border-box;
-}
-
 .table {
   width: 100%;
   max-width: 1200px;
 
+  * {
+    box-sizing: border-box;
+  }
 }
 
 .table-header {
