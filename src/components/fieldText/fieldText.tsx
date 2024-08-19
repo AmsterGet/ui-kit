@@ -33,6 +33,7 @@ interface FieldTextProps extends ComponentPropsWithRef<'input'> {
   hasDoubleMessage?: boolean;
   type?: string;
   displayError?: boolean;
+  maxLength?: number;
 }
 
 // TODO: Remove ts-ignore
@@ -60,6 +61,7 @@ export const FieldText: FC<FieldTextProps> = forwardRef(
       hasDoubleMessage = false,
       type = 'text',
       displayError = true,
+      maxLength = 256,
       ...rest
     },
     ref: ForwardedRef<HTMLInputElement>,
@@ -103,6 +105,7 @@ export const FieldText: FC<FieldTextProps> = forwardRef(
               value={value}
               disabled={disabled}
               onChange={onChange}
+              maxLength={maxLength}
               {...rest}
             />
             {placeholder && !value && (
