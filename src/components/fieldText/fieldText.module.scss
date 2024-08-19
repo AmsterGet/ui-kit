@@ -133,7 +133,7 @@
   @include font-scale();
   font-family: var(--rp-ui-base-font-family);
   font-weight: $fw-regular;
-   color: var(--rp-ui-color-field-placeholder-3);
+  color: var(--rp-ui-color-field-placeholder-3);
   position: absolute;
   top: 2px;
   left: 0;
