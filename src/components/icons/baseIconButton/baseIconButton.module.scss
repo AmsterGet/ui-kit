@@ -27,7 +27,7 @@
   &:active:not(.disabled) {
     @include fill-svg(var(--rp-ui-base-topaz-pressed));
   }
-  &:focus:not(.disabled, :active) {
+  &:focus-visible:not(.disabled, :active) {
     @include fill-svg(var(--rp-ui-base-topaz-focused));
   }
 }
