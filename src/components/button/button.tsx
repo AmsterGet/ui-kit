@@ -55,8 +55,6 @@ export const Button: FC<ButtonProps> = forwardRef(
       [`width-${adjustWidthOn}`]: adjustWidthOn,
     });
 
-    const buttonIcon = variant === 'text' && icon;
-
     return (
       <button
         ref={ref}
@@ -67,13 +65,13 @@ export const Button: FC<ButtonProps> = forwardRef(
         title={title}
         {...rest}
       >
-        {buttonIcon && (
+        {icon && (
           <i
             className={cx('icon', {
               [`icon-${iconPlace}`]: iconPlace,
             })}
           >
-            {buttonIcon}
+            {icon}
           </i>
         )}
         {children}
