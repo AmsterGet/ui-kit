@@ -14,7 +14,7 @@ interface ModalHeaderProps {
 export const ModalHeader: FC<ModalHeaderProps> = ({ title, onClose, withDescription = false }) => (
   <div className={cx('modal-header', { 'width-description': withDescription })}>
     <div className={cx('modal-header-content')}>
-      {title && <span className={cx('modal-title')}>{title}</span>}
+      {title && <div className={cx('modal-title')}>{title}</div>}
     </div>
     <BaseIconButton className={cx('close-modal-icon')} onClick={onClose}>
       <CloseIcon />
