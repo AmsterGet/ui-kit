@@ -111,7 +111,7 @@ export const Modal: FC<ModalProps> = ({
   return (
     <AnimatePresence onExitComplete={onClose}>
       {isShown && (
-        <div className={cx('modal', { [`overlay-${overlay}`]: overlay })} style={{ zIndex }}>
+        <div className={cx('modal', {scrollable: scrollable}, { [`overlay-${overlay}`]: overlay })} style={{ zIndex }}>
           <motion.div
             className={cx('modal-window', { [`size-${size}`]: size }, className)}
             key="modal-window"
