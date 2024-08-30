@@ -3,5 +3,6 @@
     "singleQuote": true,
     "trailingComma": "all",
     "printWidth": 100,
-    "bracketSpacing": true
+    "bracketSpacing": true,
+    "endOfLine": "crlf"
 }

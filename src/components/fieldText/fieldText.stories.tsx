@@ -85,5 +85,6 @@ export const FullyDescribed: Story = {
     hasDoubleMessage: true,
     startIcon: <DeleteIcon />,
     collapsible: true,
+    loading: true,
   },
 };

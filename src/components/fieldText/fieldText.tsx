@@ -11,6 +11,7 @@ import {
 import classNames from 'classnames/bind';
 import { ClearIcon } from '@components/icons';
 import styles from './fieldText.module.scss';
+import { SpinLoader } from '@components/spinLoader';
 
 const cx = classNames.bind(styles);
 
@@ -35,6 +36,7 @@ interface FieldTextProps extends InputHTMLAttributes<HTMLInputElement> {
   type?: string;
   displayError?: boolean;
   collapsible?: boolean;
+  loading?: boolean;
 }
 interface FocusableInputHandle {
   focus: () => void;
@@ -62,7 +64,8 @@ export const FieldText = forwardRef<FocusableInputHandle, FieldTextProps>(
       hasDoubleMessage = false,
       type = 'text',
       displayError = true,
-      collapsible,
+      collapsible = false,
+      loading = false,
       ...rest
     },
     ref,
@@ -105,13 +108,17 @@ export const FieldText = forwardRef<FocusableInputHandle, FieldTextProps>(
           })}
           title={title}
         >
-          {startIcon && (
-            <span
-              className={cx('icon-container-start')}
-              onClick={() => internalRef.current?.focus()}
-            >
-              <span className={cx('icon')}>{startIcon}</span>
-            </span>
+          {loading ? (
+            <SpinLoader />
+          ) : (
+            startIcon && (
+              <span
+                className={cx('icon-container-start')}
+                onClick={() => internalRef.current?.focus()}
+              >
+                <span className={cx('icon')}>{startIcon}</span>
+              </span>
+            )
           )}
           <span className={cx('input-container')}>
             <input
