@@ -3,7 +3,8 @@ import { Placement } from '@floating-ui/react-dom';
 interface TooltipProps {
     content: ReactNode;
     children: ReactNode;
-    className?: string;
+    wrapperClassName?: string;
+    contentClassName?: string;
     dynamicWidth?: boolean;
     width?: number;
     placement?: Placement;

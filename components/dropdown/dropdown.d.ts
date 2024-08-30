@@ -18,6 +18,7 @@ interface DropdownProps {
     onFocus?: () => void;
     onBlur?: () => void;
     renderOption?: RenderDropdownOption;
+    isListWidthLimited?: boolean;
 }
 export declare const Dropdown: FC<DropdownProps>;
 export {};

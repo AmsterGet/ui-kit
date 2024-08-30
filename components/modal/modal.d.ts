@@ -16,9 +16,7 @@ interface ModalProps {
     cancelButton?: ButtonProps;
     scrollable?: boolean;
     withoutFooter?: boolean;
-    CustomFooter?: FC<{
-        closeHandler: () => void;
-    }>;
+    createFooter?: (closeHandler: () => void) => ReactNode;
     description?: ReactNode;
 }
 export declare const Modal: FC<ModalProps>;
