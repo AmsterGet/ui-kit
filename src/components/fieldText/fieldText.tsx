@@ -4,9 +4,9 @@ import {
   ReactElement,
   ReactNode,
   useState,
-  useImperativeHandle,
   useRef,
   InputHTMLAttributes,
+  MutableRefObject,
 } from 'react';
 import classNames from 'classnames/bind';
 import { ClearIcon } from '@components/icons';
@@ -22,6 +22,8 @@ interface FieldTextProps extends InputHTMLAttributes<HTMLInputElement> {
   placeholder?: string;
   disabled?: boolean;
   onChange?: ChangeEventHandler<HTMLInputElement>;
+  onFocus?: ChangeEventHandler<HTMLInputElement>;
+  onBlur?: ChangeEventHandler<HTMLInputElement>;
   touched?: boolean;
   title?: string;
   label?: string;
@@ -38,11 +40,8 @@ interface FieldTextProps extends InputHTMLAttributes<HTMLInputElement> {
   collapsible?: boolean;
   loading?: boolean;
 }
-interface FocusableInputHandle {
-  focus: () => void;
-}
 
-export const FieldText = forwardRef<FocusableInputHandle, FieldTextProps>(
+export const FieldText = forwardRef<HTMLInputElement, FieldTextProps>(
   (
     {
       value = '',
@@ -66,20 +65,25 @@ export const FieldText = forwardRef<FocusableInputHandle, FieldTextProps>(
       displayError = true,
       collapsible = false,
       loading = false,
+      onFocus = () => {},
+      onBlur = () => {},
       ...rest
     },
     ref,
   ): ReactElement => {
     const internalRef = useRef<HTMLInputElement>(null);
+    const inputRef = ref || internalRef;
     const [focused, setFocused] = useState(false);
-    const onFocus = () => setFocused(true);
-    const onBlur = () => setFocused(false);
 
-    useImperativeHandle(ref, () => ({
-      focus: () => {
-        internalRef.current?.focus();
-      },
-    }));
+    const onFocusHandler = (event: React.FocusEvent<HTMLInputElement>) => {
+      setFocused(true);
+      onFocus(event);
+    };
+
+    const onBlurHandler = (event: React.FocusEvent<HTMLInputElement>) => {
+      setFocused(false);
+      onBlur(event);
+    };
 
     const clearInput = () => {
       if (onClear) {
@@ -101,7 +105,7 @@ export const FieldText = forwardRef<FocusableInputHandle, FieldTextProps>(
         <div
           className={cx('field', className, {
             error,
-            touched: touched,
+            touched,
             disabled,
             'default-width': defaultWidth,
             collapsed: collapsible && !focused && !value,
@@ -114,7 +118,10 @@ export const FieldText = forwardRef<FocusableInputHandle, FieldTextProps>(
             startIcon && (
               <span
                 className={cx('icon-container-start')}
-                onClick={() => internalRef.current?.focus()}
+                onClick={() => {
+                  const input = inputRef as MutableRefObject<HTMLInputElement>;
+                  input.current?.focus();
+                }}
               >
                 <span className={cx('icon')}>{startIcon}</span>
               </span>
@@ -122,14 +129,14 @@ export const FieldText = forwardRef<FocusableInputHandle, FieldTextProps>(
           )}
           <span className={cx('input-container')}>
             <input
-              ref={internalRef}
+              ref={inputRef}
               type={type}
               className={cx('input')}
               value={value}
               disabled={disabled}
               onChange={onChange}
-              onFocus={onFocus}
-              onBlur={onBlur}
+              onFocus={onFocusHandler}
+              onBlur={onBlurHandler}
               {...rest}
             />
             {placeholder && !value && (

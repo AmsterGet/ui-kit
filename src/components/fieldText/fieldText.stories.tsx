@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { DeleteIcon } from '@components/icons';
 import { FieldText } from './fieldText';
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useRef, useState } from 'react';
 
 const meta: Meta<typeof FieldText> = {
   title: 'Field Text',
@@ -13,12 +13,17 @@ const meta: Meta<typeof FieldText> = {
   render: (args) => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const [value, setValue] = useState('');
-
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const ref = useRef<HTMLInputElement>(null);
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-      setValue(event.target.value);
+      const val = event.target.value;
+      setValue(val);
+      if (val === 'blur') {
+        ref?.current?.blur();
+      }
     };
 
-    return <FieldText {...args} value={value} onChange={handleChange} />;
+    return <FieldText {...args} value={value} onChange={handleChange} ref={ref} />;
   },
 };
 

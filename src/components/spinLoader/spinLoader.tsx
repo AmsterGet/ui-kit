@@ -4,16 +4,13 @@ import styles from './spinLoader.module.scss';
 
 const cx = classNames.bind(styles);
 
-interface SpinLoaderLoaderProps {
+interface SpinLoaderProps {
   color?: string;
   className?: string;
 }
 
-export const SpinLoader: FC<SpinLoaderLoaderProps> = ({
-  color = 'topaz',
-  className,
-}): ReactElement => (
-  <div className={cx('spin-loader', className, { [`color-${color}`]: color })}>
-    <div className={cx('spinner')} />
+export const SpinLoader: FC<SpinLoaderProps> = ({ color = 'topaz', className }): ReactElement => (
+  <div className={cx('spin-loader', className)}>
+    <div className={cx('spinner', { [`color-${color}`]: color })} />
   </div>
 );

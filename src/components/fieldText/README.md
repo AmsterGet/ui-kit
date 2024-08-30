@@ -22,6 +22,8 @@ Has 36px height & width adjusted by content.
 - **isRequired**: _bool_, optional, default = false
 - **hasDoubleMessage**: _bool_, optional, default = false
 - **displayError**: _bool_, optional, default = true
+- **collapsible**: _bool_, optional, default = false
+- **loading**: _bool_, optional, default = false
 
 ### Events:
 
