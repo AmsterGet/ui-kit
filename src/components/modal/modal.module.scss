@@ -28,6 +28,10 @@ $WIDTH-LARGE: 720px;
   text-align: center;
 }
 
+.scrollable {
+  overflow: hidden;
+}
+
 .overlay-default {
   background-color: var(--rp-ui-base-overlay);
 }
