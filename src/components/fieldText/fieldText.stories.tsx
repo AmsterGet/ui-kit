@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { DeleteIcon } from '@components/icons';
 import { FieldText } from './fieldText';
+import { ChangeEvent, useState } from 'react';
 
 const meta: Meta<typeof FieldText> = {
   title: 'Field Text',
@@ -9,6 +10,16 @@ const meta: Meta<typeof FieldText> = {
     layout: 'centered',
   },
   tags: ['autodocs'],
+  render: (args) => {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const [value, setValue] = useState('');
+
+    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+      setValue(event.target.value);
+    };
+
+    return <FieldText {...args} value={value} onChange={handleChange} />;
+  },
 };
 
 export default meta;
@@ -73,5 +84,6 @@ export const FullyDescribed: Story = {
     touched: true,
     hasDoubleMessage: true,
     startIcon: <DeleteIcon />,
+    collapsible: true,
   },
 };

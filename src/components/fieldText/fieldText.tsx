@@ -1,11 +1,12 @@
 import {
-  FC,
   ChangeEventHandler,
   forwardRef,
-  ForwardedRef,
   ReactElement,
   ReactNode,
-  ComponentPropsWithRef,
+  useState,
+  useImperativeHandle,
+  useRef,
+  InputHTMLAttributes,
 } from 'react';
 import classNames from 'classnames/bind';
 import { ClearIcon } from '@components/icons';
@@ -13,7 +14,7 @@ import styles from './fieldText.module.scss';
 
 const cx = classNames.bind(styles);
 
-interface FieldTextProps extends ComponentPropsWithRef<'input'> {
+interface FieldTextProps extends InputHTMLAttributes<HTMLInputElement> {
   value?: string;
   className?: string;
   error?: string;
@@ -33,12 +34,13 @@ interface FieldTextProps extends ComponentPropsWithRef<'input'> {
   hasDoubleMessage?: boolean;
   type?: string;
   displayError?: boolean;
+  collapsible?: boolean;
+}
+interface FocusableInputHandle {
+  focus: () => void;
 }
 
-// TODO: Remove ts-ignore
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-export const FieldText: FC<FieldTextProps> = forwardRef(
+export const FieldText = forwardRef<FocusableInputHandle, FieldTextProps>(
   (
     {
       value = '',
@@ -60,10 +62,22 @@ export const FieldText: FC<FieldTextProps> = forwardRef(
       hasDoubleMessage = false,
       type = 'text',
       displayError = true,
+      collapsible,
       ...rest
     },
-    ref: ForwardedRef<HTMLInputElement>,
+    ref,
   ): ReactElement => {
+    const internalRef = useRef<HTMLInputElement>(null);
+    const [focused, setFocused] = useState(false);
+    const onFocus = () => setFocused(true);
+    const onBlur = () => setFocused(false);
+
+    useImperativeHandle(ref, () => ({
+      focus: () => {
+        internalRef.current?.focus();
+      },
+    }));
+
     const clearInput = () => {
       if (onClear) {
         onClear(value);
@@ -84,25 +98,31 @@ export const FieldText: FC<FieldTextProps> = forwardRef(
         <div
           className={cx('field', className, {
             error,
-            touched,
+            touched: touched,
             disabled,
             'default-width': defaultWidth,
+            collapsed: collapsible && !focused && !value,
           })}
           title={title}
         >
           {startIcon && (
-            <span className={cx('icon-container-start')}>
+            <span
+              className={cx('icon-container-start')}
+              onClick={() => internalRef.current?.focus()}
+            >
               <span className={cx('icon')}>{startIcon}</span>
             </span>
           )}
           <span className={cx('input-container')}>
             <input
-              ref={ref}
+              ref={internalRef}
               type={type}
               className={cx('input')}
               value={value}
               disabled={disabled}
               onChange={onChange}
+              onFocus={onFocus}
+              onBlur={onBlur}
               {...rest}
             />
             {placeholder && !value && (
