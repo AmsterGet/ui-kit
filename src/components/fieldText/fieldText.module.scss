@@ -37,6 +37,10 @@
 .icon-container-start {
   @extend .icon-container;
   margin-right: 4px;
+
+  .collapsed & {
+    cursor: pointer;
+  }
 }
 
 .icon-container-end {
@@ -73,6 +77,22 @@
   border: 1px solid var(--rp-ui-color-field-border-3);
   border-radius: 3px;
   background-color: var(--rp-ui-color-field-bg-3);
+  transition: width 200ms, padding 200ms, border 100ms;
+
+  &.default-width {
+    width: 240px;
+  }
+
+  &.collapsed {
+    width: 22px;
+    border-width: 0;
+    overflow: hidden;
+    padding: 0;
+
+    .placeholder {
+      display: none;
+    }
+  }
 
   &:hover:not(.disabled) {
     border-color: var(--rp-ui-color-field-border-3-hover);
@@ -95,10 +115,6 @@
     .placeholder {
       color: var(--rp-ui-base-e-300);
     }
-  }
-
-  &.default-width {
-    width: 240px;
   }
 }
 
@@ -138,6 +154,7 @@
   top: 2px;
   left: 0;
   pointer-events: none;
+  white-space: nowrap;
 
   .asterisk:after {
     @include asterisk();

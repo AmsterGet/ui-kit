@@ -1,25 +1,29 @@
 import {
-  FC,
   ChangeEventHandler,
   forwardRef,
-  ForwardedRef,
   ReactElement,
   ReactNode,
-  ComponentPropsWithRef,
+  useState,
+  useRef,
+  InputHTMLAttributes,
+  MutableRefObject,
 } from 'react';
 import classNames from 'classnames/bind';
 import { ClearIcon } from '@components/icons';
 import styles from './fieldText.module.scss';
+import { SpinLoader } from '@components/spinLoader';
 
 const cx = classNames.bind(styles);
 
-interface FieldTextProps extends ComponentPropsWithRef<'input'> {
+interface FieldTextProps extends InputHTMLAttributes<HTMLInputElement> {
   value?: string;
   className?: string;
   error?: string;
   placeholder?: string;
   disabled?: boolean;
   onChange?: ChangeEventHandler<HTMLInputElement>;
+  onFocus?: ChangeEventHandler<HTMLInputElement>;
+  onBlur?: ChangeEventHandler<HTMLInputElement>;
   touched?: boolean;
   title?: string;
   label?: string;
@@ -33,12 +37,11 @@ interface FieldTextProps extends ComponentPropsWithRef<'input'> {
   hasDoubleMessage?: boolean;
   type?: string;
   displayError?: boolean;
+  collapsible?: boolean;
+  loading?: boolean;
 }
 
-// TODO: Remove ts-ignore
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-export const FieldText: FC<FieldTextProps> = forwardRef(
+export const FieldText = forwardRef<HTMLInputElement, FieldTextProps>(
   (
     {
       value = '',
@@ -60,13 +63,33 @@ export const FieldText: FC<FieldTextProps> = forwardRef(
       hasDoubleMessage = false,
       type = 'text',
       displayError = true,
+      collapsible = false,
+      loading = false,
+      onFocus = () => {},
+      onBlur = () => {},
       ...rest
     },
-    ref: ForwardedRef<HTMLInputElement>,
+    ref,
   ): ReactElement => {
+    const internalRef = useRef<HTMLInputElement>(null);
+    const inputRef = ref || internalRef;
+    const [focused, setFocused] = useState(false);
+
+    const onFocusHandler = (event: React.FocusEvent<HTMLInputElement>) => {
+      setFocused(true);
+      onFocus(event);
+    };
+
+    const onBlurHandler = (event: React.FocusEvent<HTMLInputElement>) => {
+      setFocused(false);
+      onBlur(event);
+    };
+
     const clearInput = () => {
       if (onClear) {
         onClear(value);
+        const input = inputRef as MutableRefObject<HTMLInputElement>;
+        input.current?.focus();
       }
     };
 
@@ -87,22 +110,35 @@ export const FieldText: FC<FieldTextProps> = forwardRef(
             touched,
             disabled,
             'default-width': defaultWidth,
+            collapsed: collapsible && !focused && !value,
           })}
           title={title}
         >
-          {startIcon && (
-            <span className={cx('icon-container-start')}>
-              <span className={cx('icon')}>{startIcon}</span>
-            </span>
+          {loading ? (
+            <SpinLoader />
+          ) : (
+            startIcon && (
+              <span
+                className={cx('icon-container-start')}
+                onClick={() => {
+                  const input = inputRef as MutableRefObject<HTMLInputElement>;
+                  input.current?.focus();
+                }}
+              >
+                <span className={cx('icon')}>{startIcon}</span>
+              </span>
+            )
           )}
           <span className={cx('input-container')}>
             <input
-              ref={ref}
+              ref={inputRef}
               type={type}
               className={cx('input')}
               value={value}
               disabled={disabled}
               onChange={onChange}
+              onFocus={onFocusHandler}
+              onBlur={onBlurHandler}
               {...rest}
             />
             {placeholder && !value && (
