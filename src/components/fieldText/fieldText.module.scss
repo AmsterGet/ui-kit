@@ -31,7 +31,10 @@
 .icon-container-start {
   @extend .icon-container;
   margin-right: 4px;
-  cursor: pointer;
+
+  .collapsed & {
+    cursor: pointer;
+  }
 }
 
 .icon-container-end {

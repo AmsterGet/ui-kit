@@ -1,7 +1,7 @@
 .spin-loader {
   width: 16px;
   height: 16px;
-  margin: 3px 6px 3px 3px;
+  margin: 3px 7px 3px 3px;
   flex-shrink: 0;
 }
 
@@ -17,7 +17,7 @@
   mask: radial-gradient(circle, transparent 55%, var(--rp-ui-color-primary) 0%);
 
   &.color-topaz {
-    background: conic-gradient(#0000 0%, var(--rp-ui-color-primary));
+    background: conic-gradient(transparent 0%, var(--rp-ui-color-primary));
   }
 
   animation: spin 1s infinite linear;

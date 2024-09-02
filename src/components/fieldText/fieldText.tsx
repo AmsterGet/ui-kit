@@ -88,6 +88,8 @@ export const FieldText = forwardRef<HTMLInputElement, FieldTextProps>(
     const clearInput = () => {
       if (onClear) {
         onClear(value);
+        const input = inputRef as MutableRefObject<HTMLInputElement>;
+        input.current?.focus();
       }
     };
 
