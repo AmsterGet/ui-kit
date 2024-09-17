@@ -42,9 +42,12 @@
     border-color: var(--rp-ui-base-topaz-focused);
   }
 
-  &:hover:not(.disabled):not(:focus-within):not(.error.touched),
-  &.filled:not(:focus-within) {
+  &:hover:not(.disabled):not(:focus-within):not(.error.touched) {
     border-color: var(--rp-ui-base-e-300);
+  }
+
+  &.filled:not(:focus-within) {
+    border-color: var(--rp-ui-base-e-200);
   }
 
   &.error.touched {
@@ -73,6 +76,7 @@
   border: none;
   text-align: center;
   appearance: textfield;
+  color: var(--rp-ui-base-almost-black);
 
   &:focus {
     outline: none;
