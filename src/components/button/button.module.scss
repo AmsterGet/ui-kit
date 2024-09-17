@@ -59,6 +59,7 @@
   color: var(--rp-ui-base-bg-000);
   &:hover:not(.disabled) {
     opacity: 0.9;
+    background-color: var(----rp-ui-base-error-hover);
   }
   &:active:not(.disabled) {
     border: 1px solid var(--rp-ui-color-error-pressed);
