@@ -1,4 +1,4 @@
-import { ReactNode, FC } from 'react';
+import { ReactNode, FC } from '../../../node_modules/react';
 import { ButtonProps } from '../button';
 import { ModalSize } from './modalFooter';
 type ModalOverlay = 'default' | 'light-cyan';

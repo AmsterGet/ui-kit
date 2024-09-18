@@ -1,4 +1,4 @@
-import { ReactNode, FC } from 'react';
+import { ReactNode, FC } from '../../../../node_modules/react';
 interface ModalHeaderProps {
     title?: ReactNode;
     onClose: () => void;

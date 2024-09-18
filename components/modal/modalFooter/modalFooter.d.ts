@@ -1,4 +1,4 @@
-import { ReactNode, FC, MouseEventHandler } from 'react';
+import { ReactNode, FC, MouseEventHandler } from '../../../../node_modules/react';
 import { ButtonProps } from '../../button';
 export type ModalSize = 'default' | 'small' | 'large';
 interface ModalFooterProps {

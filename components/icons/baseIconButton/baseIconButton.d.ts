@@ -1,4 +1,4 @@
-import { FC, MouseEventHandler, ReactNode, HTMLAttributes } from 'react';
+import { FC, MouseEventHandler, ReactNode, HTMLAttributes } from '../../../../node_modules/react';
 export interface BaseIconButtonProps extends HTMLAttributes<HTMLButtonElement> {
     children: ReactNode;
     className?: string;

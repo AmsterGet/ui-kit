@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC } from '../../../../node_modules/react';
 import { ChangePageSize } from '../types';
 interface PageSizeControlProps {
     size: number;

@@ -1,11 +1,13 @@
-import { FC, ChangeEventHandler, ReactNode, ComponentPropsWithRef } from 'react';
-interface FieldTextProps extends ComponentPropsWithRef<'input'> {
+import { ChangeEventHandler, ReactNode, InputHTMLAttributes } from '../../../node_modules/react';
+interface FieldTextProps extends InputHTMLAttributes<HTMLInputElement> {
     value?: string;
     className?: string;
     error?: string;
     placeholder?: string;
     disabled?: boolean;
     onChange?: ChangeEventHandler<HTMLInputElement>;
+    onFocus?: ChangeEventHandler<HTMLInputElement>;
+    onBlur?: ChangeEventHandler<HTMLInputElement>;
     touched?: boolean;
     title?: string;
     label?: string;
@@ -19,6 +21,8 @@ interface FieldTextProps extends ComponentPropsWithRef<'input'> {
     hasDoubleMessage?: boolean;
     type?: string;
     displayError?: boolean;
+    collapsible?: boolean;
+    loading?: boolean;
 }
-export declare const FieldText: FC<FieldTextProps>;
+export declare const FieldText: import('../../../node_modules/react').ForwardRefExoticComponent<FieldTextProps & import('../../../node_modules/react').RefAttributes<HTMLInputElement>>;
 export {};

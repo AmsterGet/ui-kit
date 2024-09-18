@@ -1,4 +1,4 @@
-import { MouseEventHandler, ReactNode } from 'react';
+import { MouseEventHandler, ReactNode } from '../../../node_modules/react';
 export type DropdownVariant = 'default' | 'ghost';
 export type DropdownValue = string | boolean | number;
 export type RenderDropdownOption = (props: DropdownOptionProps) => ReactNode;

@@ -1,4 +1,4 @@
-import { FC, ReactNode } from 'react';
+import { FC, ReactNode } from '../../../node_modules/react';
 import { Placement } from '@floating-ui/react-dom';
 interface TooltipProps {
     content: ReactNode;

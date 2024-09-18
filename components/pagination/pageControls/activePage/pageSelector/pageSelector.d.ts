@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC } from '../../../../../../node_modules/react';
 import { ChangePage } from '../../../types';
 interface PageSelectorProps {
     pageText: string;

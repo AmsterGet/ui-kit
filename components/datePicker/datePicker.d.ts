@@ -1,4 +1,4 @@
-import { FC, ReactNode, ReactElement } from 'react';
+import { FC, ReactNode, ReactElement } from '../../../node_modules/react';
 interface DatePickerProps {
     onChange?: (date: Date | any) => void;
     onBlur?: () => void;

@@ -8,6 +8,7 @@ export { Dropdown } from './dropdown';
 export { Toggle } from './toggle';
 export { FieldNumber } from './fieldNumber';
 export { BubblesLoader } from './bubblesLoader';
+export { SpinLoader } from './spinLoader';
 export { FieldTextFlex } from './fieldTextFlex';
 export { Radio } from './radio';
 export { Tooltip } from './tooltip';

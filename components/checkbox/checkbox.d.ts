@@ -1,4 +1,4 @@
-import { FC, ReactNode, ChangeEventHandler, HTMLAttributes } from 'react';
+import { FC, ReactNode, ChangeEventHandler, HTMLAttributes } from '../../../node_modules/react';
 interface CheckboxProps extends HTMLAttributes<HTMLInputElement> {
     value: boolean;
     children?: ReactNode;

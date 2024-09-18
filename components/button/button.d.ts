@@ -1,4 +1,4 @@
-import { FC, ReactNode, ComponentPropsWithRef, MouseEventHandler } from 'react';
+import { FC, ReactNode, ComponentPropsWithRef, MouseEventHandler } from '../../../node_modules/react';
 type IconPlace = 'start' | 'end';
 type ButtonVariant = 'primary' | 'ghost' | 'danger' | 'text';
 type ButtonWidth = 'content' | 'wide-content' | 'parent';
