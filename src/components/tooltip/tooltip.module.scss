@@ -8,7 +8,7 @@ $DEFAULT_MARGIN: 4px;
 $ARROW_LINE: math.div($ARROW-WIDTH, 2);
 $triangle-color: var(--rp-ui-base-black);
 
-.with-tooltip {
+.tooltip-wrapper {
   display: block;
   width: 100%;
   height: fit-content;
