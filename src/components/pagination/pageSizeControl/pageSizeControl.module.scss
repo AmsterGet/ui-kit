@@ -8,10 +8,11 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  @include font-scale();
 }
 
 .size-selector-button {
   margin-right: 4px;
   font-weight: $fw-bold;
-  @include font-scale('s-small');
+  @include font-scale();
 }
