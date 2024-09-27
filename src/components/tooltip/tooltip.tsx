@@ -16,12 +16,23 @@
 
 import { FC, ReactElement, useRef, useState, ReactNode } from 'react';
 import classNames from 'classnames/bind';
-import { useFloating, flip, Placement } from '@floating-ui/react-dom';
+import {
+  useFloating,
+  flip,
+  Placement,
+  FloatingArrow,
+  arrow,
+  offset,
+  autoUpdate,
+} from '@floating-ui/react';
 import styles from './tooltip.module.scss';
 
 const cx = classNames.bind(styles);
 const TOOLTIP_DELAY_MS = 300;
 const SAFE_ZONE = 100;
+const TRIANGLE_WIDTH = 16;
+const TRIANGLE_HEIGHT = 8;
+const placements: Placement[] = ['top', 'right', 'bottom', 'left'];
 
 interface TooltipProps {
   content: ReactNode;
@@ -30,8 +41,12 @@ interface TooltipProps {
   contentClassName?: string;
   dynamicWidth?: boolean;
   width?: number;
+  minWidth?: number;
   placement?: Placement;
   dataAutomationId?: string;
+  arrowColor?: string;
+  safeZone?: number;
+  zIndex?: number;
 }
 
 export const Tooltip: FC<TooltipProps> = ({
@@ -40,21 +55,34 @@ export const Tooltip: FC<TooltipProps> = ({
   contentClassName,
   dynamicWidth,
   width,
+  minWidth = 120,
+  safeZone = 4,
+  zIndex = 9,
   placement = 'bottom',
+  arrowColor = 'rgba(34, 34, 34, 0.91)',
   dataAutomationId,
   children,
 }): ReactElement => {
   const [isOpened, setOpened] = useState(false);
+  const arrowRef = useRef(null);
   const timeoutId = useRef<ReturnType<typeof setTimeout>>();
 
-  const { refs, floatingStyles } = useFloating({
+  const { refs, floatingStyles, context } = useFloating({
+    open: isOpened,
     placement,
-    strategy: 'fixed',
     middleware: [
+      offset({
+        mainAxis: safeZone + TRIANGLE_HEIGHT,
+      }),
       flip({
-        fallbackPlacements: ['bottom', 'top', 'right', 'left'],
+        fallbackAxisSideDirection: 'start',
+        fallbackPlacements: placements,
+      }),
+      arrow({
+        element: arrowRef,
       }),
     ],
+    whileElementsMounted: autoUpdate,
   });
 
   const styleWidth = dynamicWidth ? null : { width: `${width}px` };
@@ -76,7 +104,7 @@ export const Tooltip: FC<TooltipProps> = ({
   return (
     <>
       <div
-        ref={(node) => refs.setReference(node as HTMLElement)}
+        ref={refs.setReference}
         className={cx('tooltip-wrapper', wrapperClassName)}
         onMouseDown={handleHideTooltip}
         onMouseEnter={handleShowTooltip}
@@ -86,14 +114,22 @@ export const Tooltip: FC<TooltipProps> = ({
       </div>
       {isOpened && (
         <div
-          className={cx('tooltip')}
-          ref={(node) => refs.setFloating(node as HTMLElement)}
+          ref={refs.setFloating}
           style={{
             ...floatingStyles,
             ...styleWidth,
+            minWidth,
+            zIndex,
           }}
           data-automation-id={dataAutomationId}
         >
+          <FloatingArrow
+            ref={arrowRef}
+            context={context}
+            width={TRIANGLE_WIDTH}
+            height={TRIANGLE_HEIGHT}
+            fill={arrowColor}
+          />
           <div
             className={cx('tooltip-content', contentClassName)}
             style={{
