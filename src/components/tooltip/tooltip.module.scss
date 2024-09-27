@@ -1,12 +1,21 @@
-@use "sass:math";
+/*
+ * Copyright 2024 EPAM Systems
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 @import 'src/assets/styles/variables/typography';
 @import 'src/assets/styles/mixins/font-scale';
-
-$ARROW_HEIGHT: 9px;
-$ARROW_WIDTH: 18px;
-$DEFAULT_MARGIN: 4px;
-$ARROW_LINE: math.div($ARROW-WIDTH, 2);
-$triangle-color: var(--rp-ui-base-black);
 
 .tooltip-wrapper {
   display: block;
@@ -15,109 +24,16 @@ $triangle-color: var(--rp-ui-base-black);
   cursor: pointer;
 }
 
-.tooltip {
-  transition: opacity 300ms ease;
-  z-index: 9;
-
-  &[data-placement*='bottom'] {
-    margin-top: $DEFAULT_MARGIN;
-  }
-
-  &[data-placement*='top'] {
-    margin-bottom: $DEFAULT_MARGIN;
-
-    .tooltip-content {
-      transform: translate(0, calc(-100% - 8px));
-    }
-  }
-
-  &[data-placement*='left'] {
-    padding-right: $ARROW_HEIGHT + $DEFAULT_MARGIN;
-
-    .tooltip-content {
-      transform: translate(0, calc(-50% - $ARROW_LINE));
-    }
-  }
-
-  &[data-placement*='right'] {
-    margin-left: $DEFAULT_MARGIN;
-
-    .tooltip-content {
-      transform: translate(8px, calc(-50% - $ARROW_LINE));
-    }
-  }
-}
-
 .tooltip-content {
   @include font-scale('s-small');
   padding: 16px;
   border-radius: 8px;
-  background-color: var(--rp-ui-base-black);
+  background-color: var(--rp-ui-tooltip-bg);
   font-family: var(--rp-ui-base-font-family);
   font-weight: $fw-medium;
-  font-size: 11px;
   color: var(--rp-ui-base-bg-000);
   word-wrap: break-word;
   white-space: pre-wrap;
   box-sizing: border-box;
   width: 100%;
-}
-
-.tooltip-arrow {
-  position: absolute;
-
-  &::before {
-    content: '';
-    margin: auto;
-    display: block;
-    width: 0;
-    height: 0;
-    border-style: solid;
-  }
-
-  &[data-placement*='bottom'] {
-    top: 0;
-    width: $ARROW_WIDTH;
-    height: $ARROW_HEIGHT;
-
-    &::before {
-      border-width: 0 $ARROW_LINE $ARROW_HEIGHT;
-      border-color: transparent transparent $triangle-color;
-    }
-  }
-
-  &[data-placement*='top'] {
-    bottom: 0;
-    width: $ARROW_WIDTH;
-    height: $ARROW_HEIGHT;
-
-    &::before {
-      border-width: $ARROW_HEIGHT $ARROW_LINE 0;
-      border-color: $triangle-color transparent transparent;
-    }
-  }
-
-  &[data-placement*='left'] {
-    right: 0;
-    width: $ARROW_HEIGHT;
-    height: $ARROW_WIDTH;
-
-    &::before {
-      border-width: $ARROW_LINE 0 $ARROW_LINE $ARROW_HEIGHT;
-      border-color: transparent transparent transparent $triangle-color;
-      margin-left: 100%;
-    }
-  }
-
-  &[data-placement*='right'] {
-    left: 0;
-    width: $ARROW_HEIGHT;
-    height: $ARROW_WIDTH;
-
-    &::before {
-      border-width: $ARROW_LINE $ARROW_HEIGHT $ARROW_LINE 0;
-      border-color: transparent $triangle-color transparent transparent;
-      margin: 0;
-    }
-  }
 }

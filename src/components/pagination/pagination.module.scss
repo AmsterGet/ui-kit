@@ -11,6 +11,6 @@
 
   font-family: var(--rp-ui-base-font-family);
   font-weight: $fw-regular;
-  @include font-scale('s-small');
+  @include font-scale();
   color: var(--rp-ui-base-almost-black);
 }

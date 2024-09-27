@@ -1,10 +1,7 @@
-@import 'src/assets/styles/mixins/font-scale';
-
 .item-counter {
   display: inline-block;
   width: 200px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  @include font-scale();
 }

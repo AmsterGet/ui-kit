@@ -1,5 +1,4 @@
 @import 'src/assets/styles/variables/typography';
-@import 'src/assets/styles/mixins/font-scale';
 
 .page-size-control {
   display: flex;
@@ -8,11 +7,9 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  @include font-scale();
 }
 
 .size-selector-button {
   margin-right: 4px;
   font-weight: $fw-bold;
-  @include font-scale();
 }
