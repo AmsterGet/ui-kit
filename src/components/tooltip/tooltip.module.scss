@@ -28,7 +28,7 @@
   @include font-scale('s-small');
   padding: 16px;
   border-radius: 8px;
-  background-color: var(--rp-ui-tooltip-bg);
+  background-color: var(--rp-ui-base-tooltip-bg);
   font-family: var(--rp-ui-base-font-family);
   font-weight: $fw-medium;
   color: var(--rp-ui-base-bg-000);
