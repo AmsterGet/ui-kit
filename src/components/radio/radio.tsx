@@ -6,6 +6,7 @@ import {
   FC,
   ReactElement,
   KeyboardEvent,
+  useId,
 } from 'react';
 import classNames from 'classnames/bind';
 import { KeyCodes } from '@common/constants/keyCodes';
@@ -40,6 +41,7 @@ export const Radio: FC<RadioProps> = ({
   ...rest
 }): ReactElement => {
   const inputRef = useRef<HTMLInputElement | null>(null);
+  const radioLabelId = useId();
 
   const isChecked = String(option.value) === String(value);
 
@@ -62,7 +64,7 @@ export const Radio: FC<RadioProps> = ({
   return (
     // eslint-disable-next-line
     <label
-      id="rp-ui-kit-radio-label"
+      id={radioLabelId}
       className={cx(className, 'radio-button', {
         disabled: option.disabled,
       })}

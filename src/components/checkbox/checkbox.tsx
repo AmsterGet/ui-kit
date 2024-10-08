@@ -7,6 +7,7 @@ import {
   KeyboardEventHandler,
   ChangeEventHandler,
   HTMLAttributes,
+  useId,
 } from 'react';
 import { KeyCodes } from '@common/constants/keyCodes';
 import styles from './checkbox.module.scss';
@@ -35,6 +36,7 @@ export const Checkbox: FC<CheckboxProps> = ({
   ...rest
 }): ReactElement => {
   const inputRef = useRef<HTMLInputElement | null>(null);
+  const checkboxLabelId = useId();
 
   const handleKeyDown: KeyboardEventHandler<HTMLInputElement> = (event) => {
     const { keyCode } = event;
@@ -53,7 +55,7 @@ export const Checkbox: FC<CheckboxProps> = ({
 
   return (
     <label
-      id="rp-ui-kit-checkbox-label"
+      id={checkboxLabelId}
       className={cx('checkbox', className, {
         disabled,
       })}
