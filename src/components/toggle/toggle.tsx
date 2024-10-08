@@ -6,6 +6,7 @@ import {
   KeyboardEventHandler,
   ReactElement,
   ReactNode,
+  useId,
   useRef,
 } from 'react';
 import { KeyCodes } from '@common/constants/keyCodes';
@@ -32,6 +33,7 @@ export const Toggle: FC<ToggleProps> = ({
   ...rest
 }): ReactElement => {
   const inputRef = useRef<HTMLInputElement | null>(null);
+  const toggleLabelId = useId();
 
   const handleKeyDown: KeyboardEventHandler<HTMLInputElement> = (event) => {
     const { keyCode } = event;
@@ -49,11 +51,7 @@ export const Toggle: FC<ToggleProps> = ({
   };
 
   return (
-    <label
-      id="rp-ui-kit-toggle-label"
-      title={title}
-      className={cx('toggle', className, { disabled })}
-    >
+    <label id={toggleLabelId} title={title} className={cx('toggle', className, { disabled })}>
       <input
         ref={inputRef}
         tabIndex={disabled ? -1 : 0}
@@ -66,7 +64,7 @@ export const Toggle: FC<ToggleProps> = ({
         {...rest}
       />
       <div
-        aria-labelledby="rp-ui-kit-toggle-label"
+        aria-labelledby={toggleLabelId}
         role="checkbox"
         aria-checked={value}
         className={cx('slider', 'round')}
