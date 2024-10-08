@@ -84,7 +84,7 @@ export const Radio: FC<RadioProps> = ({
       />
       <span
         role="radio"
-        aria-labelledby="rp-ui-kit-radio-label"
+        aria-labelledby={radioLabelId}
         aria-checked={isChecked}
         className={cx('toggler', {
           disabled: option.disabled,

@@ -64,7 +64,7 @@ export const Toggle: FC<ToggleProps> = ({
         {...rest}
       />
       <div
-        aria-labelledby="rp-ui-kit-toggle-label"
+        aria-labelledby={toggleLabelId}
         role="checkbox"
         aria-checked={value}
         className={cx('slider', 'round')}

@@ -74,7 +74,7 @@ export const Checkbox: FC<CheckboxProps> = ({
         {...rest}
       />
       <span
-        aria-labelledby="rp-ui-kit-checkbox-label"
+        aria-labelledby={checkboxLabelId}
         role="checkbox"
         aria-checked={value}
         className={cx('control', {
