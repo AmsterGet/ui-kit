@@ -179,22 +179,22 @@
   font: inherit;
   outline: inherit;
   cursor: pointer;
-  @include fill-svg-path(var(--rp-ui-color-bg-2));
+  @include fill-svg-path(var(--rp-ui-color-field-icon));
 
   &.disabled {
     pointer-events: none;
   }
 
   &:hover {
-    @include fill-svg(var(--rp-ui-base-e-400));
+    @include fill-svg-path(var(--rp-ui-color-field-hover-2));
   }
 
   &:focus {
-    @include fill-svg(var(--rp-ui-color-primary-focused));
+    @include fill-svg-path(var(--rp-ui-color-primary-focused));
   }
 
   &:active {
-    @include fill-svg(var(--rp-ui-color-primary-pressed));
+    @include fill-svg-path(var(--rp-ui-color-primary-pressed));
   }
 }
 
