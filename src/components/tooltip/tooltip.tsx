@@ -47,6 +47,7 @@ interface TooltipProps {
   arrowColor?: string;
   safeZone?: number;
   zIndex?: number;
+  mainAxis?: boolean;
 }
 
 export const Tooltip: FC<TooltipProps> = ({
@@ -61,6 +62,7 @@ export const Tooltip: FC<TooltipProps> = ({
   placement = 'bottom',
   arrowColor = 'rgba(34, 34, 34, 0.91)',
   dataAutomationId,
+  mainAxis = true,
   children,
 }): ReactElement => {
   const [isOpened, setOpened] = useState(false);
@@ -75,6 +77,7 @@ export const Tooltip: FC<TooltipProps> = ({
         mainAxis: safeZone + TRIANGLE_HEIGHT,
       }),
       flip({
+        mainAxis,
         fallbackAxisSideDirection: 'start',
         fallbackPlacements: placements,
       }),
