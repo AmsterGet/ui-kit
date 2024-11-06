@@ -18,10 +18,14 @@ export interface DetailedCellData {
   content: string | number;
   component: ReactNode;
 }
+export interface MetaData {
+  [key: string]: any;
+}
 export interface RowData {
   id: string | number;
   [key: string]: DetailedCellData | RowConfigs | string | number | any;
   rowConfigs?: RowConfigs;
+  metaData?: MetaData;
 }
 export enum SortDirection {
   ASC = 'asc',
@@ -35,7 +39,7 @@ export interface TableComponentProps {
   data: RowData[];
   primaryColumn: Column;
   fixedColumns: FixedColumn[];
-  rowActionMenu?: ReactNode;
+  renderRowActions?: (metaData?: MetaData) => ReactNode;
   selectable?: boolean;
   className?: string;
   headerClassName?: string;

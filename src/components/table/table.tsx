@@ -12,7 +12,7 @@ export const Table: FC<TableComponentProps> = ({
   data,
   primaryColumn,
   fixedColumns,
-  rowActionMenu,
+  renderRowActions,
   className = '',
   rowClassName = '',
   headerClassName = '',
@@ -121,7 +121,7 @@ export const Table: FC<TableComponentProps> = ({
             </div>
           </button>
         ))}
-        {rowActionMenu && <div className={cx('table-header-cell', 'action-menu-cell')} />}
+        {renderRowActions && <div className={cx('table-header-cell', 'action-menu-cell')} />}
       </div>
 
       <div className={cx('table-body')}>
@@ -156,8 +156,10 @@ export const Table: FC<TableComponentProps> = ({
                 </div>
               ))}
 
-              {rowActionMenu && (
-                <div className={cx('table-cell', 'action-menu-cell')}>{rowActionMenu}</div>
+              {renderRowActions && (
+                <div className={cx('table-cell', 'action-menu-cell')}>
+                  {renderRowActions(item.metaData)}
+                </div>
               )}
             </div>
           </div>
