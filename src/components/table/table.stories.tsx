@@ -29,7 +29,7 @@ export default meta;
 
 type Story = StoryObj<TableComponentProps>;
 
-const rowActionMenu = (
+const renderRowActions = () => (
   <Popover
     placement={'bottom-end'}
     content={
@@ -151,7 +151,7 @@ export const Default: Story = {
   args: {
     primaryColumn,
     fixedColumns,
-    rowActionMenu,
+    renderRowActions,
     selectable: true,
   },
 };
