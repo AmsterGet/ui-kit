@@ -46,6 +46,7 @@ export default defineConfig(() => ({
         fieldTextFlex: resolve('src', 'components', 'fieldTextFlex'),
         pagination: resolve('src', 'components', 'pagination'),
         table: resolve('src', 'components', 'table'),
+        datepicker: resolve('src', 'components', 'datepicker'),
       },
       name: 'ui-kit',
       formats: ['es'],
