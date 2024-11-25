@@ -155,7 +155,7 @@ export const FieldText = forwardRef<HTMLInputElement, FieldTextProps>(
           )}
           {clearable && value.length > 0 && (
             <span className={cx('icon-container-end')}>
-              <button type="button" className={cx('clear-icon', { disabled })} onClick={clearInput}>
+              <button type="button" className={cx('icon', { disabled })} onClick={clearInput}>
                 <ClearIcon />
               </button>
             </span>
