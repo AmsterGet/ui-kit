@@ -125,7 +125,7 @@ export const FieldText = forwardRef<HTMLInputElement, FieldTextProps>(
                   input.current?.focus();
                 }}
               >
-                <span className={cx('icon')}>{startIcon}</span>
+                <span className={cx('icon', { 'start-icon': !focused })}>{startIcon}</span>
               </span>
             )
           )}
