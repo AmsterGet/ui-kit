@@ -16,3 +16,6 @@ export { default as CalendarIcon } from './svg/calendar.svg';
 export { default as SearchIcon } from './svg/search.svg';
 export { default as FilterOutlineIcon } from './svg/filterOutline.svg';
 export { default as FilterFilledIcon } from './svg/filterFilled.svg';
+export { default as InfoIcon } from './svg/info.svg';
+export { default as SuccessIcon } from './svg/success.svg';
+export { default as ErrorIcon } from './svg/error.svg';

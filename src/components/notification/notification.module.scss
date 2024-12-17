@@ -1,0 +1,68 @@
+@import 'src/assets/styles/variables/typography';
+@import 'src/assets/styles/mixins/font-scale';
+
+.notification-container {
+  display: flex;
+  box-sizing: border-box;
+  width: 600px;
+  padding: 16px;
+  gap: 16px;
+  border-radius: 16px;
+  justify-content: space-between;
+  box-shadow: var(--rp-ui-base-shadow-secondary);
+
+  &.error {
+    background-color: var(--rp-ui-base-sm-error);
+  }
+
+  &.success {
+    background-color: var(--rp-ui-base-test-execution-status-passed);
+  }
+
+  &.info {
+    background-color: var(--rp-ui-base-no-defect-bug-group);
+  }
+
+  .icon-wrapper {
+    width: 20px;
+    height: 24px;
+    display: grid;
+    place-content: center;
+  }
+
+  .content-wrapper {
+    display: flex;
+    gap: 16px;
+    flex-direction: column;
+    flex: 1;
+
+    .title {
+      text-align: start;
+      font-family: var(--rp-ui-base-font-family);
+      @include font-scale();
+      font-weight: $fw-semi-bold;
+      line-height: 24px;
+      font-size: 15px;
+      color: var(--rp-ui-base-bg-000);
+      display: -webkit-box;
+      max-width: 100%;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+  }
+
+  .close-button {
+    background: none;
+    border: none;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+
+    svg {
+      path {
+        fill: var(--rp-ui-base-bg-000);
+      }
+    }
+  }
+}
