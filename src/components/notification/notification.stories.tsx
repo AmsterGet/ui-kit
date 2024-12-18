@@ -1,5 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { Notification } from './notification';
+import { NotificationType } from '@components/notification/types';
 
 const meta: Meta<typeof Notification> = {
   title: 'Notification',
@@ -12,7 +13,7 @@ const meta: Meta<typeof Notification> = {
     uid: '1',
     title: 'Ab dignissimos exercitationem laudantium magni voluptas.',
     onClose: () => {},
-    type: 'success',
+    type: NotificationType.SUCCESS,
   },
 };
 
