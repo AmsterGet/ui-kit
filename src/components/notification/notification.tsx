@@ -1,21 +1,24 @@
-import { CSSProperties, FC, ReactElement, ReactNode, useEffect } from 'react';
-import { NotificationProps } from '@components/notification/types';
+import { CSSProperties, FC, ReactElement, useEffect } from 'react';
+import { NotificationProps, NotificationType } from '@components/notification/types';
 import styles from './notification.module.scss';
 import classNames from 'classnames/bind';
 import { CloseIcon, ErrorIcon, InfoIcon, SuccessIcon } from '@/components';
 
 const cx = classNames.bind(styles);
+const ERROR_DURATION = 7000;
+const DEFAULT_DURATION = 4000;
+
 export const Notification: FC<NotificationProps> = ({
   uid,
   title,
   onClose,
   icon = null,
-  type = 'info',
-  duration = 4000,
+  type = NotificationType.INFO,
+  duration = DEFAULT_DURATION,
   description,
   className,
 }): ReactElement => {
-  const adjustedDuration = type === 'error' ? 7000 : duration;
+  const adjustedDuration = type === NotificationType.ERROR ? ERROR_DURATION : duration;
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -25,7 +28,7 @@ export const Notification: FC<NotificationProps> = ({
     return () => clearTimeout(timer);
   }, [adjustedDuration, uid, onClose]);
 
-  const getIcon = (): ReactElement | ReactNode => {
+  const getIcon = (): ReactElement | null => {
     switch (type) {
       case 'info':
         return <InfoIcon />;
