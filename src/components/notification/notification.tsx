@@ -1,8 +1,8 @@
-import { CSSProperties, FC, ReactElement, useEffect } from 'react';
+import { FC, ReactElement, useEffect } from 'react';
 import { NotificationProps, NotificationType } from '@components/notification/types';
 import styles from './notification.module.scss';
 import classNames from 'classnames/bind';
-import { CloseIcon, ErrorIcon, InfoIcon, SuccessIcon } from '@/components';
+import { CloseIcon, ErrorIcon, InfoIcon, SuccessIcon } from '@components/icons';
 
 const cx = classNames.bind(styles);
 const ERROR_DURATION = 7000;
@@ -15,7 +15,6 @@ export const Notification: FC<NotificationProps> = ({
   icon = null,
   type = NotificationType.INFO,
   duration = DEFAULT_DURATION,
-  description,
   className,
 }): ReactElement => {
   const adjustedDuration = type === NotificationType.ERROR ? ERROR_DURATION : duration;
@@ -41,14 +40,10 @@ export const Notification: FC<NotificationProps> = ({
     }
   };
   return (
-    <div
-      className={cx('notification-container', type, className)}
-      style={{ '--duration': `${duration}ms` } as CSSProperties}
-    >
+    <div className={cx('notification-container', type, className)}>
       <div className={cx('icon-wrapper')}>{getIcon()}</div>
       <div className={cx('content-wrapper')}>
-        <div className={cx('title')}>{title}</div>
-        {description && <div className={cx('description')}>{description}</div>}
+        <h2 className={cx('title')}>{title}</h2>
       </div>
       <button
         className={cx('close-button')}

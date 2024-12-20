@@ -39,10 +39,8 @@
     .title {
       text-align: start;
       font-family: var(--rp-ui-base-font-family);
-      @include font-scale();
+      @include font-scale(x2-medium);
       font-weight: $fw-semi-bold;
-      line-height: 24px;
-      font-size: 15px;
       color: var(--rp-ui-base-bg-000);
       display: -webkit-box;
       max-width: 100%;

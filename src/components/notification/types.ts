@@ -1,4 +1,4 @@
-import { ReactElement, ReactNode } from 'react';
+import { ReactElement } from 'react';
 export enum NotificationType {
   INFO = 'info',
   SUCCESS = 'success',
@@ -11,6 +11,5 @@ export interface NotificationProps {
   icon?: ReactElement | null;
   type?: NotificationType;
   duration?: number;
-  description?: ReactNode;
   className?: string;
 }
