@@ -1,6 +1,6 @@
 import { FC, ReactElement, useEffect } from 'react';
-import { NotificationProps, NotificationType } from '@components/notification/types';
-import styles from './notification.module.scss';
+import { SystemAlertProps, SystemAlertType } from './types';
+import styles from './systemAlert.module.scss';
 import classNames from 'classnames/bind';
 import { CloseIcon, ErrorIcon, InfoIcon, SuccessIcon } from '@components/icons';
 
@@ -8,16 +8,16 @@ const cx = classNames.bind(styles);
 const ERROR_DURATION = 7000;
 const DEFAULT_DURATION = 4000;
 
-export const Notification: FC<NotificationProps> = ({
+export const SystemAlert: FC<SystemAlertProps> = ({
   uid,
   title,
   onClose,
   icon = null,
-  type = NotificationType.INFO,
+  type = SystemAlertType.INFO,
   duration = DEFAULT_DURATION,
   className,
 }): ReactElement => {
-  const adjustedDuration = type === NotificationType.ERROR ? ERROR_DURATION : duration;
+  const adjustedDuration = type === SystemAlertType.ERROR ? ERROR_DURATION : duration;
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -40,7 +40,7 @@ export const Notification: FC<NotificationProps> = ({
     }
   };
   return (
-    <div className={cx('notification-container', type, className)}>
+    <div className={cx('system-alert', type, className)}>
       <div className={cx('icon-wrapper')}>{getIcon()}</div>
       <div className={cx('content-wrapper')}>
         <h2 className={cx('title')}>{title}</h2>
@@ -48,7 +48,7 @@ export const Notification: FC<NotificationProps> = ({
       <button
         className={cx('close-button')}
         onClick={() => onClose(uid)}
-        aria-label="close notification"
+        aria-label="close system alert"
       >
         <CloseIcon />
       </button>

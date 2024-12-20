@@ -14,4 +14,4 @@
  * limitations under the License.
  */
 
-export { Notification } from './notification';
+export { SystemAlert } from './systemAlert';

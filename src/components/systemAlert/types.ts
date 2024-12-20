@@ -1,15 +1,15 @@
 import { ReactElement } from 'react';
-export enum NotificationType {
+export enum SystemAlertType {
   INFO = 'info',
   SUCCESS = 'success',
   ERROR = 'error',
 }
-export interface NotificationProps {
+export interface SystemAlertProps {
   uid: string | number;
   title: string;
   onClose: (id: string | number) => void;
   icon?: ReactElement | null;
-  type?: NotificationType;
+  type?: SystemAlertType;
   duration?: number;
   className?: string;
 }
