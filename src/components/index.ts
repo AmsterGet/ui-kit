@@ -16,4 +16,5 @@ export { Popover } from './popover';
 export { Pagination } from './pagination';
 export { Table } from './table';
 export { DatePicker } from './datePicker';
+export { SystemAlert } from './systemAlert';
 export * from './icons';
