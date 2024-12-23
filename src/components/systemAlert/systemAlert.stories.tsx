@@ -10,7 +10,6 @@ const meta: Meta<typeof SystemAlert> = {
   },
   tags: ['autodocs'],
   args: {
-    uid: '1',
     title: 'Ab dignissimos exercitationem laudantium magni voluptas.',
     onClose: () => {},
     type: SystemAlertType.SUCCESS,
