@@ -44,11 +44,7 @@ export const SystemAlert: FC<SystemAlertProps> = ({
       <div className={cx('content-wrapper')}>
         <h2 className={cx('title')}>{title}</h2>
       </div>
-      <button
-        className={cx('close-button')}
-        onClick={() => onClose()}
-        aria-label="close system alert"
-      >
+      <button className={cx('close-button')} onClick={onClose} aria-label="close system alert">
         <CloseIcon />
       </button>
     </div>
