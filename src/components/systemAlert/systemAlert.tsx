@@ -9,7 +9,6 @@ const ERROR_DURATION = 7000;
 const DEFAULT_DURATION = 4000;
 
 export const SystemAlert: FC<SystemAlertProps> = ({
-  uid,
   title,
   onClose,
   icon = null,
@@ -21,11 +20,11 @@ export const SystemAlert: FC<SystemAlertProps> = ({
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      onClose(uid);
+      onClose();
     }, adjustedDuration);
 
     return () => clearTimeout(timer);
-  }, [adjustedDuration, uid, onClose]);
+  }, [adjustedDuration, onClose]);
 
   const getIcon = (): ReactElement | null => {
     switch (type) {
@@ -45,11 +44,7 @@ export const SystemAlert: FC<SystemAlertProps> = ({
       <div className={cx('content-wrapper')}>
         <h2 className={cx('title')}>{title}</h2>
       </div>
-      <button
-        className={cx('close-button')}
-        onClick={() => onClose(uid)}
-        aria-label="close system alert"
-      >
+      <button className={cx('close-button')} onClick={onClose} aria-label="close system alert">
         <CloseIcon />
       </button>
     </div>
