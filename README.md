@@ -232,9 +232,9 @@ The CSS custom properties that come from DS are prefixed with `rp-ui-base` to av
 - [rc-scrollbars](https://www.npmjs.com/package/rc-scrollbars) - used for custom scrollbars.
 - [@floating-ui/react-dom](https://www.npmjs.com/package/@floating-ui/react-dom) - used for positioning menus, dropdown elements, autocompletes, etc.
 
-# Testing
+### Testing
 
-## Testing Tools
+#### Testing Tools
 
 The project uses the following testing tools:
 - **Vitest**: Fast testing framework, compatible with Vite
@@ -243,7 +243,7 @@ The project uses the following testing tools:
 - **JSDOM**: For simulating a DOM environment in Node.js
 - **@vitest/coverage-v8**: For code coverage reporting
 
-## Test Scripts
+#### Test Scripts
 
 Available npm scripts for testing:
 - `npm run test` - Run tests in watch mode
@@ -251,7 +251,7 @@ Available npm scripts for testing:
 - `npm run test:ci` - Run tests once (for CI environments)
 - `npm run test:ui` - Run tests with UI interface
 
-## Test Coverage
+#### Test Coverage
 
 The project maintains a minimum of 80% test coverage threshold for:
 - Statements
