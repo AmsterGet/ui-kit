@@ -234,4 +234,27 @@ The CSS custom properties that come from DS are prefixed with `rp-ui-base` to av
 
 ### Testing
 
-To be provided.
+#### Testing Tools
+
+The project uses the following testing tools:
+- **Vitest**: Fast testing framework, compatible with Vite
+- **React Testing Library**: For testing React components with a focus on user interactions
+- **@testing-library/user-event**: For simulating user events in tests
+- **JSDOM**: For simulating a DOM environment in Node.js
+- **@vitest/coverage-v8**: For code coverage reporting
+
+#### Test Scripts
+
+Available npm scripts for testing:
+- `npm run test` - Run tests in watch mode
+- `npm run test:coverage` - Run tests with coverage report
+- `npm run test:ci` - Run tests once (for CI environments)
+- `npm run test:ui` - Run tests with UI interface
+
+#### Test Coverage
+
+The project maintains a minimum of 80% test coverage threshold for:
+- Statements
+- Branches
+- Functions
+- Lines

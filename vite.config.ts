@@ -14,7 +14,9 @@ export default defineConfig(() => ({
       exportAsDefault: true,
     }),
     tsConfigPaths(),
-    dts(),
+    dts({
+      exclude: ['**/*.test.{ts,tsx}', '**/test/**', '**/*.stories.{ts,tsx}'],
+    }),
   ],
   resolve: {
     alias: {
