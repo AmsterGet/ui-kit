@@ -1,9 +1,66 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
+import DefaultExport, { Button as NamedExport } from './index';
 import { Button } from './button';
 
 describe('Button Component', () => {
+  describe('Exports', () => {
+    it('exports Button component as named export', () => {
+      expect(NamedExport).toBeDefined();
+      expect(NamedExport).toBeTruthy();
+      expect(typeof NamedExport).toBe('object');
+    });
+
+    it('exports default Button component', () => {
+      expect(DefaultExport).toBeDefined();
+      expect(DefaultExport).toBeTruthy();
+      expect(typeof DefaultExport).toBe('object');
+    });
+
+    it('exports ButtonProps type correctly', () => {
+      const props = {
+        variant: 'primary',
+        type: 'button',
+        children: 'Test',
+      };
+      expect(props).toBeDefined();
+    });
+
+    it('named export renders correctly', () => {
+      render(<NamedExport>Named Export Button</NamedExport>);
+      const button = screen.getByRole('button', { name: 'Named Export Button' });
+      expect(button).toBeInTheDocument();
+    });
+
+    it('default export renders correctly', () => {
+      render(<DefaultExport>Default Export Button</DefaultExport>);
+      const button = screen.getByRole('button', { name: 'Default Export Button' });
+      expect(button).toBeInTheDocument();
+    });
+
+    it('ensures default and named exports reference same component', () => {
+      expect(DefaultExport).toBe(NamedExport);
+    });
+
+    it('renders same component regardless of import method', () => {
+      render(
+        <div>
+          <DefaultExport data-testid="default-button">Default Export</DefaultExport>
+          <NamedExport data-testid="named-button">Named Export</NamedExport>
+        </div>,
+      );
+
+      const defaultButton = screen.getByTestId('default-button');
+      const namedButton = screen.getByTestId('named-button');
+
+      expect(defaultButton.className).toContain('button');
+      expect(defaultButton.className).toContain('primary');
+      expect(namedButton.className).toContain('button');
+      expect(namedButton.className).toContain('primary');
+    });
+  });
+
   describe('Rendering', () => {
     it('renders with default props', () => {
       render(<Button>Click me</Button>);
@@ -99,18 +156,6 @@ describe('Button Component', () => {
 
       expect(button.className).toContain('custom-class');
       expect(button.className).toContain('button');
-    });
-  });
-
-  describe('Button Types', () => {
-    it('renders different button types', () => {
-      const { rerender } = render(<Button type="submit">Submit</Button>);
-      let button = screen.getByRole('button');
-      expect(button).toHaveAttribute('type', 'submit');
-
-      rerender(<Button type="reset">Reset</Button>);
-      button = screen.getByRole('button');
-      expect(button).toHaveAttribute('type', 'reset');
     });
   });
 

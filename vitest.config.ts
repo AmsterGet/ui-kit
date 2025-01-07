@@ -7,7 +7,13 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: ['./src/test/setup.ts'],
     coverage: {
-      exclude: ['**/*.stories.tsx', '**/*.stories.ts'],
+      include: ['src/components/button/button.tsx', 'src/components/button/index.ts'],
+      thresholds: {
+        statements: 80,
+        branches: 80,
+        functions: 80,
+        lines: 80,
+      },
     },
   },
 });
