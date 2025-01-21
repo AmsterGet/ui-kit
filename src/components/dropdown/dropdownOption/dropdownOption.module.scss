@@ -2,13 +2,14 @@
 @import 'src/assets/styles/mixins/font-scale';
 
 .dropdown-option {
-  display: inline-block;
+  display: flex;
   font-family: var(--rp-ui-base-font-family);
   font-weight: $fw-regular;
   @include font-scale();
   box-sizing: border-box;
   cursor: pointer;
   color: var(--rp-ui-color-text-3);
+  padding: 9px 12px 7px;
 
   &.disabled {
     pointer-events: none;
@@ -47,7 +48,6 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  padding: 9px 12px 7px;
 }
 
 .sub-option {

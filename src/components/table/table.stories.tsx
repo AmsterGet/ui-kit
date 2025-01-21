@@ -131,7 +131,6 @@ export const Default: Story = {
               newCheckedRows.add(id);
             }
             setCheckedRows(newCheckedRows);
-            console.log('checkedRows:', checkedRows);
           }}
           onToggleAllRowsSelection={() => {
             if (checkedRows.size === data.length) {
