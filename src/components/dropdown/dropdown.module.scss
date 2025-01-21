@@ -163,3 +163,9 @@ $Z-INDEX-POPUP: 10;
     }
   }
 }
+
+.divider {
+  height: 1px;
+  margin: 8px 12px;
+  background-color: var(--rp-ui-base-e-100);
+}

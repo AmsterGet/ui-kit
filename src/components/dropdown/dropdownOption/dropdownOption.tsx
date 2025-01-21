@@ -1,7 +1,8 @@
-import { forwardRef, FC, ForwardedRef, ReactElement } from 'react';
+import { forwardRef, FC, ForwardedRef, ReactElement, MouseEventHandler } from 'react';
 import classNames from 'classnames/bind';
 import { DropdownOptionProps } from '../types';
 import styles from './dropdownOption.module.scss';
+import { Checkbox } from '@components/checkbox';
 
 const cx = classNames.bind(styles);
 
@@ -14,10 +15,12 @@ export const DropdownOption: FC<DropdownOptionProps> = forwardRef(
       render,
       highlightHovered,
       onMouseEnter,
+      multiSelect,
+      isPartiallyChecked = false,
     } = props;
-    const onChangeHandler = () => {
-      if (onChange) {
-        onChange(value);
+    const onChangeHandler: MouseEventHandler<HTMLDivElement | HTMLInputElement> = (e) => {
+      if (e.target instanceof HTMLDivElement || e.target instanceof HTMLInputElement) {
+        onChange?.(value);
       }
     };
 
@@ -34,6 +37,7 @@ export const DropdownOption: FC<DropdownOptionProps> = forwardRef(
         ref={ref}
         onMouseEnter={onMouseEnter}
       >
+        {multiSelect && <Checkbox value={!!selected} partiallyChecked={isPartiallyChecked} />}
         <div className={cx('single-option', { 'sub-option': !!groupRef })}>
           {render ? render(props) : label}
         </div>

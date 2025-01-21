@@ -2,8 +2,11 @@ import { DropdownValue, DropdownOptionType } from './types';
 
 export const calculateDefaultIndex = (
   options: DropdownOptionType[],
-  selectedValue: DropdownValue,
-): number => options.map(({ value }) => value).indexOf(selectedValue);
+  selectedValue: DropdownValue | DropdownValue[],
+): number => {
+  const selectedValues = Array.isArray(selectedValue) ? selectedValue : [selectedValue];
+  return options.findIndex(({ value }) => selectedValues.includes(value));
+};
 
 const calculateCurrentItemIndex = (index: number, itemsCount: number): number =>
   ((index % itemsCount) + itemsCount) % itemsCount;

@@ -14,10 +14,10 @@ import styles from './dropdown.module.scss';
 
 const cx = classNames.bind(styles);
 
-interface DropdownProps {
+export interface DropdownProps {
   // TODO: make value and options optional
   options: DropdownOptionType[];
-  value: DropdownValue;
+  value: DropdownValue | DropdownValue[];
   disabled?: boolean;
   error?: string;
   mobileDisabled?: boolean;
@@ -34,12 +34,17 @@ interface DropdownProps {
   onBlur?: () => void;
   renderOption?: RenderDropdownOption;
   isListWidthLimited?: boolean;
+  multiSelect?: boolean;
+  optionAll?: DropdownOptionType;
+  isOptionAllVisible?: boolean;
+  onSelectAll?: () => void;
+  footer?: ReactNode;
 }
 
 // DS link - https://www.figma.com/file/gjYQPbeyf4YsH3wZiVKoaj/%F0%9F%9B%A0-RP-DS-6?type=design&node-id=3424-12207&mode=design&t=dDq6moPaTzQLviS1-0
-// TODO: implement multiple select
 export const Dropdown: FC<DropdownProps> = ({
-  value = '',
+  multiSelect = false,
+  value = multiSelect ? [] : '',
   options = [],
   disabled = false,
   error,
@@ -57,11 +62,18 @@ export const Dropdown: FC<DropdownProps> = ({
   className,
   toggleButtonClassName,
   isListWidthLimited = false,
+  optionAll = { value: 'all', label: 'All' },
+  isOptionAllVisible = false,
+  onSelectAll,
+  footer,
 }): ReactElement => {
   const [opened, setOpened] = useState(false);
   const containerRef = useRef(null);
   const [eventName, setEventName] = useState<string | null>(null);
-
+  const multiSelectedItems: DropdownOptionType[] | null =
+    multiSelect && Array.isArray(value)
+      ? options.filter((option) => value.includes(option.value))
+      : null;
   const { refs, floatingStyles } = useFloating({
     middleware: [
       offset(5),
@@ -84,7 +96,7 @@ export const Dropdown: FC<DropdownProps> = ({
       return;
     }
     onChange(option.value);
-    setOpened((prevState) => !prevState);
+    setOpened((prevState) => multiSelect || !prevState);
   };
 
   const getSelectedOption = (): DropdownOptionType =>
@@ -137,14 +149,21 @@ export const Dropdown: FC<DropdownProps> = ({
   };
 
   const getDisplayedValue = () => {
-    if (!value && value !== false && value !== 0) return placeholder;
-    let displayedValue = value;
-    options.forEach((option) => {
-      if (option.value === value) {
-        displayedValue = option.label;
+    if ((!value && value !== false && value !== 0) || (Array.isArray(value) && !value.length))
+      return placeholder;
+
+    if (multiSelect && Array.isArray(value) && options.length === value.length) {
+      return optionAll.label;
+    }
+
+    const displayedValue = options.reduce<string[]>((labels, option) => {
+      if ((Array.isArray(value) && value.includes(option.value)) || option.value === value) {
+        labels.push(option.label);
       }
-    });
-    return displayedValue;
+      return labels;
+    }, []);
+
+    return displayedValue.join(', ');
   };
 
   const handleToggleButtonKeyDown: KeyboardEventHandler<HTMLButtonElement> = (event) => {
@@ -163,8 +182,10 @@ export const Dropdown: FC<DropdownProps> = ({
     if (keyCode === KeyCodes.ENTER_KEY_CODE) {
       const option = options[highlightedIndex];
       handleChange(option);
-      setOpened(false);
-      onBlur?.();
+      if (!multiSelect) {
+        setOpened(false);
+        onBlur?.();
+      }
       return;
     }
 
@@ -177,6 +198,18 @@ export const Dropdown: FC<DropdownProps> = ({
 
   const renderOptions = () => (
     <div className={cx('options-container')}>
+      {multiSelect && isOptionAllVisible && Array.isArray(value) && (
+        <>
+          <DropdownOption
+            option={optionAll}
+            selected={value.length === options.length}
+            onChange={onSelectAll}
+            multiSelect={multiSelect}
+            isPartiallyChecked={!!value.length}
+          />
+          <div className={cx('divider')} />{' '}
+        </>
+      )}
       {options.map((option, index) => (
         <DropdownOption
           key={option.value}
@@ -184,7 +217,12 @@ export const Dropdown: FC<DropdownProps> = ({
             item: option,
             index,
           })}
-          selected={option.value === (selectedItem?.value ?? selectedItem)}
+          multiSelect={multiSelect}
+          selected={
+            multiSelect
+              ? multiSelectedItems?.some((item) => item.value === option.value)
+              : option.value === (selectedItem?.value ?? selectedItem)
+          }
           option={{ title: option.label, ...option }}
           highlightHovered={highlightedIndex === index && eventName !== EventName.ON_CLICK}
           render={renderOption}
@@ -192,6 +230,12 @@ export const Dropdown: FC<DropdownProps> = ({
           onMouseEnter={() => setHighlightedIndex(index)}
         />
       ))}
+      {footer && (
+        <>
+          <div className={cx('divider')} />
+          {footer}
+        </>
+      )}
     </div>
   );
 
