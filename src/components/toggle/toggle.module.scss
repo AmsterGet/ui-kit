@@ -37,6 +37,7 @@
   border-radius: 10px;
   width: 32px;
   height: 20px;
+
   &:before {
     position: absolute;
     top: 2px;
@@ -68,8 +69,8 @@
     outline: none;
   }
 
-  &:focus:not(.disabled),
-  &:focus-visible:not(.disabled) + .slider {
+  &:focus:not(:disabled),
+  &:focus-visible:not(:disabled) + .slider {
     &::after {
       top: 50%;
       left: 50%;
@@ -86,12 +87,15 @@
   &:checked + .slider {
     background-color: var(--rp-ui-base-topaz);
   }
+
   &:checked + .slider:before {
     transform: translateX(12px);
   }
-  &:hover + .slider {
+
+  &:hover:not(:disabled) + .slider {
     background-color: var(--rp-ui-base-e-400);
   }
+
   &:checked:hover + .slider {
     background-color: var(--rp-ui-base-topaz-hover);
   }
