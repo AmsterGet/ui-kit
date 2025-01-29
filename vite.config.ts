@@ -49,6 +49,8 @@ export default defineConfig(() => ({
         pagination: resolve('src', 'components', 'pagination'),
         table: resolve('src', 'components', 'table'),
         datePicker: resolve('src', 'components', 'datePicker'),
+        datePicker1: resolve('src', 'components', 'datePicker1'),
+        date2: resolve('src', 'components', 'date2'),
       },
       name: 'ui-kit',
       formats: ['es'],

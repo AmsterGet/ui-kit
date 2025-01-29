@@ -1,0 +1,262 @@
+@import 'src/assets/styles/variables/typography';
+@import 'src/assets/styles/mixins/font-scale';
+
+$DAY_OF_THE_WEEK_Z_INDEX: 3;
+$DAY_OF_THE_WEEK_HOVERED_Z_INDEX: 2;
+$POPOVER_Z_INDEX: 10;
+
+@mixin setMonthContainerProperties {
+  .react-datepicker__month-container {
+    width: 100%;
+    height: 100%;
+    float: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    @include setCustomHeaderProperties;
+    @include setMothProperties;
+  }
+}
+
+@mixin setCustomHeaderProperties {
+  .react-datepicker__header.react-datepicker__header--custom {
+    width: 100%;
+    background-color: var(--rp-ui-base-bg-000);
+    border-bottom: none;
+    padding: 0;
+    @include setDaysNameOfTheWeekProperties;
+  }
+}
+
+@mixin setMothProperties {
+  .react-datepicker__month {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    row-gap: 8px;
+    @include setDaysDigitsContainerProperties;
+  }
+}
+
+@mixin setDaysDigitsContainerProperties {
+  .react-datepicker__week {
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: var(--rp-ui-base-font-family);
+    color: var(--rp-ui-base-dark-e-500);
+    @include font-scale();
+    .react-datepicker__day--range-end:first-child:before {
+      display: none;
+    }
+  }
+
+  .react-datepicker__day {
+    cursor: pointer;
+
+    &.react-datepicker__day--in-selecting-range {
+      &:not(.react-datepicker__day--selecting-range-end, .react-datepicker__day--selecting-range-start, .react-datepicker__day--range-start, .react-datepicker__day--range-end) {
+        background-color: var(--rp-ui-base-bg-200);
+        height: 32px;
+        line-height: 32px;
+        position: relative;
+      }
+    }
+
+    &.react-datepicker__day--selected {
+      position: relative;
+      border-radius: 50%;
+      background-color: var(--rp-ui-base-topaz);
+      font-family: var(--rp-ui-base-font-family);
+      font-weight: $fw-bold;
+      color: var(--rp-ui-base-bg-000);
+    }
+  }
+
+  .react-datepicker__day--disabled {
+    cursor: default;
+
+    &:hover {
+      border: none !important;
+      line-height: 40px !important;
+    }
+  }
+}
+
+@mixin setDaysNameOfTheWeekProperties {
+  .react-datepicker__day-names {
+    display: flex;
+    height: 40px;
+    justify-content: space-between;
+    font-family: var(--rp-ui-base-font-family);
+    font-weight: $fw-bold;
+    @include font-scale();
+    color: var(--rp-ui-base-dark-e-500);
+    vertical-align: middle;
+
+    .react-datepicker__day-name {
+      width: 40px;
+      text-align: center;
+    }
+  }
+}
+
+@mixin removeAriaLive {
+  .react-datepicker__aria-live {
+    display: none;
+  }
+}
+
+@mixin setHoverState($backgroundColor, $textColor: inherit) {
+  border-radius: 50%;
+  border: 1px solid var(--rp-ui-base-topaz);
+  background-color: $backgroundColor;
+  line-height: 38px;
+  color: $textColor;
+}
+
+@mixin removeOutline {
+  &:focus-visible {
+    outline: none;
+  }
+}
+
+@mixin verticalAlign($height) {
+  height: $height;
+  line-height: $height;
+}
+
+@mixin drawBeforePseudoElement {
+  position: absolute;
+  content: '';
+  height: 32px;
+  background-color: var(--rp-ui-base-bg-200);
+  width: 16px;
+  top: 0;
+  left: -9px;
+  z-index: 1;
+}
+
+@mixin drawAfterPseudoElement($displayValue, $borderWidth) {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  border: $borderWidth solid var(--rp-ui-base-topaz);
+  border-radius: 50%;
+  display: $displayValue;
+  z-index: $DAY_OF_THE_WEEK_HOVERED_Z_INDEX;
+  box-sizing: border-box;
+}
+
+:global {
+  @include removeAriaLive;
+}
+
+.calendar {
+  box-sizing: border-box;
+  background-color: var(--rp-ui-base-bg-000);
+  width: 344px;
+  padding: 30px 32px 32px;
+  border-radius: 8px;
+  box-shadow: 0px 8px 40px var(--rp-ui-base-dark-bg-light);
+  border: none;
+  margin-top: 4px;
+
+  :global {
+    @include setMonthContainerProperties;
+  }
+
+  .current-date,
+  .date {
+    width: 40px;
+    margin: 0;
+    box-sizing: border-box;
+    @include verticalAlign(40px);
+    @include removeOutline;
+  }
+
+  .date {
+    background-color: transparent;
+    border-radius: unset;
+    color: inherit;
+    text-align: center;
+  }
+
+  .current-date,
+  .current-date:hover {
+    position: relative;
+    z-index: $DAY_OF_THE_WEEK_Z_INDEX;
+    font-family: var(--rp-ui-base-font-family);
+    font-weight: $fw-bold;
+    @include setHoverState(var(--rp-ui-base-topaz), var(--rp-ui-base-bg-000));
+  }
+
+  .date:hover:not(.current-date):not(.selected-range):not(.end-date) {
+    @include setHoverState(transparent);
+  }
+
+  .end-date {
+    position: relative;
+    border-radius: 50%;
+    background-color: var(--rp-ui-base-topaz);
+    font-family: var(--rp-ui-base-font-family);
+    font-weight: $fw-bold;
+    color: var(--rp-ui-base-bg-000);
+  }
+
+  .end-date::after {
+    @include drawAfterPseudoElement(block, 10px);
+  }
+
+  .end-date::before {
+    @include drawBeforePseudoElement;
+    top: 4px;
+  }
+
+  .selected-range {
+    background-color: var(--rp-ui-base-bg-200);
+    border-radius: 8px;
+    @include verticalAlign(32px);
+    position: relative;
+    &:hover {
+      @include verticalAlign(40px);
+      border-radius: 50%;
+      background: var(--rp-ui-base-bg-200);
+      &::after {
+        display: block;
+      }
+      &:not(:first-child)::before {
+        top: 4px;
+      }
+    }
+  }
+
+  .selected-range::after {
+    @include drawAfterPseudoElement(none, 1px);
+  }
+
+  .selected-range:not(:first-child)::before {
+    @include drawBeforePseudoElement;
+  }
+
+  .disabled {
+    color: var(--rp-ui-base-e-400);
+    background-color: transparent;
+    @include removeOutline;
+  }
+}
+.popper {
+  z-index: $POPOVER_Z_INDEX;
+}
+
+.input {
+  width: 100%;
+  min-width: 138px;
+}
