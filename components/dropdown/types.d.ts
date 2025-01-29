@@ -16,5 +16,7 @@ export interface DropdownOptionProps {
     highlightHovered?: boolean;
     render?: RenderDropdownOption;
     onMouseEnter?: MouseEventHandler<HTMLDivElement>;
+    multiSelect?: boolean;
+    isPartiallyChecked?: boolean;
     option: DropdownOptionType;
 }

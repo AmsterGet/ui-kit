@@ -1,8 +1,8 @@
 import { ReactNode, FC } from '../../../node_modules/react';
 import { DropdownVariant, RenderDropdownOption, DropdownOptionType, DropdownValue } from './types';
-interface DropdownProps {
+export interface DropdownProps {
     options: DropdownOptionType[];
-    value: DropdownValue;
+    value: DropdownValue | DropdownValue[];
     disabled?: boolean;
     error?: string;
     mobileDisabled?: boolean;
@@ -19,6 +19,10 @@ interface DropdownProps {
     onBlur?: () => void;
     renderOption?: RenderDropdownOption;
     isListWidthLimited?: boolean;
+    multiSelect?: boolean;
+    optionAll?: DropdownOptionType;
+    isOptionAllVisible?: boolean;
+    onSelectAll?: () => void;
+    footer?: ReactNode;
 }
 export declare const Dropdown: FC<DropdownProps>;
-export {};

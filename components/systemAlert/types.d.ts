@@ -5,9 +5,8 @@ export declare enum SystemAlertType {
     ERROR = "error"
 }
 export interface SystemAlertProps {
-    uid: string | number;
     title: string;
-    onClose: (id: string | number) => void;
+    onClose: () => void;
     icon?: ReactElement | null;
     type?: SystemAlertType;
     duration?: number;
