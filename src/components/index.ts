@@ -18,6 +18,6 @@ export { Table } from './table';
 export { DatePicker } from './datePicker';
 export { DatePicker1 } from './datePicker1';
 export { Date2 } from './date2';
-export { ReactDatePicker2 } from './reactDatePicker';
+export { ReactDatePicker2 } from './reactDatePicker2';
 export { SystemAlert } from './systemAlert';
 export * from './icons';
