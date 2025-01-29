@@ -51,7 +51,6 @@ export default defineConfig(() => ({
         datePicker: resolve('src', 'components', 'datePicker'),
         datePicker1: resolve('src', 'components', 'datePicker1'),
         date2: resolve('src', 'components', 'date2'),
-        datePicker2: resolve('src', 'components', 'datePicker2/datePicker2'),
       },
       name: 'ui-kit',
       formats: ['es'],
