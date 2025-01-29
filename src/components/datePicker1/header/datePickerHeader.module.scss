@@ -1,0 +1,72 @@
+@import 'src/assets/styles/variables/typography';
+
+@mixin arrowHoverState($arrow-color) {
+  &:hover:not(.disabled) {
+    cursor: pointer;
+    svg > path {
+      fill: $arrow-color;
+    }
+  }
+}
+
+@mixin disabledState {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+@mixin setArrowDefaultProps {
+  align-self: center;
+  width: 16px;
+  height: 16px;
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--rp-ui-base-bg-000);
+  padding-bottom: 18px;
+
+  .dropdowns-wrapper {
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+  }
+
+  .button-prev,
+  .button-next {
+    all: unset;
+
+    @include setArrowDefaultProps();
+    @include arrowHoverState(var(--rp-ui-base-e-400));
+    &.disabled {
+      @include disabledState;
+    }
+  }
+
+  .button-next {
+    transform: rotate(180deg);
+  }
+
+  .dropdown {
+    width: auto;
+
+    &.month-dropdown {
+      width: 117px;
+    }
+
+    .toggle-button > span {
+      color: var(--rp-ui-base-topaz);
+      font-family: var(--rp-ui-base-font-family);
+      font-weight: $fw-bold;
+    }
+
+    .toggle-button:hover > span {
+      color: var(-rp-ui-base-topaz-hover);
+    }
+  }
+}
