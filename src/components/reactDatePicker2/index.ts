@@ -1,4 +1,4 @@
-import { ReactDatePicker2 } from './reactDatePicker';
+import { ReactDatePicker2 } from './reactDatePicker2';
 
 export { ReactDatePicker2 };
 
