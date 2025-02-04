@@ -24,10 +24,6 @@
     background: var(--rp-ui-color-bg-3);
   }
 
-  &.selected {
-    color: var(--rp-ui-color-primary-text);
-  }
-
   &.hover:not(.disabled) {
     padding: 8px 11px 6px;
     background-color: var(--rp-ui-color-bg-3);

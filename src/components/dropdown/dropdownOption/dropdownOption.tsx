@@ -27,7 +27,6 @@ export const DropdownOption: FC<DropdownOptionProps> = forwardRef(
     return (
       <div
         className={cx('dropdown-option', {
-          selected,
           disabled,
           hidden,
           hover: highlightHovered,
