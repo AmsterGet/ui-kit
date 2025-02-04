@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { FC, useState } from 'react';
 import { Dropdown, DropdownProps } from './dropdown';
+import { DropdownValue } from '@components/dropdown/types';
 import { Button } from '@components/button';
 import './stories.scss';
 
@@ -48,37 +49,27 @@ const FooterApply: FC<FooterApplyProps> = ({ selected, total, onApply }) => {
 };
 
 export const Default: Story = {
+  args: {
+    value: 1,
+  },
+};
+
+export const MultiSelect: Story = {
   render: (args: DropdownProps) => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    const [selectedValues, setSelectedValues] = useState<Set<number | string | boolean>>(
-      new Set([]),
-    );
+    const [selectedValues, setSelectedValues] = useState<DropdownValue | DropdownValue[]>([]);
 
     return (
       <div>
         <Dropdown
           {...args}
           onChange={(value) => {
-            const newSelectedValues = new Set(selectedValues);
-            if (newSelectedValues.has(value)) {
-              newSelectedValues.delete(value);
-            } else {
-              newSelectedValues.add(value);
-            }
-            setSelectedValues(newSelectedValues);
+            setSelectedValues(value);
           }}
-          onSelectAll={() => {
-            if (selectedValues.size === args.options.length) {
-              setSelectedValues(new Set());
-            } else {
-              const allValues = new Set(args.options.map((item) => item.value));
-              setSelectedValues(allValues);
-            }
-          }}
-          value={[...selectedValues]}
+          value={selectedValues}
           footer={
             <FooterApply
-              selected={selectedValues.size}
+              selected={Array.isArray(selectedValues) ? selectedValues.length : 0}
               total={args.options.length}
               onApply={() => {}}
             />

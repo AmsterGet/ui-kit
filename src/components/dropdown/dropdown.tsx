@@ -29,7 +29,7 @@ export interface DropdownProps {
   transparentBackground?: boolean;
   className?: string;
   toggleButtonClassName?: string;
-  onChange: (value: DropdownValue) => void;
+  onChange: (value: DropdownValue | DropdownValue[]) => void;
   onFocus?: () => void;
   onBlur?: () => void;
   renderOption?: RenderDropdownOption;
@@ -64,7 +64,7 @@ export const Dropdown: FC<DropdownProps> = ({
   isListWidthLimited = false,
   optionAll = { value: 'all', label: 'All' },
   isOptionAllVisible = false,
-  onSelectAll,
+  onSelectAll = () => {},
   footer,
 }): ReactElement => {
   const [opened, setOpened] = useState(false);
@@ -82,6 +82,13 @@ export const Dropdown: FC<DropdownProps> = ({
       }),
     ],
   });
+  const handleSelectAll = () => {
+    if (isOptionAllVisible && Array.isArray(value)) {
+      const allValues = options.map((item) => item.value);
+      onChange(value.length === options.length ? [] : allValues);
+      onSelectAll();
+    }
+  };
 
   const handleClickOutside = () => {
     if (opened) {
@@ -95,7 +102,18 @@ export const Dropdown: FC<DropdownProps> = ({
     if (option.disabled) {
       return;
     }
-    onChange(option.value);
+    if (multiSelect) {
+      const newValue = Array.isArray(value) ? [...value] : [];
+      const index = newValue.indexOf(option.value);
+      if (index === -1) {
+        newValue.push(option.value);
+      } else {
+        newValue.splice(index, 1);
+      }
+      onChange(newValue);
+    } else {
+      onChange(option.value);
+    }
     setOpened((prevState) => multiSelect || !prevState);
   };
 
@@ -203,7 +221,7 @@ export const Dropdown: FC<DropdownProps> = ({
           <DropdownOption
             option={optionAll}
             selected={value.length === options.length}
-            onChange={onSelectAll}
+            onChange={handleSelectAll}
             multiSelect={multiSelect}
             isPartiallyChecked={!!value.length}
           />

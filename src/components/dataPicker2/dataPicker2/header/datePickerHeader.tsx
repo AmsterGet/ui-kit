@@ -63,12 +63,12 @@ export const DatePickerHeader: FC<DatePickerHeaderProps> = ({
     );
   }, [yearsOptions]);
 
-  const onMonthChange = (changedMonth: DropdownValue) => {
+  const onMonthChange = (changedMonth: DropdownValue | DropdownValue[]) => {
     const numberMonth: number = changedMonth as number;
     changeMonth(numberMonth);
   };
 
-  const onYearChange = (changedYear: DropdownValue) => {
+  const onYearChange = (changedYear: DropdownValue | DropdownValue[]) => {
     const numberYear: number = changedYear as number;
     changeYear(numberYear);
   };
