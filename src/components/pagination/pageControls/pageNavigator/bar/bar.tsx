@@ -38,8 +38,8 @@ export const Bar: FC<BarProps> = ({
 
   const sections: Array<{ pages: { from: number | undefined; to: number | undefined } }> =
     Array.from({ length: sectionsCount }, () => ({ pages: { from: undefined, to: undefined } }));
-  pages.forEach((page) => {
-    const index = Math.ceil(page.end / selectorWidth) - 1;
+
+  pages.forEach((page, index) => {
     const currentSectionPages = sections[index].pages;
 
     if (!currentSectionPages.from) {
