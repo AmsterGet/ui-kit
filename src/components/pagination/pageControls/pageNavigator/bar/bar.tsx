@@ -15,7 +15,7 @@ export interface BarProps {
   };
 }
 
-const MIN_SELECTOR_WIDTH = 13;
+const MIN_SECTION_WIDTH = 13;
 const BAR_WIDTH = 260;
 
 export const Bar: FC<BarProps> = ({
@@ -25,10 +25,10 @@ export const Bar: FC<BarProps> = ({
   captions,
 }): ReactElement => {
   const pixelsPerPage = BAR_WIDTH / totalPages;
-  const sectionsCount = Math.min(Math.ceil(BAR_WIDTH / MIN_SELECTOR_WIDTH), totalPages);
-  const selectorWidth = Math.max(MIN_SELECTOR_WIDTH, pixelsPerPage);
+  const sectionsCount = Math.min(Math.ceil(BAR_WIDTH / MIN_SECTION_WIDTH), totalPages);
+  const sectionWidth = Math.max(MIN_SECTION_WIDTH, pixelsPerPage);
 
-  const pages = [];
+  const pages: Array<{ end: number; pageNumber: number }> = [];
   for (let i = 1; i <= totalPages; i++) {
     pages.push({
       end: i * pixelsPerPage,
@@ -39,13 +39,15 @@ export const Bar: FC<BarProps> = ({
   const sections: Array<{ pages: { from: number | undefined; to: number | undefined } }> =
     Array.from({ length: sectionsCount }, () => ({ pages: { from: undefined, to: undefined } }));
 
-  pages.forEach((page, index) => {
-    const currentSectionPages = sections[index].pages;
+  sections.forEach((section, index) => {
+    section.pages.from = pages[0].pageNumber;
 
-    if (!currentSectionPages.from) {
-      currentSectionPages.from = page.pageNumber;
+    while (sectionWidth * (index + 1) > pages[0].end) {
+      pages.shift();
     }
-    currentSectionPages.to = page.pageNumber;
+
+    section.pages.to = pages[0].pageNumber;
+    pages.shift();
   });
 
   return (
@@ -54,7 +56,7 @@ export const Bar: FC<BarProps> = ({
         <div
           key={index}
           className={cx('section-with-tooltip')}
-          style={{ width: selectorWidth }}
+          style={{ width: sectionWidth }}
           onClick={() => section.pages.from && changePage(section.pages.from)}
         >
           <Tooltip
