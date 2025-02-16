@@ -207,11 +207,21 @@
   }
 }
 
-.text {
+.text,
+.max-length-display {
   @include font-scale(s-small);
   font-family: var(--rp-ui-base-font-family);
   font-weight: $fw-regular;
+}
+
+.text {
   display: block;
+}
+
+.max-length-display {
+  margin-left: 15px;
+  align-self: end;
+  color: var(--rp-ui-base-e-300);
 }
 
 .error-text {
