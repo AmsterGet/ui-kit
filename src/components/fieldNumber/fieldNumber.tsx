@@ -11,7 +11,8 @@ import {
 } from 'react';
 import classNames from 'classnames/bind';
 import { KeyCodes } from '@common/constants/keyCodes';
-import { BaseIconButton, PlusIcon, MinusIcon } from '@components/icons';
+import { BaseIconButton } from '@components/baseIconButton';
+import { PlusIcon, MinusIcon } from '@components/icons';
 import { DEFAULT_WIDTH_CH, ALLOWED_KEY_CODES, MAX_WIDTH_CH } from './constants.js';
 import styles from './fieldNumber.module.scss';
 

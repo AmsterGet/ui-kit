@@ -1,6 +1,7 @@
 import { ReactNode, FC } from 'react';
 import classNames from 'classnames/bind';
-import { CloseIcon, BaseIconButton } from '@components/icons';
+import { BaseIconButton } from '@components/baseIconButton';
+import { CloseIcon } from '@components/icons';
 import styles from './modalHeader.module.scss';
 
 const cx = classNames.bind(styles);

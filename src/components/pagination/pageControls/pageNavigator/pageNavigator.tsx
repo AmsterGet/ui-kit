@@ -1,6 +1,7 @@
 import { FC, ReactElement } from 'react';
 import classNames from 'classnames/bind';
-import { BaseIconButton, PrevPageIcon, PrevChapterIcon } from '@components/icons';
+import { BaseIconButton } from '@components/baseIconButton';
+import { PrevPageIcon, PrevChapterIcon } from '@components/icons';
 import { Bar } from './bar';
 import { ChangePage } from '../../types';
 import styles from './pageNavigator.module.scss';

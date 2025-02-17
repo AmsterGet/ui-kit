@@ -1,4 +1,5 @@
 export { Button } from './button';
+export { BaseIconButton } from './baseIconButton';
 export { Checkbox } from './checkbox';
 export { SystemMessage } from './systemMessage';
 export { FieldText } from './fieldText';
