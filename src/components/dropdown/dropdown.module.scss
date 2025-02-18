@@ -95,10 +95,6 @@ $Z-INDEX-POPUP: 10;
     }
   }
 
-  .placeholder {
-    color: var(--rp-ui-color-field-placeholder);
-  }
-
   .value {
     flex-grow: 1;
     font-family: var(--rp-ui-base-font-family);
@@ -108,6 +104,11 @@ $Z-INDEX-POPUP: 10;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+
+    &.placeholder {
+      color: var(--rp-ui-color-field-placeholder-3);
+    }
+
   }
 
   .mobile-disabled {
