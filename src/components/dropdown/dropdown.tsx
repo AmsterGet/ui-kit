@@ -277,7 +277,13 @@ export const Dropdown: FC<DropdownProps> = ({
         type="button"
       >
         {icon && <span className={cx('icon')}>{icon}</span>}
-        <span className={cx('value', { placeholder: !value })}>{getDisplayedValue()}</span>
+        <span
+          className={cx('value', {
+            placeholder: !value || (Array.isArray(value) && !value.length),
+          })}
+        >
+          {getDisplayedValue()}
+        </span>
         <BaseIconButton className={cx('arrow')} tabIndex={-1}>
           <DropdownIcon />
         </BaseIconButton>
