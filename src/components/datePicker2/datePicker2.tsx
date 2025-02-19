@@ -4,7 +4,7 @@ import { FC, ReactNode, useRef, ReactElement } from 'react';
 import { FieldText } from '@components/fieldText';
 import { CalendarIcon } from '@components/icons';
 import { DatePickerHeader } from './header/datePickerHeader';
-import styles from './datePicker.module.scss';
+import styles from './datePicker2.module.scss';
 
 const cx = classNames.bind(styles);
 

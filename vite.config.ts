@@ -1,22 +1,37 @@
-import { resolve } from 'path';
+import { resolve, join } from 'path';
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 import svgr from 'vite-plugin-svgr';
 import tsConfigPaths from 'vite-tsconfig-paths';
+import fs from 'fs';
 import * as packageJson from './package.json';
+
+function generateEntries() {
+  const componentsDir = resolve(__dirname, 'src/components');
+  const componentDirs = fs.readdirSync(componentsDir).filter((file) => {
+    const fullPath = join(componentsDir, file);
+
+    return fs.statSync(fullPath).isDirectory();
+  });
+
+  return componentDirs.reduce(
+    (entries, componentDir) => {
+      entries[componentDir] = join(componentsDir, componentDir);
+
+      return entries;
+    },
+    { index: resolve(__dirname, 'src/components') },
+  );
+}
 
 // TODO: build styles for components individually and add multiple entry points to package.json file
 export default defineConfig(() => ({
   plugins: [
     react(),
-    svgr({
-      exportAsDefault: true,
-    }),
+    svgr({ exportAsDefault: true }),
     tsConfigPaths(),
-    dts({
-      exclude: ['**/*.test.{ts,tsx}', '**/test/**', '**/*.stories.{ts,tsx}'],
-    }),
+    dts({ exclude: ['**/*.test.{ts,tsx}', '**/test/**', '**/*.stories.{ts,tsx}'] }),
   ],
   resolve: {
     alias: {
@@ -28,31 +43,7 @@ export default defineConfig(() => ({
   },
   build: {
     lib: {
-      // TODO: generate it automatically
-      entry: {
-        index: resolve('src', 'components'),
-        themeProvider: resolve('src', 'components', 'themeProvider'),
-        button: resolve('src', 'components', 'button'),
-        checkbox: resolve('src', 'components', 'checkbox'),
-        systemMessage: resolve('src', 'components', 'systemMessage'),
-        fieldText: resolve('src', 'components', 'fieldText'),
-        modal: resolve('src', 'components', 'modal'),
-        dropdown: resolve('src', 'components', 'dropdown'),
-        toggle: resolve('src', 'components', 'toggle'),
-        baseIconButton: resolve('src', 'components', 'icons', 'baseIconButton'),
-        fieldNumber: resolve('src', 'components', 'fieldNumber'),
-        bubblesLoader: resolve('src', 'components', 'bubblesLoader'),
-        tooltip: resolve('src', 'components', 'tooltip'),
-        popover: resolve('src', 'components', 'popover'),
-        radio: resolve('src', 'components', 'radio'),
-        fieldTextFlex: resolve('src', 'components', 'fieldTextFlex'),
-        pagination: resolve('src', 'components', 'pagination'),
-        table: resolve('src', 'components', 'table'),
-        datePicker: resolve('src', 'components', 'datePicker'),
-        datePicker1: resolve('src', 'components', 'datePicker1'),
-        date2: resolve('src', 'components', 'date2'),
-        reactDatePicker2: resolve('src', 'components', 'reactDatePicker2'),
-      },
+      entry: generateEntries(),
       name: 'ui-kit',
       formats: ['es'],
     },
