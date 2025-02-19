@@ -7,11 +7,13 @@ import {
   useRef,
   InputHTMLAttributes,
   MutableRefObject,
+  FocusEvent,
 } from 'react';
 import classNames from 'classnames/bind';
 import { ClearIcon } from '@components/icons';
 import styles from './fieldText.module.scss';
 import { SpinLoader } from '@components/spinLoader';
+import { isPositiveInteger } from '@common/utils';
 
 const cx = classNames.bind(styles);
 
@@ -37,6 +39,7 @@ interface FieldTextProps extends InputHTMLAttributes<HTMLInputElement> {
   hasDoubleMessage?: boolean;
   type?: string;
   displayError?: boolean;
+  maxLengthDisplay?: number;
   collapsible?: boolean;
   loading?: boolean;
 }
@@ -65,6 +68,7 @@ export const FieldText = forwardRef<HTMLInputElement, FieldTextProps>(
       displayError = true,
       collapsible = false,
       loading = false,
+      maxLengthDisplay,
       onFocus = () => {},
       onBlur = () => {},
       ...rest
@@ -74,13 +78,14 @@ export const FieldText = forwardRef<HTMLInputElement, FieldTextProps>(
     const internalRef = useRef<HTMLInputElement>(null);
     const inputRef = ref || internalRef;
     const [focused, setFocused] = useState(false);
+    const hasMaxLengthDisplay = isPositiveInteger(maxLengthDisplay);
 
-    const onFocusHandler = (event: React.FocusEvent<HTMLInputElement>) => {
+    const onFocusHandler = (event: FocusEvent<HTMLInputElement>) => {
       setFocused(true);
       onFocus(event);
     };
 
-    const onBlurHandler = (event: React.FocusEvent<HTMLInputElement>) => {
+    const onBlurHandler = (event: FocusEvent<HTMLInputElement>) => {
       setFocused(false);
       onBlur(event);
     };
@@ -148,6 +153,11 @@ export const FieldText = forwardRef<HTMLInputElement, FieldTextProps>(
               </span>
             )}
           </span>
+          {hasMaxLengthDisplay && (
+            <span className={cx('max-length-display')}>
+              {value.length}/{maxLengthDisplay}
+            </span>
+          )}
           {endIcon && (
             <span className={cx('icon-container-end')}>
               <span className={cx('icon')}>{endIcon}</span>
